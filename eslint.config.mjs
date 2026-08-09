@@ -4,6 +4,10 @@ import tseslint from "typescript-eslint";
 import eslintPluginImport from "eslint-plugin-import";
 
 export default [
+  {
+    ignores: ["dist"],
+  },
+
   js.configs.recommended,
 
   ...tseslint.configs.recommended,
