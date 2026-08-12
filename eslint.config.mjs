@@ -5,7 +5,7 @@ import eslintPluginImport from "eslint-plugin-import";
 
 export default [
   {
-    ignores: ["dist"],
+    ignores: ["dist", "src/generated"],
   },
 
   js.configs.recommended,

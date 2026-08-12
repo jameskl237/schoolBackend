@@ -5,9 +5,25 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
 }
+
+enum SchoolType {
+  PRIMARY
+  SECONDARY
+  BOTH
+}
+
+model Establishment {
+  id        Int      @id @default(autoincrement())
+  name      String
+  code      String   @unique
+  type      SchoolType
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
