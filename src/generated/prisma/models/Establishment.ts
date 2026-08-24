@@ -224,6 +224,18 @@ export type EstablishmentWhereInput = {
   type?: Prisma.EnumSchoolTypeFilter<"Establishment"> | $Enums.SchoolType
   createdAt?: Prisma.DateTimeFilter<"Establishment"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Establishment"> | Date | string
+  academicYears?: Prisma.AcademicYearListRelationFilter
+  schoolLevels?: Prisma.SchoolLevelListRelationFilter
+  users?: Prisma.UserListRelationFilter
+  roles?: Prisma.RoleListRelationFilter
+  teachers?: Prisma.TeacherListRelationFilter
+  subjects?: Prisma.SubjectListRelationFilter
+  classrooms?: Prisma.ClassroomListRelationFilter
+  students?: Prisma.StudentListRelationFilter
+  parents?: Prisma.ParentListRelationFilter
+  guardians?: Prisma.GuardianListRelationFilter
+  feeTypes?: Prisma.FeeTypeListRelationFilter
+  books?: Prisma.BookListRelationFilter
 }
 
 export type EstablishmentOrderByWithRelationInput = {
@@ -233,6 +245,18 @@ export type EstablishmentOrderByWithRelationInput = {
   type?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  academicYears?: Prisma.AcademicYearOrderByRelationAggregateInput
+  schoolLevels?: Prisma.SchoolLevelOrderByRelationAggregateInput
+  users?: Prisma.UserOrderByRelationAggregateInput
+  roles?: Prisma.RoleOrderByRelationAggregateInput
+  teachers?: Prisma.TeacherOrderByRelationAggregateInput
+  subjects?: Prisma.SubjectOrderByRelationAggregateInput
+  classrooms?: Prisma.ClassroomOrderByRelationAggregateInput
+  students?: Prisma.StudentOrderByRelationAggregateInput
+  parents?: Prisma.ParentOrderByRelationAggregateInput
+  guardians?: Prisma.GuardianOrderByRelationAggregateInput
+  feeTypes?: Prisma.FeeTypeOrderByRelationAggregateInput
+  books?: Prisma.BookOrderByRelationAggregateInput
   _relevance?: Prisma.EstablishmentOrderByRelevanceInput
 }
 
@@ -246,6 +270,18 @@ export type EstablishmentWhereUniqueInput = Prisma.AtLeast<{
   type?: Prisma.EnumSchoolTypeFilter<"Establishment"> | $Enums.SchoolType
   createdAt?: Prisma.DateTimeFilter<"Establishment"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Establishment"> | Date | string
+  academicYears?: Prisma.AcademicYearListRelationFilter
+  schoolLevels?: Prisma.SchoolLevelListRelationFilter
+  users?: Prisma.UserListRelationFilter
+  roles?: Prisma.RoleListRelationFilter
+  teachers?: Prisma.TeacherListRelationFilter
+  subjects?: Prisma.SubjectListRelationFilter
+  classrooms?: Prisma.ClassroomListRelationFilter
+  students?: Prisma.StudentListRelationFilter
+  parents?: Prisma.ParentListRelationFilter
+  guardians?: Prisma.GuardianListRelationFilter
+  feeTypes?: Prisma.FeeTypeListRelationFilter
+  books?: Prisma.BookListRelationFilter
 }, "id" | "code">
 
 export type EstablishmentOrderByWithAggregationInput = {
@@ -280,6 +316,18 @@ export type EstablishmentCreateInput = {
   type: $Enums.SchoolType
   createdAt?: Date | string
   updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateInput = {
@@ -289,6 +337,18 @@ export type EstablishmentUncheckedCreateInput = {
   type: $Enums.SchoolType
   createdAt?: Date | string
   updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUpdateInput = {
@@ -297,6 +357,18 @@ export type EstablishmentUpdateInput = {
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateInput = {
@@ -306,6 +378,18 @@ export type EstablishmentUncheckedUpdateInput = {
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateManyInput = {
@@ -375,6 +459,11 @@ export type EstablishmentSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type EstablishmentScalarRelationFilter = {
+  is?: Prisma.EstablishmentWhereInput
+  isNot?: Prisma.EstablishmentWhereInput
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -395,6 +484,1430 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type EstablishmentCreateNestedOneWithoutAcademicYearsInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutAcademicYearsInput, Prisma.EstablishmentUncheckedCreateWithoutAcademicYearsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutAcademicYearsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutAcademicYearsNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutAcademicYearsInput, Prisma.EstablishmentUncheckedCreateWithoutAcademicYearsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutAcademicYearsInput
+  upsert?: Prisma.EstablishmentUpsertWithoutAcademicYearsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutAcademicYearsInput, Prisma.EstablishmentUpdateWithoutAcademicYearsInput>, Prisma.EstablishmentUncheckedUpdateWithoutAcademicYearsInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutSchoolLevelsInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutSchoolLevelsInput, Prisma.EstablishmentUncheckedCreateWithoutSchoolLevelsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutSchoolLevelsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutSchoolLevelsNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutSchoolLevelsInput, Prisma.EstablishmentUncheckedCreateWithoutSchoolLevelsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutSchoolLevelsInput
+  upsert?: Prisma.EstablishmentUpsertWithoutSchoolLevelsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutSchoolLevelsInput, Prisma.EstablishmentUpdateWithoutSchoolLevelsInput>, Prisma.EstablishmentUncheckedUpdateWithoutSchoolLevelsInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutUsersInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutUsersInput, Prisma.EstablishmentUncheckedCreateWithoutUsersInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutUsersInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutUsersNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutUsersInput, Prisma.EstablishmentUncheckedCreateWithoutUsersInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutUsersInput
+  upsert?: Prisma.EstablishmentUpsertWithoutUsersInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutUsersInput, Prisma.EstablishmentUpdateWithoutUsersInput>, Prisma.EstablishmentUncheckedUpdateWithoutUsersInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutRolesInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutRolesInput, Prisma.EstablishmentUncheckedCreateWithoutRolesInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutRolesInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutRolesNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutRolesInput, Prisma.EstablishmentUncheckedCreateWithoutRolesInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutRolesInput
+  upsert?: Prisma.EstablishmentUpsertWithoutRolesInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutRolesInput, Prisma.EstablishmentUpdateWithoutRolesInput>, Prisma.EstablishmentUncheckedUpdateWithoutRolesInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutTeachersInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutTeachersInput, Prisma.EstablishmentUncheckedCreateWithoutTeachersInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutTeachersInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutTeachersNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutTeachersInput, Prisma.EstablishmentUncheckedCreateWithoutTeachersInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutTeachersInput
+  upsert?: Prisma.EstablishmentUpsertWithoutTeachersInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutTeachersInput, Prisma.EstablishmentUpdateWithoutTeachersInput>, Prisma.EstablishmentUncheckedUpdateWithoutTeachersInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutSubjectsInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutSubjectsInput, Prisma.EstablishmentUncheckedCreateWithoutSubjectsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutSubjectsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutSubjectsNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutSubjectsInput, Prisma.EstablishmentUncheckedCreateWithoutSubjectsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutSubjectsInput
+  upsert?: Prisma.EstablishmentUpsertWithoutSubjectsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutSubjectsInput, Prisma.EstablishmentUpdateWithoutSubjectsInput>, Prisma.EstablishmentUncheckedUpdateWithoutSubjectsInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutClassroomsInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutClassroomsInput, Prisma.EstablishmentUncheckedCreateWithoutClassroomsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutClassroomsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutClassroomsNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutClassroomsInput, Prisma.EstablishmentUncheckedCreateWithoutClassroomsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutClassroomsInput
+  upsert?: Prisma.EstablishmentUpsertWithoutClassroomsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutClassroomsInput, Prisma.EstablishmentUpdateWithoutClassroomsInput>, Prisma.EstablishmentUncheckedUpdateWithoutClassroomsInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutStudentsInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutStudentsInput, Prisma.EstablishmentUncheckedCreateWithoutStudentsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutStudentsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutStudentsNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutStudentsInput, Prisma.EstablishmentUncheckedCreateWithoutStudentsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutStudentsInput
+  upsert?: Prisma.EstablishmentUpsertWithoutStudentsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutStudentsInput, Prisma.EstablishmentUpdateWithoutStudentsInput>, Prisma.EstablishmentUncheckedUpdateWithoutStudentsInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutParentsInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutParentsInput, Prisma.EstablishmentUncheckedCreateWithoutParentsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutParentsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutParentsNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutParentsInput, Prisma.EstablishmentUncheckedCreateWithoutParentsInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutParentsInput
+  upsert?: Prisma.EstablishmentUpsertWithoutParentsInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutParentsInput, Prisma.EstablishmentUpdateWithoutParentsInput>, Prisma.EstablishmentUncheckedUpdateWithoutParentsInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutGuardiansInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutGuardiansInput, Prisma.EstablishmentUncheckedCreateWithoutGuardiansInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutGuardiansInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutGuardiansNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutGuardiansInput, Prisma.EstablishmentUncheckedCreateWithoutGuardiansInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutGuardiansInput
+  upsert?: Prisma.EstablishmentUpsertWithoutGuardiansInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutGuardiansInput, Prisma.EstablishmentUpdateWithoutGuardiansInput>, Prisma.EstablishmentUncheckedUpdateWithoutGuardiansInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutFeeTypesInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutFeeTypesInput, Prisma.EstablishmentUncheckedCreateWithoutFeeTypesInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutFeeTypesInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutFeeTypesNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutFeeTypesInput, Prisma.EstablishmentUncheckedCreateWithoutFeeTypesInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutFeeTypesInput
+  upsert?: Prisma.EstablishmentUpsertWithoutFeeTypesInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutFeeTypesInput, Prisma.EstablishmentUpdateWithoutFeeTypesInput>, Prisma.EstablishmentUncheckedUpdateWithoutFeeTypesInput>
+}
+
+export type EstablishmentCreateNestedOneWithoutBooksInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutBooksInput, Prisma.EstablishmentUncheckedCreateWithoutBooksInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutBooksInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutBooksNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutBooksInput, Prisma.EstablishmentUncheckedCreateWithoutBooksInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutBooksInput
+  upsert?: Prisma.EstablishmentUpsertWithoutBooksInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutBooksInput, Prisma.EstablishmentUpdateWithoutBooksInput>, Prisma.EstablishmentUncheckedUpdateWithoutBooksInput>
+}
+
+export type EstablishmentCreateWithoutAcademicYearsInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutAcademicYearsInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutAcademicYearsInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutAcademicYearsInput, Prisma.EstablishmentUncheckedCreateWithoutAcademicYearsInput>
+}
+
+export type EstablishmentUpsertWithoutAcademicYearsInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutAcademicYearsInput, Prisma.EstablishmentUncheckedUpdateWithoutAcademicYearsInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutAcademicYearsInput, Prisma.EstablishmentUncheckedCreateWithoutAcademicYearsInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutAcademicYearsInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutAcademicYearsInput, Prisma.EstablishmentUncheckedUpdateWithoutAcademicYearsInput>
+}
+
+export type EstablishmentUpdateWithoutAcademicYearsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutAcademicYearsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutSchoolLevelsInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutSchoolLevelsInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutSchoolLevelsInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutSchoolLevelsInput, Prisma.EstablishmentUncheckedCreateWithoutSchoolLevelsInput>
+}
+
+export type EstablishmentUpsertWithoutSchoolLevelsInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutSchoolLevelsInput, Prisma.EstablishmentUncheckedUpdateWithoutSchoolLevelsInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutSchoolLevelsInput, Prisma.EstablishmentUncheckedCreateWithoutSchoolLevelsInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutSchoolLevelsInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutSchoolLevelsInput, Prisma.EstablishmentUncheckedUpdateWithoutSchoolLevelsInput>
+}
+
+export type EstablishmentUpdateWithoutSchoolLevelsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutSchoolLevelsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutUsersInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutUsersInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutUsersInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutUsersInput, Prisma.EstablishmentUncheckedCreateWithoutUsersInput>
+}
+
+export type EstablishmentUpsertWithoutUsersInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutUsersInput, Prisma.EstablishmentUncheckedUpdateWithoutUsersInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutUsersInput, Prisma.EstablishmentUncheckedCreateWithoutUsersInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutUsersInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutUsersInput, Prisma.EstablishmentUncheckedUpdateWithoutUsersInput>
+}
+
+export type EstablishmentUpdateWithoutUsersInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutUsersInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutRolesInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutRolesInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutRolesInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutRolesInput, Prisma.EstablishmentUncheckedCreateWithoutRolesInput>
+}
+
+export type EstablishmentUpsertWithoutRolesInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutRolesInput, Prisma.EstablishmentUncheckedUpdateWithoutRolesInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutRolesInput, Prisma.EstablishmentUncheckedCreateWithoutRolesInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutRolesInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutRolesInput, Prisma.EstablishmentUncheckedUpdateWithoutRolesInput>
+}
+
+export type EstablishmentUpdateWithoutRolesInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutRolesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutTeachersInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutTeachersInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutTeachersInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutTeachersInput, Prisma.EstablishmentUncheckedCreateWithoutTeachersInput>
+}
+
+export type EstablishmentUpsertWithoutTeachersInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutTeachersInput, Prisma.EstablishmentUncheckedUpdateWithoutTeachersInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutTeachersInput, Prisma.EstablishmentUncheckedCreateWithoutTeachersInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutTeachersInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutTeachersInput, Prisma.EstablishmentUncheckedUpdateWithoutTeachersInput>
+}
+
+export type EstablishmentUpdateWithoutTeachersInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutTeachersInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutSubjectsInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutSubjectsInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutSubjectsInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutSubjectsInput, Prisma.EstablishmentUncheckedCreateWithoutSubjectsInput>
+}
+
+export type EstablishmentUpsertWithoutSubjectsInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutSubjectsInput, Prisma.EstablishmentUncheckedUpdateWithoutSubjectsInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutSubjectsInput, Prisma.EstablishmentUncheckedCreateWithoutSubjectsInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutSubjectsInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutSubjectsInput, Prisma.EstablishmentUncheckedUpdateWithoutSubjectsInput>
+}
+
+export type EstablishmentUpdateWithoutSubjectsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutSubjectsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutClassroomsInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutClassroomsInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutClassroomsInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutClassroomsInput, Prisma.EstablishmentUncheckedCreateWithoutClassroomsInput>
+}
+
+export type EstablishmentUpsertWithoutClassroomsInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutClassroomsInput, Prisma.EstablishmentUncheckedUpdateWithoutClassroomsInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutClassroomsInput, Prisma.EstablishmentUncheckedCreateWithoutClassroomsInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutClassroomsInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutClassroomsInput, Prisma.EstablishmentUncheckedUpdateWithoutClassroomsInput>
+}
+
+export type EstablishmentUpdateWithoutClassroomsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutClassroomsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutStudentsInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutStudentsInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutStudentsInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutStudentsInput, Prisma.EstablishmentUncheckedCreateWithoutStudentsInput>
+}
+
+export type EstablishmentUpsertWithoutStudentsInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutStudentsInput, Prisma.EstablishmentUncheckedUpdateWithoutStudentsInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutStudentsInput, Prisma.EstablishmentUncheckedCreateWithoutStudentsInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutStudentsInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutStudentsInput, Prisma.EstablishmentUncheckedUpdateWithoutStudentsInput>
+}
+
+export type EstablishmentUpdateWithoutStudentsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutStudentsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutParentsInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutParentsInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutParentsInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutParentsInput, Prisma.EstablishmentUncheckedCreateWithoutParentsInput>
+}
+
+export type EstablishmentUpsertWithoutParentsInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutParentsInput, Prisma.EstablishmentUncheckedUpdateWithoutParentsInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutParentsInput, Prisma.EstablishmentUncheckedCreateWithoutParentsInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutParentsInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutParentsInput, Prisma.EstablishmentUncheckedUpdateWithoutParentsInput>
+}
+
+export type EstablishmentUpdateWithoutParentsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutParentsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutGuardiansInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutGuardiansInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutGuardiansInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutGuardiansInput, Prisma.EstablishmentUncheckedCreateWithoutGuardiansInput>
+}
+
+export type EstablishmentUpsertWithoutGuardiansInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutGuardiansInput, Prisma.EstablishmentUncheckedUpdateWithoutGuardiansInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutGuardiansInput, Prisma.EstablishmentUncheckedCreateWithoutGuardiansInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutGuardiansInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutGuardiansInput, Prisma.EstablishmentUncheckedUpdateWithoutGuardiansInput>
+}
+
+export type EstablishmentUpdateWithoutGuardiansInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutGuardiansInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutFeeTypesInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutFeeTypesInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutFeeTypesInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutFeeTypesInput, Prisma.EstablishmentUncheckedCreateWithoutFeeTypesInput>
+}
+
+export type EstablishmentUpsertWithoutFeeTypesInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutFeeTypesInput, Prisma.EstablishmentUncheckedUpdateWithoutFeeTypesInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutFeeTypesInput, Prisma.EstablishmentUncheckedCreateWithoutFeeTypesInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutFeeTypesInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutFeeTypesInput, Prisma.EstablishmentUncheckedUpdateWithoutFeeTypesInput>
+}
+
+export type EstablishmentUpdateWithoutFeeTypesInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutFeeTypesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutBooksInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutBooksInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutBooksInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutBooksInput, Prisma.EstablishmentUncheckedCreateWithoutBooksInput>
+}
+
+export type EstablishmentUpsertWithoutBooksInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutBooksInput, Prisma.EstablishmentUncheckedUpdateWithoutBooksInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutBooksInput, Prisma.EstablishmentUncheckedCreateWithoutBooksInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutBooksInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutBooksInput, Prisma.EstablishmentUncheckedUpdateWithoutBooksInput>
+}
+
+export type EstablishmentUpdateWithoutBooksInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutBooksInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+
+/**
+ * Count Type EstablishmentCountOutputType
+ */
+
+export type EstablishmentCountOutputType = {
+  academicYears: number
+  schoolLevels: number
+  users: number
+  roles: number
+  teachers: number
+  subjects: number
+  classrooms: number
+  students: number
+  parents: number
+  guardians: number
+  feeTypes: number
+  books: number
+}
+
+export type EstablishmentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  academicYears?: boolean | EstablishmentCountOutputTypeCountAcademicYearsArgs
+  schoolLevels?: boolean | EstablishmentCountOutputTypeCountSchoolLevelsArgs
+  users?: boolean | EstablishmentCountOutputTypeCountUsersArgs
+  roles?: boolean | EstablishmentCountOutputTypeCountRolesArgs
+  teachers?: boolean | EstablishmentCountOutputTypeCountTeachersArgs
+  subjects?: boolean | EstablishmentCountOutputTypeCountSubjectsArgs
+  classrooms?: boolean | EstablishmentCountOutputTypeCountClassroomsArgs
+  students?: boolean | EstablishmentCountOutputTypeCountStudentsArgs
+  parents?: boolean | EstablishmentCountOutputTypeCountParentsArgs
+  guardians?: boolean | EstablishmentCountOutputTypeCountGuardiansArgs
+  feeTypes?: boolean | EstablishmentCountOutputTypeCountFeeTypesArgs
+  books?: boolean | EstablishmentCountOutputTypeCountBooksArgs
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EstablishmentCountOutputType
+   */
+  select?: Prisma.EstablishmentCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountAcademicYearsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AcademicYearWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountSchoolLevelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SchoolLevelWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountRolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RoleWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountTeachersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TeacherWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountSubjectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SubjectWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountClassroomsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ClassroomWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountStudentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StudentWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountParentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ParentWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountGuardiansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GuardianWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountFeeTypesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FeeTypeWhereInput
+}
+
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountBooksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BookWhereInput
+}
 
 
 export type EstablishmentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -404,6 +1917,19 @@ export type EstablishmentSelect<ExtArgs extends runtime.Types.Extensions.Interna
   type?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  academicYears?: boolean | Prisma.Establishment$academicYearsArgs<ExtArgs>
+  schoolLevels?: boolean | Prisma.Establishment$schoolLevelsArgs<ExtArgs>
+  users?: boolean | Prisma.Establishment$usersArgs<ExtArgs>
+  roles?: boolean | Prisma.Establishment$rolesArgs<ExtArgs>
+  teachers?: boolean | Prisma.Establishment$teachersArgs<ExtArgs>
+  subjects?: boolean | Prisma.Establishment$subjectsArgs<ExtArgs>
+  classrooms?: boolean | Prisma.Establishment$classroomsArgs<ExtArgs>
+  students?: boolean | Prisma.Establishment$studentsArgs<ExtArgs>
+  parents?: boolean | Prisma.Establishment$parentsArgs<ExtArgs>
+  guardians?: boolean | Prisma.Establishment$guardiansArgs<ExtArgs>
+  feeTypes?: boolean | Prisma.Establishment$feeTypesArgs<ExtArgs>
+  books?: boolean | Prisma.Establishment$booksArgs<ExtArgs>
+  _count?: boolean | Prisma.EstablishmentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["establishment"]>
 
 
@@ -418,10 +1944,38 @@ export type EstablishmentSelectScalar = {
 }
 
 export type EstablishmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "type" | "createdAt" | "updatedAt", ExtArgs["result"]["establishment"]>
+export type EstablishmentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  academicYears?: boolean | Prisma.Establishment$academicYearsArgs<ExtArgs>
+  schoolLevels?: boolean | Prisma.Establishment$schoolLevelsArgs<ExtArgs>
+  users?: boolean | Prisma.Establishment$usersArgs<ExtArgs>
+  roles?: boolean | Prisma.Establishment$rolesArgs<ExtArgs>
+  teachers?: boolean | Prisma.Establishment$teachersArgs<ExtArgs>
+  subjects?: boolean | Prisma.Establishment$subjectsArgs<ExtArgs>
+  classrooms?: boolean | Prisma.Establishment$classroomsArgs<ExtArgs>
+  students?: boolean | Prisma.Establishment$studentsArgs<ExtArgs>
+  parents?: boolean | Prisma.Establishment$parentsArgs<ExtArgs>
+  guardians?: boolean | Prisma.Establishment$guardiansArgs<ExtArgs>
+  feeTypes?: boolean | Prisma.Establishment$feeTypesArgs<ExtArgs>
+  books?: boolean | Prisma.Establishment$booksArgs<ExtArgs>
+  _count?: boolean | Prisma.EstablishmentCountOutputTypeDefaultArgs<ExtArgs>
+}
 
 export type $EstablishmentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Establishment"
-  objects: {}
+  objects: {
+    academicYears: Prisma.$AcademicYearPayload<ExtArgs>[]
+    schoolLevels: Prisma.$SchoolLevelPayload<ExtArgs>[]
+    users: Prisma.$UserPayload<ExtArgs>[]
+    roles: Prisma.$RolePayload<ExtArgs>[]
+    teachers: Prisma.$TeacherPayload<ExtArgs>[]
+    subjects: Prisma.$SubjectPayload<ExtArgs>[]
+    classrooms: Prisma.$ClassroomPayload<ExtArgs>[]
+    students: Prisma.$StudentPayload<ExtArgs>[]
+    parents: Prisma.$ParentPayload<ExtArgs>[]
+    guardians: Prisma.$GuardianPayload<ExtArgs>[]
+    feeTypes: Prisma.$FeeTypePayload<ExtArgs>[]
+    books: Prisma.$BookPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     name: string
@@ -769,6 +2323,18 @@ readonly fields: EstablishmentFieldRefs;
  */
 export interface Prisma__EstablishmentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  academicYears<T extends Prisma.Establishment$academicYearsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$academicYearsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AcademicYearPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  schoolLevels<T extends Prisma.Establishment$schoolLevelsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$schoolLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SchoolLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  users<T extends Prisma.Establishment$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  roles<T extends Prisma.Establishment$rolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  teachers<T extends Prisma.Establishment$teachersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$teachersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  subjects<T extends Prisma.Establishment$subjectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$subjectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  classrooms<T extends Prisma.Establishment$classroomsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$classroomsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClassroomPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  students<T extends Prisma.Establishment$studentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$studentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  parents<T extends Prisma.Establishment$parentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$parentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  guardians<T extends Prisma.Establishment$guardiansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$guardiansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GuardianPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  feeTypes<T extends Prisma.Establishment$feeTypesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$feeTypesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeeTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  books<T extends Prisma.Establishment$booksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$booksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -821,6 +2387,10 @@ export type EstablishmentFindUniqueArgs<ExtArgs extends runtime.Types.Extensions
    */
   omit?: Prisma.EstablishmentOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EstablishmentInclude<ExtArgs> | null
+  /**
    * Filter, which Establishment to fetch.
    */
   where: Prisma.EstablishmentWhereUniqueInput
@@ -839,6 +2409,10 @@ export type EstablishmentFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Ext
    */
   omit?: Prisma.EstablishmentOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EstablishmentInclude<ExtArgs> | null
+  /**
    * Filter, which Establishment to fetch.
    */
   where: Prisma.EstablishmentWhereUniqueInput
@@ -856,6 +2430,10 @@ export type EstablishmentFindFirstArgs<ExtArgs extends runtime.Types.Extensions.
    * Omit specific fields from the Establishment
    */
   omit?: Prisma.EstablishmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EstablishmentInclude<ExtArgs> | null
   /**
    * Filter, which Establishment to fetch.
    */
@@ -905,6 +2483,10 @@ export type EstablishmentFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Exte
    */
   omit?: Prisma.EstablishmentOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EstablishmentInclude<ExtArgs> | null
+  /**
    * Filter, which Establishment to fetch.
    */
   where?: Prisma.EstablishmentWhereInput
@@ -952,6 +2534,10 @@ export type EstablishmentFindManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Omit specific fields from the Establishment
    */
   omit?: Prisma.EstablishmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EstablishmentInclude<ExtArgs> | null
   /**
    * Filter, which Establishments to fetch.
    */
@@ -1001,6 +2587,10 @@ export type EstablishmentCreateArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   omit?: Prisma.EstablishmentOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EstablishmentInclude<ExtArgs> | null
+  /**
    * The data needed to create a Establishment.
    */
   data: Prisma.XOR<Prisma.EstablishmentCreateInput, Prisma.EstablishmentUncheckedCreateInput>
@@ -1029,6 +2619,10 @@ export type EstablishmentUpdateArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Omit specific fields from the Establishment
    */
   omit?: Prisma.EstablishmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EstablishmentInclude<ExtArgs> | null
   /**
    * The data needed to update a Establishment.
    */
@@ -1070,6 +2664,10 @@ export type EstablishmentUpsertArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   omit?: Prisma.EstablishmentOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EstablishmentInclude<ExtArgs> | null
+  /**
    * The filter to search for the Establishment to update in case it exists.
    */
   where: Prisma.EstablishmentWhereUniqueInput
@@ -1096,6 +2694,10 @@ export type EstablishmentDeleteArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   omit?: Prisma.EstablishmentOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EstablishmentInclude<ExtArgs> | null
+  /**
    * Filter which Establishment to delete.
    */
   where: Prisma.EstablishmentWhereUniqueInput
@@ -1116,6 +2718,294 @@ export type EstablishmentDeleteManyArgs<ExtArgs extends runtime.Types.Extensions
 }
 
 /**
+ * Establishment.academicYears
+ */
+export type Establishment$academicYearsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AcademicYear
+   */
+  select?: Prisma.AcademicYearSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AcademicYear
+   */
+  omit?: Prisma.AcademicYearOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AcademicYearInclude<ExtArgs> | null
+  where?: Prisma.AcademicYearWhereInput
+  orderBy?: Prisma.AcademicYearOrderByWithRelationInput | Prisma.AcademicYearOrderByWithRelationInput[]
+  cursor?: Prisma.AcademicYearWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AcademicYearScalarFieldEnum | Prisma.AcademicYearScalarFieldEnum[]
+}
+
+/**
+ * Establishment.schoolLevels
+ */
+export type Establishment$schoolLevelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SchoolLevel
+   */
+  select?: Prisma.SchoolLevelSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SchoolLevel
+   */
+  omit?: Prisma.SchoolLevelOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SchoolLevelInclude<ExtArgs> | null
+  where?: Prisma.SchoolLevelWhereInput
+  orderBy?: Prisma.SchoolLevelOrderByWithRelationInput | Prisma.SchoolLevelOrderByWithRelationInput[]
+  cursor?: Prisma.SchoolLevelWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SchoolLevelScalarFieldEnum | Prisma.SchoolLevelScalarFieldEnum[]
+}
+
+/**
+ * Establishment.users
+ */
+export type Establishment$usersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[]
+  cursor?: Prisma.UserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * Establishment.roles
+ */
+export type Establishment$rolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Role
+   */
+  select?: Prisma.RoleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Role
+   */
+  omit?: Prisma.RoleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RoleInclude<ExtArgs> | null
+  where?: Prisma.RoleWhereInput
+  orderBy?: Prisma.RoleOrderByWithRelationInput | Prisma.RoleOrderByWithRelationInput[]
+  cursor?: Prisma.RoleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RoleScalarFieldEnum | Prisma.RoleScalarFieldEnum[]
+}
+
+/**
+ * Establishment.teachers
+ */
+export type Establishment$teachersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Teacher
+   */
+  select?: Prisma.TeacherSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Teacher
+   */
+  omit?: Prisma.TeacherOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeacherInclude<ExtArgs> | null
+  where?: Prisma.TeacherWhereInput
+  orderBy?: Prisma.TeacherOrderByWithRelationInput | Prisma.TeacherOrderByWithRelationInput[]
+  cursor?: Prisma.TeacherWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TeacherScalarFieldEnum | Prisma.TeacherScalarFieldEnum[]
+}
+
+/**
+ * Establishment.subjects
+ */
+export type Establishment$subjectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Subject
+   */
+  select?: Prisma.SubjectSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Subject
+   */
+  omit?: Prisma.SubjectOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SubjectInclude<ExtArgs> | null
+  where?: Prisma.SubjectWhereInput
+  orderBy?: Prisma.SubjectOrderByWithRelationInput | Prisma.SubjectOrderByWithRelationInput[]
+  cursor?: Prisma.SubjectWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SubjectScalarFieldEnum | Prisma.SubjectScalarFieldEnum[]
+}
+
+/**
+ * Establishment.classrooms
+ */
+export type Establishment$classroomsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Classroom
+   */
+  select?: Prisma.ClassroomSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Classroom
+   */
+  omit?: Prisma.ClassroomOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClassroomInclude<ExtArgs> | null
+  where?: Prisma.ClassroomWhereInput
+  orderBy?: Prisma.ClassroomOrderByWithRelationInput | Prisma.ClassroomOrderByWithRelationInput[]
+  cursor?: Prisma.ClassroomWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ClassroomScalarFieldEnum | Prisma.ClassroomScalarFieldEnum[]
+}
+
+/**
+ * Establishment.students
+ */
+export type Establishment$studentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Student
+   */
+  select?: Prisma.StudentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Student
+   */
+  omit?: Prisma.StudentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StudentInclude<ExtArgs> | null
+  where?: Prisma.StudentWhereInput
+  orderBy?: Prisma.StudentOrderByWithRelationInput | Prisma.StudentOrderByWithRelationInput[]
+  cursor?: Prisma.StudentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StudentScalarFieldEnum | Prisma.StudentScalarFieldEnum[]
+}
+
+/**
+ * Establishment.parents
+ */
+export type Establishment$parentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Parent
+   */
+  select?: Prisma.ParentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Parent
+   */
+  omit?: Prisma.ParentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ParentInclude<ExtArgs> | null
+  where?: Prisma.ParentWhereInput
+  orderBy?: Prisma.ParentOrderByWithRelationInput | Prisma.ParentOrderByWithRelationInput[]
+  cursor?: Prisma.ParentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ParentScalarFieldEnum | Prisma.ParentScalarFieldEnum[]
+}
+
+/**
+ * Establishment.guardians
+ */
+export type Establishment$guardiansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Guardian
+   */
+  select?: Prisma.GuardianSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Guardian
+   */
+  omit?: Prisma.GuardianOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GuardianInclude<ExtArgs> | null
+  where?: Prisma.GuardianWhereInput
+  orderBy?: Prisma.GuardianOrderByWithRelationInput | Prisma.GuardianOrderByWithRelationInput[]
+  cursor?: Prisma.GuardianWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GuardianScalarFieldEnum | Prisma.GuardianScalarFieldEnum[]
+}
+
+/**
+ * Establishment.feeTypes
+ */
+export type Establishment$feeTypesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FeeType
+   */
+  select?: Prisma.FeeTypeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FeeType
+   */
+  omit?: Prisma.FeeTypeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeeTypeInclude<ExtArgs> | null
+  where?: Prisma.FeeTypeWhereInput
+  orderBy?: Prisma.FeeTypeOrderByWithRelationInput | Prisma.FeeTypeOrderByWithRelationInput[]
+  cursor?: Prisma.FeeTypeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FeeTypeScalarFieldEnum | Prisma.FeeTypeScalarFieldEnum[]
+}
+
+/**
+ * Establishment.books
+ */
+export type Establishment$booksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Book
+   */
+  select?: Prisma.BookSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Book
+   */
+  omit?: Prisma.BookOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BookInclude<ExtArgs> | null
+  where?: Prisma.BookWhereInput
+  orderBy?: Prisma.BookOrderByWithRelationInput | Prisma.BookOrderByWithRelationInput[]
+  cursor?: Prisma.BookWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BookScalarFieldEnum | Prisma.BookScalarFieldEnum[]
+}
+
+/**
  * Establishment without action
  */
 export type EstablishmentDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1127,4 +3017,8 @@ export type EstablishmentDefaultArgs<ExtArgs extends runtime.Types.Extensions.In
    * Omit specific fields from the Establishment
    */
   omit?: Prisma.EstablishmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EstablishmentInclude<ExtArgs> | null
 }

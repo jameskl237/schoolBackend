@@ -51,7 +51,47 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Establishment: 'Establishment'
+  Establishment: 'Establishment',
+  AcademicYear: 'AcademicYear',
+  Period: 'Period',
+  SchoolLevel: 'SchoolLevel',
+  Cycle: 'Cycle',
+  Class: 'Class',
+  User: 'User',
+  Role: 'Role',
+  Permission: 'Permission',
+  UserRole: 'UserRole',
+  RolePermission: 'RolePermission',
+  Teacher: 'Teacher',
+  Subject: 'Subject',
+  Classroom: 'Classroom',
+  ClassSubject: 'ClassSubject',
+  Timetable: 'Timetable',
+  Student: 'Student',
+  Parent: 'Parent',
+  StudentParent: 'StudentParent',
+  Guardian: 'Guardian',
+  StudentGuardian: 'StudentGuardian',
+  Enrollment: 'Enrollment',
+  Evaluation: 'Evaluation',
+  Grade: 'Grade',
+  ReportCard: 'ReportCard',
+  ReportCardLine: 'ReportCardLine',
+  Attendance: 'Attendance',
+  DisciplineRecord: 'DisciplineRecord',
+  FeeType: 'FeeType',
+  FeeStructure: 'FeeStructure',
+  Invoice: 'Invoice',
+  InvoiceLine: 'InvoiceLine',
+  Payment: 'Payment',
+  MedicalRecord: 'MedicalRecord',
+  Vaccination: 'Vaccination',
+  InfirmaryVisit: 'InfirmaryVisit',
+  Book: 'Book',
+  BookCopy: 'BookCopy',
+  Loan: 'Loan',
+  OrientationRecord: 'OrientationRecord',
+  CounselingSession: 'CounselingSession'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -82,6 +122,566 @@ export const EstablishmentScalarFieldEnum = {
 export type EstablishmentScalarFieldEnum = (typeof EstablishmentScalarFieldEnum)[keyof typeof EstablishmentScalarFieldEnum]
 
 
+export const AcademicYearScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  name: 'name',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  isCurrent: 'isCurrent',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AcademicYearScalarFieldEnum = (typeof AcademicYearScalarFieldEnum)[keyof typeof AcademicYearScalarFieldEnum]
+
+
+export const PeriodScalarFieldEnum = {
+  id: 'id',
+  academicYearId: 'academicYearId',
+  name: 'name',
+  order: 'order',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PeriodScalarFieldEnum = (typeof PeriodScalarFieldEnum)[keyof typeof PeriodScalarFieldEnum]
+
+
+export const SchoolLevelScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  name: 'name',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SchoolLevelScalarFieldEnum = (typeof SchoolLevelScalarFieldEnum)[keyof typeof SchoolLevelScalarFieldEnum]
+
+
+export const CycleScalarFieldEnum = {
+  id: 'id',
+  schoolLevelId: 'schoolLevelId',
+  name: 'name',
+  code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CycleScalarFieldEnum = (typeof CycleScalarFieldEnum)[keyof typeof CycleScalarFieldEnum]
+
+
+export const ClassScalarFieldEnum = {
+  id: 'id',
+  cycleId: 'cycleId',
+  name: 'name',
+  code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ClassScalarFieldEnum = (typeof ClassScalarFieldEnum)[keyof typeof ClassScalarFieldEnum]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  email: 'email',
+  password: 'password',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  phone: 'phone',
+  isActive: 'isActive',
+  lastLoginAt: 'lastLoginAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const RoleScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
+
+
+export const PermissionScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PermissionScalarFieldEnum = (typeof PermissionScalarFieldEnum)[keyof typeof PermissionScalarFieldEnum]
+
+
+export const UserRoleScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  roleId: 'roleId',
+  assignedAt: 'assignedAt'
+} as const
+
+export type UserRoleScalarFieldEnum = (typeof UserRoleScalarFieldEnum)[keyof typeof UserRoleScalarFieldEnum]
+
+
+export const RolePermissionScalarFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  permissionId: 'permissionId'
+} as const
+
+export type RolePermissionScalarFieldEnum = (typeof RolePermissionScalarFieldEnum)[keyof typeof RolePermissionScalarFieldEnum]
+
+
+export const TeacherScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  userId: 'userId',
+  employeeNumber: 'employeeNumber',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  gender: 'gender',
+  phone: 'phone',
+  email: 'email',
+  hireDate: 'hireDate',
+  specialty: 'specialty',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TeacherScalarFieldEnum = (typeof TeacherScalarFieldEnum)[keyof typeof TeacherScalarFieldEnum]
+
+
+export const SubjectScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  name: 'name',
+  code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SubjectScalarFieldEnum = (typeof SubjectScalarFieldEnum)[keyof typeof SubjectScalarFieldEnum]
+
+
+export const ClassroomScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  name: 'name',
+  code: 'code',
+  capacity: 'capacity',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ClassroomScalarFieldEnum = (typeof ClassroomScalarFieldEnum)[keyof typeof ClassroomScalarFieldEnum]
+
+
+export const ClassSubjectScalarFieldEnum = {
+  id: 'id',
+  classId: 'classId',
+  subjectId: 'subjectId',
+  teacherId: 'teacherId',
+  academicYearId: 'academicYearId',
+  coefficient: 'coefficient',
+  hoursPerWeek: 'hoursPerWeek',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ClassSubjectScalarFieldEnum = (typeof ClassSubjectScalarFieldEnum)[keyof typeof ClassSubjectScalarFieldEnum]
+
+
+export const TimetableScalarFieldEnum = {
+  id: 'id',
+  classSubjectId: 'classSubjectId',
+  classroomId: 'classroomId',
+  dayOfWeek: 'dayOfWeek',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TimetableScalarFieldEnum = (typeof TimetableScalarFieldEnum)[keyof typeof TimetableScalarFieldEnum]
+
+
+export const StudentScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  userId: 'userId',
+  studentNumber: 'studentNumber',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  dateOfBirth: 'dateOfBirth',
+  placeOfBirth: 'placeOfBirth',
+  gender: 'gender',
+  nationality: 'nationality',
+  address: 'address',
+  photoUrl: 'photoUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
+
+
+export const ParentScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  userId: 'userId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  phone: 'phone',
+  email: 'email',
+  occupation: 'occupation',
+  address: 'address',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ParentScalarFieldEnum = (typeof ParentScalarFieldEnum)[keyof typeof ParentScalarFieldEnum]
+
+
+export const StudentParentScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  parentId: 'parentId',
+  relationType: 'relationType',
+  isPrimaryContact: 'isPrimaryContact'
+} as const
+
+export type StudentParentScalarFieldEnum = (typeof StudentParentScalarFieldEnum)[keyof typeof StudentParentScalarFieldEnum]
+
+
+export const GuardianScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  userId: 'userId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  phone: 'phone',
+  email: 'email',
+  address: 'address',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GuardianScalarFieldEnum = (typeof GuardianScalarFieldEnum)[keyof typeof GuardianScalarFieldEnum]
+
+
+export const StudentGuardianScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  guardianId: 'guardianId',
+  relationType: 'relationType',
+  isFinanciallyResponsible: 'isFinanciallyResponsible',
+  canPickup: 'canPickup'
+} as const
+
+export type StudentGuardianScalarFieldEnum = (typeof StudentGuardianScalarFieldEnum)[keyof typeof StudentGuardianScalarFieldEnum]
+
+
+export const EnrollmentScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  classId: 'classId',
+  academicYearId: 'academicYearId',
+  enrollmentDate: 'enrollmentDate',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EnrollmentScalarFieldEnum = (typeof EnrollmentScalarFieldEnum)[keyof typeof EnrollmentScalarFieldEnum]
+
+
+export const EvaluationScalarFieldEnum = {
+  id: 'id',
+  classSubjectId: 'classSubjectId',
+  periodId: 'periodId',
+  title: 'title',
+  type: 'type',
+  date: 'date',
+  maxScore: 'maxScore',
+  coefficient: 'coefficient',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EvaluationScalarFieldEnum = (typeof EvaluationScalarFieldEnum)[keyof typeof EvaluationScalarFieldEnum]
+
+
+export const GradeScalarFieldEnum = {
+  id: 'id',
+  evaluationId: 'evaluationId',
+  studentId: 'studentId',
+  score: 'score',
+  isAbsent: 'isAbsent',
+  comment: 'comment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GradeScalarFieldEnum = (typeof GradeScalarFieldEnum)[keyof typeof GradeScalarFieldEnum]
+
+
+export const ReportCardScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  periodId: 'periodId',
+  classId: 'classId',
+  generalAverage: 'generalAverage',
+  rank: 'rank',
+  conduct: 'conduct',
+  appreciation: 'appreciation',
+  publishedAt: 'publishedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ReportCardScalarFieldEnum = (typeof ReportCardScalarFieldEnum)[keyof typeof ReportCardScalarFieldEnum]
+
+
+export const ReportCardLineScalarFieldEnum = {
+  id: 'id',
+  reportCardId: 'reportCardId',
+  subjectId: 'subjectId',
+  average: 'average',
+  coefficient: 'coefficient',
+  rank: 'rank',
+  teacherComment: 'teacherComment'
+} as const
+
+export type ReportCardLineScalarFieldEnum = (typeof ReportCardLineScalarFieldEnum)[keyof typeof ReportCardLineScalarFieldEnum]
+
+
+export const AttendanceScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  classId: 'classId',
+  timetableId: 'timetableId',
+  date: 'date',
+  status: 'status',
+  justification: 'justification',
+  recordedById: 'recordedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
+
+
+export const DisciplineRecordScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  type: 'type',
+  reason: 'reason',
+  date: 'date',
+  durationDays: 'durationDays',
+  description: 'description',
+  issuedById: 'issuedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DisciplineRecordScalarFieldEnum = (typeof DisciplineRecordScalarFieldEnum)[keyof typeof DisciplineRecordScalarFieldEnum]
+
+
+export const FeeTypeScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FeeTypeScalarFieldEnum = (typeof FeeTypeScalarFieldEnum)[keyof typeof FeeTypeScalarFieldEnum]
+
+
+export const FeeStructureScalarFieldEnum = {
+  id: 'id',
+  feeTypeId: 'feeTypeId',
+  classId: 'classId',
+  academicYearId: 'academicYearId',
+  amount: 'amount',
+  dueDate: 'dueDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FeeStructureScalarFieldEnum = (typeof FeeStructureScalarFieldEnum)[keyof typeof FeeStructureScalarFieldEnum]
+
+
+export const InvoiceScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  academicYearId: 'academicYearId',
+  issueDate: 'issueDate',
+  dueDate: 'dueDate',
+  totalAmount: 'totalAmount',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InvoiceScalarFieldEnum = (typeof InvoiceScalarFieldEnum)[keyof typeof InvoiceScalarFieldEnum]
+
+
+export const InvoiceLineScalarFieldEnum = {
+  id: 'id',
+  invoiceId: 'invoiceId',
+  feeTypeId: 'feeTypeId',
+  amount: 'amount',
+  description: 'description'
+} as const
+
+export type InvoiceLineScalarFieldEnum = (typeof InvoiceLineScalarFieldEnum)[keyof typeof InvoiceLineScalarFieldEnum]
+
+
+export const PaymentScalarFieldEnum = {
+  id: 'id',
+  invoiceId: 'invoiceId',
+  amount: 'amount',
+  paymentDate: 'paymentDate',
+  method: 'method',
+  reference: 'reference',
+  receivedById: 'receivedById',
+  createdAt: 'createdAt'
+} as const
+
+export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+
+
+export const MedicalRecordScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  bloodGroup: 'bloodGroup',
+  allergies: 'allergies',
+  chronicConditions: 'chronicConditions',
+  emergencyContact: 'emergencyContact',
+  doctorName: 'doctorName',
+  doctorPhone: 'doctorPhone',
+  insuranceNumber: 'insuranceNumber',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MedicalRecordScalarFieldEnum = (typeof MedicalRecordScalarFieldEnum)[keyof typeof MedicalRecordScalarFieldEnum]
+
+
+export const VaccinationScalarFieldEnum = {
+  id: 'id',
+  medicalRecordId: 'medicalRecordId',
+  name: 'name',
+  date: 'date',
+  nextDueDate: 'nextDueDate'
+} as const
+
+export type VaccinationScalarFieldEnum = (typeof VaccinationScalarFieldEnum)[keyof typeof VaccinationScalarFieldEnum]
+
+
+export const InfirmaryVisitScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  date: 'date',
+  reason: 'reason',
+  treatment: 'treatment',
+  temperature: 'temperature',
+  notifiedParent: 'notifiedParent',
+  handledById: 'handledById',
+  createdAt: 'createdAt'
+} as const
+
+export type InfirmaryVisitScalarFieldEnum = (typeof InfirmaryVisitScalarFieldEnum)[keyof typeof InfirmaryVisitScalarFieldEnum]
+
+
+export const BookScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  isbn: 'isbn',
+  title: 'title',
+  author: 'author',
+  publisher: 'publisher',
+  category: 'category',
+  publishedYear: 'publishedYear',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]
+
+
+export const BookCopyScalarFieldEnum = {
+  id: 'id',
+  bookId: 'bookId',
+  inventoryCode: 'inventoryCode',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BookCopyScalarFieldEnum = (typeof BookCopyScalarFieldEnum)[keyof typeof BookCopyScalarFieldEnum]
+
+
+export const LoanScalarFieldEnum = {
+  id: 'id',
+  bookCopyId: 'bookCopyId',
+  studentId: 'studentId',
+  teacherId: 'teacherId',
+  loanDate: 'loanDate',
+  dueDate: 'dueDate',
+  returnDate: 'returnDate',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LoanScalarFieldEnum = (typeof LoanScalarFieldEnum)[keyof typeof LoanScalarFieldEnum]
+
+
+export const OrientationRecordScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  academicYearId: 'academicYearId',
+  recommendedTrack: 'recommendedTrack',
+  finalDecision: 'finalDecision',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OrientationRecordScalarFieldEnum = (typeof OrientationRecordScalarFieldEnum)[keyof typeof OrientationRecordScalarFieldEnum]
+
+
+export const CounselingSessionScalarFieldEnum = {
+  id: 'id',
+  orientationRecordId: 'orientationRecordId',
+  counselorId: 'counselorId',
+  date: 'date',
+  notes: 'notes',
+  followUpDate: 'followUpDate',
+  createdAt: 'createdAt'
+} as const
+
+export type CounselingSessionScalarFieldEnum = (typeof CounselingSessionScalarFieldEnum)[keyof typeof CounselingSessionScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -96,4 +696,269 @@ export const EstablishmentOrderByRelevanceFieldEnum = {
 } as const
 
 export type EstablishmentOrderByRelevanceFieldEnum = (typeof EstablishmentOrderByRelevanceFieldEnum)[keyof typeof EstablishmentOrderByRelevanceFieldEnum]
+
+
+export const AcademicYearOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type AcademicYearOrderByRelevanceFieldEnum = (typeof AcademicYearOrderByRelevanceFieldEnum)[keyof typeof AcademicYearOrderByRelevanceFieldEnum]
+
+
+export const PeriodOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type PeriodOrderByRelevanceFieldEnum = (typeof PeriodOrderByRelevanceFieldEnum)[keyof typeof PeriodOrderByRelevanceFieldEnum]
+
+
+export const SchoolLevelOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type SchoolLevelOrderByRelevanceFieldEnum = (typeof SchoolLevelOrderByRelevanceFieldEnum)[keyof typeof SchoolLevelOrderByRelevanceFieldEnum]
+
+
+export const CycleOrderByRelevanceFieldEnum = {
+  name: 'name',
+  code: 'code'
+} as const
+
+export type CycleOrderByRelevanceFieldEnum = (typeof CycleOrderByRelevanceFieldEnum)[keyof typeof CycleOrderByRelevanceFieldEnum]
+
+
+export const ClassOrderByRelevanceFieldEnum = {
+  name: 'name',
+  code: 'code'
+} as const
+
+export type ClassOrderByRelevanceFieldEnum = (typeof ClassOrderByRelevanceFieldEnum)[keyof typeof ClassOrderByRelevanceFieldEnum]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const UserOrderByRelevanceFieldEnum = {
+  email: 'email',
+  password: 'password',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  phone: 'phone'
+} as const
+
+export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
+export const RoleOrderByRelevanceFieldEnum = {
+  name: 'name',
+  description: 'description'
+} as const
+
+export type RoleOrderByRelevanceFieldEnum = (typeof RoleOrderByRelevanceFieldEnum)[keyof typeof RoleOrderByRelevanceFieldEnum]
+
+
+export const PermissionOrderByRelevanceFieldEnum = {
+  code: 'code',
+  name: 'name',
+  description: 'description'
+} as const
+
+export type PermissionOrderByRelevanceFieldEnum = (typeof PermissionOrderByRelevanceFieldEnum)[keyof typeof PermissionOrderByRelevanceFieldEnum]
+
+
+export const TeacherOrderByRelevanceFieldEnum = {
+  employeeNumber: 'employeeNumber',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  phone: 'phone',
+  email: 'email',
+  specialty: 'specialty'
+} as const
+
+export type TeacherOrderByRelevanceFieldEnum = (typeof TeacherOrderByRelevanceFieldEnum)[keyof typeof TeacherOrderByRelevanceFieldEnum]
+
+
+export const SubjectOrderByRelevanceFieldEnum = {
+  name: 'name',
+  code: 'code'
+} as const
+
+export type SubjectOrderByRelevanceFieldEnum = (typeof SubjectOrderByRelevanceFieldEnum)[keyof typeof SubjectOrderByRelevanceFieldEnum]
+
+
+export const ClassroomOrderByRelevanceFieldEnum = {
+  name: 'name',
+  code: 'code'
+} as const
+
+export type ClassroomOrderByRelevanceFieldEnum = (typeof ClassroomOrderByRelevanceFieldEnum)[keyof typeof ClassroomOrderByRelevanceFieldEnum]
+
+
+export const StudentOrderByRelevanceFieldEnum = {
+  studentNumber: 'studentNumber',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  placeOfBirth: 'placeOfBirth',
+  nationality: 'nationality',
+  address: 'address',
+  photoUrl: 'photoUrl'
+} as const
+
+export type StudentOrderByRelevanceFieldEnum = (typeof StudentOrderByRelevanceFieldEnum)[keyof typeof StudentOrderByRelevanceFieldEnum]
+
+
+export const ParentOrderByRelevanceFieldEnum = {
+  firstName: 'firstName',
+  lastName: 'lastName',
+  phone: 'phone',
+  email: 'email',
+  occupation: 'occupation',
+  address: 'address'
+} as const
+
+export type ParentOrderByRelevanceFieldEnum = (typeof ParentOrderByRelevanceFieldEnum)[keyof typeof ParentOrderByRelevanceFieldEnum]
+
+
+export const GuardianOrderByRelevanceFieldEnum = {
+  firstName: 'firstName',
+  lastName: 'lastName',
+  phone: 'phone',
+  email: 'email',
+  address: 'address'
+} as const
+
+export type GuardianOrderByRelevanceFieldEnum = (typeof GuardianOrderByRelevanceFieldEnum)[keyof typeof GuardianOrderByRelevanceFieldEnum]
+
+
+export const EvaluationOrderByRelevanceFieldEnum = {
+  title: 'title'
+} as const
+
+export type EvaluationOrderByRelevanceFieldEnum = (typeof EvaluationOrderByRelevanceFieldEnum)[keyof typeof EvaluationOrderByRelevanceFieldEnum]
+
+
+export const GradeOrderByRelevanceFieldEnum = {
+  comment: 'comment'
+} as const
+
+export type GradeOrderByRelevanceFieldEnum = (typeof GradeOrderByRelevanceFieldEnum)[keyof typeof GradeOrderByRelevanceFieldEnum]
+
+
+export const ReportCardOrderByRelevanceFieldEnum = {
+  conduct: 'conduct',
+  appreciation: 'appreciation'
+} as const
+
+export type ReportCardOrderByRelevanceFieldEnum = (typeof ReportCardOrderByRelevanceFieldEnum)[keyof typeof ReportCardOrderByRelevanceFieldEnum]
+
+
+export const ReportCardLineOrderByRelevanceFieldEnum = {
+  teacherComment: 'teacherComment'
+} as const
+
+export type ReportCardLineOrderByRelevanceFieldEnum = (typeof ReportCardLineOrderByRelevanceFieldEnum)[keyof typeof ReportCardLineOrderByRelevanceFieldEnum]
+
+
+export const AttendanceOrderByRelevanceFieldEnum = {
+  justification: 'justification'
+} as const
+
+export type AttendanceOrderByRelevanceFieldEnum = (typeof AttendanceOrderByRelevanceFieldEnum)[keyof typeof AttendanceOrderByRelevanceFieldEnum]
+
+
+export const DisciplineRecordOrderByRelevanceFieldEnum = {
+  reason: 'reason',
+  description: 'description'
+} as const
+
+export type DisciplineRecordOrderByRelevanceFieldEnum = (typeof DisciplineRecordOrderByRelevanceFieldEnum)[keyof typeof DisciplineRecordOrderByRelevanceFieldEnum]
+
+
+export const FeeTypeOrderByRelevanceFieldEnum = {
+  name: 'name',
+  description: 'description'
+} as const
+
+export type FeeTypeOrderByRelevanceFieldEnum = (typeof FeeTypeOrderByRelevanceFieldEnum)[keyof typeof FeeTypeOrderByRelevanceFieldEnum]
+
+
+export const InvoiceLineOrderByRelevanceFieldEnum = {
+  description: 'description'
+} as const
+
+export type InvoiceLineOrderByRelevanceFieldEnum = (typeof InvoiceLineOrderByRelevanceFieldEnum)[keyof typeof InvoiceLineOrderByRelevanceFieldEnum]
+
+
+export const PaymentOrderByRelevanceFieldEnum = {
+  reference: 'reference'
+} as const
+
+export type PaymentOrderByRelevanceFieldEnum = (typeof PaymentOrderByRelevanceFieldEnum)[keyof typeof PaymentOrderByRelevanceFieldEnum]
+
+
+export const MedicalRecordOrderByRelevanceFieldEnum = {
+  bloodGroup: 'bloodGroup',
+  allergies: 'allergies',
+  chronicConditions: 'chronicConditions',
+  emergencyContact: 'emergencyContact',
+  doctorName: 'doctorName',
+  doctorPhone: 'doctorPhone',
+  insuranceNumber: 'insuranceNumber',
+  notes: 'notes'
+} as const
+
+export type MedicalRecordOrderByRelevanceFieldEnum = (typeof MedicalRecordOrderByRelevanceFieldEnum)[keyof typeof MedicalRecordOrderByRelevanceFieldEnum]
+
+
+export const VaccinationOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type VaccinationOrderByRelevanceFieldEnum = (typeof VaccinationOrderByRelevanceFieldEnum)[keyof typeof VaccinationOrderByRelevanceFieldEnum]
+
+
+export const InfirmaryVisitOrderByRelevanceFieldEnum = {
+  reason: 'reason',
+  treatment: 'treatment'
+} as const
+
+export type InfirmaryVisitOrderByRelevanceFieldEnum = (typeof InfirmaryVisitOrderByRelevanceFieldEnum)[keyof typeof InfirmaryVisitOrderByRelevanceFieldEnum]
+
+
+export const BookOrderByRelevanceFieldEnum = {
+  isbn: 'isbn',
+  title: 'title',
+  author: 'author',
+  publisher: 'publisher',
+  category: 'category'
+} as const
+
+export type BookOrderByRelevanceFieldEnum = (typeof BookOrderByRelevanceFieldEnum)[keyof typeof BookOrderByRelevanceFieldEnum]
+
+
+export const BookCopyOrderByRelevanceFieldEnum = {
+  inventoryCode: 'inventoryCode'
+} as const
+
+export type BookCopyOrderByRelevanceFieldEnum = (typeof BookCopyOrderByRelevanceFieldEnum)[keyof typeof BookCopyOrderByRelevanceFieldEnum]
+
+
+export const OrientationRecordOrderByRelevanceFieldEnum = {
+  recommendedTrack: 'recommendedTrack',
+  finalDecision: 'finalDecision'
+} as const
+
+export type OrientationRecordOrderByRelevanceFieldEnum = (typeof OrientationRecordOrderByRelevanceFieldEnum)[keyof typeof OrientationRecordOrderByRelevanceFieldEnum]
+
+
+export const CounselingSessionOrderByRelevanceFieldEnum = {
+  notes: 'notes'
+} as const
+
+export type CounselingSessionOrderByRelevanceFieldEnum = (typeof CounselingSessionOrderByRelevanceFieldEnum)[keyof typeof CounselingSessionOrderByRelevanceFieldEnum]
 

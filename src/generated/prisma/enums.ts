@@ -9,6 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const Gender = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE'
+} as const
+
+export type Gender = (typeof Gender)[keyof typeof Gender]
+
+
 export const SchoolType = {
   PRIMARY: 'PRIMARY',
   SECONDARY: 'SECONDARY',
@@ -16,3 +24,143 @@ export const SchoolType = {
 } as const
 
 export type SchoolType = (typeof SchoolType)[keyof typeof SchoolType]
+
+
+export const SchoolLevelType = {
+  PRESCHOOL: 'PRESCHOOL',
+  PRIMARY: 'PRIMARY',
+  MIDDLE_SCHOOL: 'MIDDLE_SCHOOL',
+  HIGH_SCHOOL: 'HIGH_SCHOOL'
+} as const
+
+export type SchoolLevelType = (typeof SchoolLevelType)[keyof typeof SchoolLevelType]
+
+
+export const DayOfWeek = {
+  MONDAY: 'MONDAY',
+  TUESDAY: 'TUESDAY',
+  WEDNESDAY: 'WEDNESDAY',
+  THURSDAY: 'THURSDAY',
+  FRIDAY: 'FRIDAY',
+  SATURDAY: 'SATURDAY',
+  SUNDAY: 'SUNDAY'
+} as const
+
+export type DayOfWeek = (typeof DayOfWeek)[keyof typeof DayOfWeek]
+
+
+export const ParentRelationType = {
+  FATHER: 'FATHER',
+  MOTHER: 'MOTHER',
+  STEPFATHER: 'STEPFATHER',
+  STEPMOTHER: 'STEPMOTHER',
+  OTHER: 'OTHER'
+} as const
+
+export type ParentRelationType = (typeof ParentRelationType)[keyof typeof ParentRelationType]
+
+
+export const GuardianRelationType = {
+  LEGAL_GUARDIAN: 'LEGAL_GUARDIAN',
+  GRANDPARENT: 'GRANDPARENT',
+  UNCLE_AUNT: 'UNCLE_AUNT',
+  SIBLING: 'SIBLING',
+  FAMILY_FRIEND: 'FAMILY_FRIEND',
+  OTHER: 'OTHER'
+} as const
+
+export type GuardianRelationType = (typeof GuardianRelationType)[keyof typeof GuardianRelationType]
+
+
+export const EnrollmentStatus = {
+  ACTIVE: 'ACTIVE',
+  TRANSFERRED: 'TRANSFERRED',
+  WITHDRAWN: 'WITHDRAWN',
+  GRADUATED: 'GRADUATED',
+  REPEATING: 'REPEATING'
+} as const
+
+export type EnrollmentStatus = (typeof EnrollmentStatus)[keyof typeof EnrollmentStatus]
+
+
+export const EvaluationType = {
+  HOMEWORK: 'HOMEWORK',
+  QUIZ: 'QUIZ',
+  TEST: 'TEST',
+  EXAM: 'EXAM'
+} as const
+
+export type EvaluationType = (typeof EvaluationType)[keyof typeof EvaluationType]
+
+
+export const AttendanceStatus = {
+  PRESENT: 'PRESENT',
+  ABSENT: 'ABSENT',
+  LATE: 'LATE',
+  EXCUSED: 'EXCUSED'
+} as const
+
+export type AttendanceStatus = (typeof AttendanceStatus)[keyof typeof AttendanceStatus]
+
+
+export const SanctionType = {
+  WARNING: 'WARNING',
+  REPRIMAND: 'REPRIMAND',
+  DETENTION: 'DETENTION',
+  SUSPENSION: 'SUSPENSION',
+  EXPULSION: 'EXPULSION'
+} as const
+
+export type SanctionType = (typeof SanctionType)[keyof typeof SanctionType]
+
+
+export const InvoiceStatus = {
+  PENDING: 'PENDING',
+  PARTIALLY_PAID: 'PARTIALLY_PAID',
+  PAID: 'PAID',
+  OVERDUE: 'OVERDUE',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type InvoiceStatus = (typeof InvoiceStatus)[keyof typeof InvoiceStatus]
+
+
+export const PaymentMethod = {
+  CASH: 'CASH',
+  BANK_TRANSFER: 'BANK_TRANSFER',
+  MOBILE_MONEY: 'MOBILE_MONEY',
+  CHEQUE: 'CHEQUE',
+  CARD: 'CARD'
+} as const
+
+export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const BookCopyStatus = {
+  AVAILABLE: 'AVAILABLE',
+  BORROWED: 'BORROWED',
+  LOST: 'LOST',
+  DAMAGED: 'DAMAGED',
+  RETIRED: 'RETIRED'
+} as const
+
+export type BookCopyStatus = (typeof BookCopyStatus)[keyof typeof BookCopyStatus]
+
+
+export const LoanStatus = {
+  ONGOING: 'ONGOING',
+  RETURNED: 'RETURNED',
+  OVERDUE: 'OVERDUE',
+  LOST: 'LOST'
+} as const
+
+export type LoanStatus = (typeof LoanStatus)[keyof typeof LoanStatus]
+
+
+export const OrientationStatus = {
+  PENDING: 'PENDING',
+  VALIDATED: 'VALIDATED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type OrientationStatus = (typeof OrientationStatus)[keyof typeof OrientationStatus]

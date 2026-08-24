@@ -12,6 +12,19 @@ datasource db {
   provider = "mysql"
 }
 
+// ---------------------------------------------------------------------------
+// Shared enums
+// ---------------------------------------------------------------------------
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+// =============================================================================
+// 1. Multi-établissement
+// =============================================================================
+
 enum SchoolType {
   PRIMARY
   SECONDARY
@@ -19,11 +32,954 @@ enum SchoolType {
 }
 
 model Establishment {
-  id        Int      @id @default(autoincrement())
-  name      String
-  code      String   @unique
-  type      SchoolType
+  id   Int        @id @default(autoincrement())
+  name String
+  code String     @unique
+  type SchoolType
+
+  academicYears AcademicYear[]
+  schoolLevels  SchoolLevel[]
+  users         User[]
+  roles         Role[]
+  teachers      Teacher[]
+  subjects      Subject[]
+  classrooms    Classroom[]
+  students      Student[]
+  parents       Parent[]
+  guardians     Guardian[]
+  feeTypes      FeeType[]
+  books         Book[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
+model AcademicYear {
+  id              Int      @id @default(autoincrement())
+  establishmentId Int
+  name            String
+  startDate       DateTime
+  endDate         DateTime
+  isCurrent       Boolean  @default(false)
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+
+  periods            Period[]
+  enrollments        Enrollment[]
+  classSubjects      ClassSubject[]
+  feeStructures      FeeStructure[]
+  invoices           Invoice[]
+  orientationRecords OrientationRecord[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([establishmentId, name])
+  @@index([establishmentId])
+}
+
+// Trimestre / Semestre — découpage de l'année scolaire pour les évaluations et bulletins
+model Period {
+  id             Int      @id @default(autoincrement())
+  academicYearId Int
+  name           String
+  order          Int
+  startDate      DateTime
+  endDate        DateTime
+
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+
+  evaluations Evaluation[]
+  reportCards ReportCard[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([academicYearId, order])
+  @@index([academicYearId])
+}
+
+enum SchoolLevelType {
+  PRESCHOOL
+  PRIMARY
+  MIDDLE_SCHOOL
+  HIGH_SCHOOL
+}
+
+model SchoolLevel {
+  id              Int             @id @default(autoincrement())
+  establishmentId Int
+  name            String
+  type            SchoolLevelType
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+
+  cycles Cycle[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([establishmentId, name])
+  @@index([establishmentId])
+}
+
+model Cycle {
+  id            Int    @id @default(autoincrement())
+  schoolLevelId Int
+  name          String
+  code          String
+
+  schoolLevel SchoolLevel @relation(fields: [schoolLevelId], references: [id], onDelete: Cascade)
+
+  classes Class[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([schoolLevelId, code])
+  @@index([schoolLevelId])
+}
+
+model Class {
+  id      Int    @id @default(autoincrement())
+  cycleId Int
+  name    String
+  code    String
+
+  cycle Cycle @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+
+  enrollments   Enrollment[]
+  classSubjects ClassSubject[]
+  attendances   Attendance[]
+  reportCards   ReportCard[]
+  feeStructures FeeStructure[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cycleId, code])
+  @@index([cycleId])
+}
+
+// =============================================================================
+// 2. Identity & Access
+// =============================================================================
+
+model User {
+  id              Int       @id @default(autoincrement())
+  establishmentId Int
+  email           String
+  password        String
+  firstName       String
+  lastName        String
+  phone           String?
+  isActive        Boolean   @default(true)
+  lastLoginAt     DateTime?
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+
+  userRoles UserRole[]
+  teacher   Teacher?
+  parent    Parent?
+  guardian  Guardian?
+  student   Student?
+
+  recordedAttendances     Attendance[]        @relation("AttendanceRecordedBy")
+  issuedDisciplineRecords DisciplineRecord[]  @relation("DisciplineIssuedBy")
+  receivedPayments        Payment[]           @relation("PaymentReceivedBy")
+  handledInfirmaryVisits  InfirmaryVisit[]    @relation("InfirmaryHandledBy")
+  counselingSessions      CounselingSession[] @relation("CounselingCounselor")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([establishmentId, email])
+  @@index([establishmentId])
+}
+
+model Role {
+  id              Int     @id @default(autoincrement())
+  establishmentId Int
+  name            String
+  description     String?
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+
+  userRoles       UserRole[]
+  rolePermissions RolePermission[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([establishmentId, name])
+  @@index([establishmentId])
+}
+
+model Permission {
+  id          Int     @id @default(autoincrement())
+  code        String  @unique
+  name        String
+  description String?
+
+  rolePermissions RolePermission[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserRole {
+  id     Int @id @default(autoincrement())
+  userId Int
+  roleId Int
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  assignedAt DateTime @default(now())
+
+  @@unique([userId, roleId])
+  @@index([roleId])
+}
+
+model RolePermission {
+  id           Int @id @default(autoincrement())
+  roleId       Int
+  permissionId Int
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+  @@index([permissionId])
+}
+
+// =============================================================================
+// 3. Organisation pédagogique
+// =============================================================================
+
+model Teacher {
+  id              Int       @id @default(autoincrement())
+  establishmentId Int
+  userId          Int?      @unique
+  employeeNumber  String
+  firstName       String
+  lastName        String
+  gender          Gender
+  phone           String?
+  email           String?
+  hireDate        DateTime?
+  specialty       String?
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+  user          User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  classSubjects ClassSubject[]
+  loans         Loan[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([establishmentId, employeeNumber])
+  @@index([establishmentId])
+}
+
+model Subject {
+  id              Int    @id @default(autoincrement())
+  establishmentId Int
+  name            String
+  code            String
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+
+  classSubjects   ClassSubject[]
+  reportCardLines ReportCardLine[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([establishmentId, code])
+  @@index([establishmentId])
+}
+
+model Classroom {
+  id              Int    @id @default(autoincrement())
+  establishmentId Int
+  name            String
+  code            String
+  capacity        Int?
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+
+  timetables Timetable[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([establishmentId, code])
+  @@index([establishmentId])
+}
+
+// Affectation d'une matière + d'un enseignant à une classe pour une année scolaire
+// (porte le coefficient utilisé par Evaluation / ReportCardLine et sert d'ancrage à Timetable)
+model ClassSubject {
+  id             Int    @id @default(autoincrement())
+  classId        Int
+  subjectId      Int
+  teacherId      Int
+  academicYearId Int
+  coefficient    Float  @default(1)
+  hoursPerWeek   Float?
+
+  class        Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
+  subject      Subject      @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  teacher      Teacher      @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+
+  timetables  Timetable[]
+  evaluations Evaluation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([classId, subjectId, academicYearId])
+  @@index([teacherId])
+  @@index([academicYearId])
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+// Créneau hebdomadaire récurrent (répété chaque semaine de l'année scolaire)
+model Timetable {
+  id             Int       @id @default(autoincrement())
+  classSubjectId Int
+  classroomId    Int
+  dayOfWeek      DayOfWeek
+  startTime      DateTime  @db.Time(0)
+  endTime        DateTime  @db.Time(0)
+
+  classSubject ClassSubject @relation(fields: [classSubjectId], references: [id], onDelete: Cascade)
+  classroom    Classroom    @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+
+  attendances Attendance[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([classSubjectId])
+  @@index([classroomId])
+  @@index([dayOfWeek])
+}
+
+// =============================================================================
+// 4. Gestion des élèves
+// =============================================================================
+
+model Student {
+  id              Int      @id @default(autoincrement())
+  establishmentId Int
+  userId          Int?     @unique
+  studentNumber   String
+  firstName       String
+  lastName        String
+  dateOfBirth     DateTime
+  placeOfBirth    String?
+  gender          Gender
+  nationality     String?
+  address         String?
+  photoUrl        String?
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+  user          User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  enrollments        Enrollment[]
+  studentParents     StudentParent[]
+  studentGuardians   StudentGuardian[]
+  grades             Grade[]
+  reportCards        ReportCard[]
+  attendances        Attendance[]
+  disciplineRecords  DisciplineRecord[]
+  invoices           Invoice[]
+  loans              Loan[]
+  medicalRecord      MedicalRecord?
+  infirmaryVisits    InfirmaryVisit[]
+  orientationRecords OrientationRecord[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([establishmentId, studentNumber])
+  @@index([establishmentId])
+}
+
+// Parent biologique (père/mère)
+model Parent {
+  id              Int     @id @default(autoincrement())
+  establishmentId Int
+  userId          Int?    @unique
+  firstName       String
+  lastName        String
+  phone           String?
+  email           String?
+  occupation      String?
+  address         String?
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+  user          User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  studentParents StudentParent[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([establishmentId])
+}
+
+enum ParentRelationType {
+  FATHER
+  MOTHER
+  STEPFATHER
+  STEPMOTHER
+  OTHER
+}
+
+model StudentParent {
+  id               Int                @id @default(autoincrement())
+  studentId        Int
+  parentId         Int
+  relationType     ParentRelationType
+  isPrimaryContact Boolean            @default(false)
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  parent  Parent  @relation(fields: [parentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, parentId])
+  @@index([parentId])
+}
+
+// Tuteur légal / responsable — peut être distinct des parents (ex: responsable financier,
+// autorisé à récupérer l'élève, tuteur légal en cas d'absence des parents)
+model Guardian {
+  id              Int     @id @default(autoincrement())
+  establishmentId Int
+  userId          Int?    @unique
+  firstName       String
+  lastName        String
+  phone           String?
+  email           String?
+  address         String?
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+  user          User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  studentGuardians StudentGuardian[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([establishmentId])
+}
+
+enum GuardianRelationType {
+  LEGAL_GUARDIAN
+  GRANDPARENT
+  UNCLE_AUNT
+  SIBLING
+  FAMILY_FRIEND
+  OTHER
+}
+
+model StudentGuardian {
+  id                       Int                  @id @default(autoincrement())
+  studentId                Int
+  guardianId               Int
+  relationType             GuardianRelationType
+  isFinanciallyResponsible Boolean              @default(false)
+  canPickup                Boolean              @default(true)
+
+  student  Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  guardian Guardian @relation(fields: [guardianId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, guardianId])
+  @@index([guardianId])
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  TRANSFERRED
+  WITHDRAWN
+  GRADUATED
+  REPEATING
+}
+
+model Enrollment {
+  id             Int              @id @default(autoincrement())
+  studentId      Int
+  classId        Int
+  academicYearId Int
+  enrollmentDate DateTime         @default(now())
+  status         EnrollmentStatus @default(ACTIVE)
+
+  student      Student      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  class        Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([studentId, academicYearId])
+  @@index([classId])
+  @@index([academicYearId])
+}
+
+// =============================================================================
+// 5. Évaluations et notes
+// =============================================================================
+
+enum EvaluationType {
+  HOMEWORK
+  QUIZ
+  TEST
+  EXAM
+}
+
+model Evaluation {
+  id             Int            @id @default(autoincrement())
+  classSubjectId Int
+  periodId       Int
+  title          String
+  type           EvaluationType
+  date           DateTime
+  maxScore       Float          @default(20)
+  coefficient    Float          @default(1)
+
+  classSubject ClassSubject @relation(fields: [classSubjectId], references: [id], onDelete: Cascade)
+  period       Period       @relation(fields: [periodId], references: [id], onDelete: Cascade)
+
+  grades Grade[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([classSubjectId])
+  @@index([periodId])
+}
+
+model Grade {
+  id           Int     @id @default(autoincrement())
+  evaluationId Int
+  studentId    Int
+  score        Float?
+  isAbsent     Boolean @default(false)
+  comment      String? @db.Text
+
+  evaluation Evaluation @relation(fields: [evaluationId], references: [id], onDelete: Cascade)
+  student    Student    @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([evaluationId, studentId])
+  @@index([studentId])
+}
+
+// Bulletin d'un élève pour une période donnée
+model ReportCard {
+  id             Int       @id @default(autoincrement())
+  studentId      Int
+  periodId       Int
+  classId        Int
+  generalAverage Float?
+  rank           Int?
+  conduct        String?
+  appreciation   String?   @db.Text
+  publishedAt    DateTime?
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  period  Period  @relation(fields: [periodId], references: [id], onDelete: Cascade)
+  class   Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  lines ReportCardLine[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([studentId, periodId])
+  @@index([classId])
+}
+
+// Ligne par matière du bulletin (moyenne, coefficient, rang, appréciation du professeur)
+model ReportCardLine {
+  id             Int     @id @default(autoincrement())
+  reportCardId   Int
+  subjectId      Int
+  average        Float?
+  coefficient    Float   @default(1)
+  rank           Int?
+  teacherComment String? @db.Text
+
+  reportCard ReportCard @relation(fields: [reportCardId], references: [id], onDelete: Cascade)
+  subject    Subject    @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  @@unique([reportCardId, subjectId])
+  @@index([subjectId])
+}
+
+// =============================================================================
+// 6. Présence et discipline
+// =============================================================================
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  LATE
+  EXCUSED
+}
+
+model Attendance {
+  id            Int              @id @default(autoincrement())
+  studentId     Int
+  classId       Int
+  timetableId   Int?
+  date          DateTime
+  status        AttendanceStatus
+  justification String?          @db.Text
+  recordedById  Int
+
+  student    Student    @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  class      Class      @relation(fields: [classId], references: [id], onDelete: Cascade)
+  timetable  Timetable? @relation(fields: [timetableId], references: [id], onDelete: SetNull)
+  recordedBy User       @relation("AttendanceRecordedBy", fields: [recordedById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([classId])
+  @@index([studentId, date])
+  @@index([timetableId])
+}
+
+enum SanctionType {
+  WARNING
+  REPRIMAND
+  DETENTION
+  SUSPENSION
+  EXPULSION
+}
+
+model DisciplineRecord {
+  id           Int          @id @default(autoincrement())
+  studentId    Int
+  type         SanctionType
+  reason       String       @db.Text
+  date         DateTime
+  durationDays Int?
+  description  String?      @db.Text
+  issuedById   Int
+
+  student  Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  issuedBy User    @relation("DisciplineIssuedBy", fields: [issuedById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([studentId])
+  @@index([date])
+}
+
+// =============================================================================
+// 7. Finance
+// =============================================================================
+
+model FeeType {
+  id              Int     @id @default(autoincrement())
+  establishmentId Int
+  name            String
+  description     String?
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+
+  feeStructures FeeStructure[]
+  invoiceLines  InvoiceLine[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([establishmentId, name])
+  @@index([establishmentId])
+}
+
+// Montant attendu pour un type de frais, pour une classe (ou tout un niveau si classId est null) et une année scolaire
+model FeeStructure {
+  id             Int       @id @default(autoincrement())
+  feeTypeId      Int
+  classId        Int?
+  academicYearId Int
+  amount         Decimal   @db.Decimal(10, 2)
+  dueDate        DateTime?
+
+  feeType      FeeType      @relation(fields: [feeTypeId], references: [id], onDelete: Cascade)
+  class        Class?       @relation(fields: [classId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([feeTypeId])
+  @@index([classId])
+  @@index([academicYearId])
+}
+
+enum InvoiceStatus {
+  PENDING
+  PARTIALLY_PAID
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+model Invoice {
+  id             Int           @id @default(autoincrement())
+  studentId      Int
+  academicYearId Int
+  issueDate      DateTime      @default(now())
+  dueDate        DateTime
+  totalAmount    Decimal       @db.Decimal(10, 2)
+  status         InvoiceStatus @default(PENDING)
+
+  student      Student      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+
+  lines    InvoiceLine[]
+  payments Payment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([studentId])
+  @@index([academicYearId])
+}
+
+model InvoiceLine {
+  id          Int     @id @default(autoincrement())
+  invoiceId   Int
+  feeTypeId   Int
+  amount      Decimal @db.Decimal(10, 2)
+  description String?
+
+  invoice Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  feeType FeeType @relation(fields: [feeTypeId], references: [id], onDelete: Cascade)
+
+  @@index([invoiceId])
+  @@index([feeTypeId])
+}
+
+enum PaymentMethod {
+  CASH
+  BANK_TRANSFER
+  MOBILE_MONEY
+  CHEQUE
+  CARD
+}
+
+model Payment {
+  id           Int           @id @default(autoincrement())
+  invoiceId    Int
+  amount       Decimal       @db.Decimal(10, 2)
+  paymentDate  DateTime      @default(now())
+  method       PaymentMethod
+  reference    String?
+  receivedById Int
+
+  invoice    Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  receivedBy User    @relation("PaymentReceivedBy", fields: [receivedById], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([invoiceId])
+}
+
+// =============================================================================
+// 8. Santé
+// =============================================================================
+
+model MedicalRecord {
+  id                Int     @id @default(autoincrement())
+  studentId         Int     @unique
+  bloodGroup        String?
+  allergies         String? @db.Text
+  chronicConditions String? @db.Text
+  emergencyContact  String?
+  doctorName        String?
+  doctorPhone       String?
+  insuranceNumber   String?
+  notes             String? @db.Text
+
+  student      Student       @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  vaccinations Vaccination[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Vaccination {
+  id              Int       @id @default(autoincrement())
+  medicalRecordId Int
+  name            String
+  date            DateTime
+  nextDueDate     DateTime?
+
+  medicalRecord MedicalRecord @relation(fields: [medicalRecordId], references: [id], onDelete: Cascade)
+
+  @@index([medicalRecordId])
+}
+
+model InfirmaryVisit {
+  id             Int      @id @default(autoincrement())
+  studentId      Int
+  date           DateTime @default(now())
+  reason         String   @db.Text
+  treatment      String?  @db.Text
+  temperature    Float?
+  notifiedParent Boolean  @default(false)
+  handledById    Int
+
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  handledBy User    @relation("InfirmaryHandledBy", fields: [handledById], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([studentId])
+}
+
+// =============================================================================
+// 9. Bibliothèque
+// =============================================================================
+
+model Book {
+  id              Int     @id @default(autoincrement())
+  establishmentId Int
+  isbn            String?
+  title           String
+  author          String?
+  publisher       String?
+  category        String?
+  publishedYear   Int?
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+
+  copies BookCopy[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([establishmentId])
+}
+
+enum BookCopyStatus {
+  AVAILABLE
+  BORROWED
+  LOST
+  DAMAGED
+  RETIRED
+}
+
+model BookCopy {
+  id            Int            @id @default(autoincrement())
+  bookId        Int
+  inventoryCode String         @unique
+  status        BookCopyStatus @default(AVAILABLE)
+
+  book Book @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  loans Loan[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([bookId])
+}
+
+enum LoanStatus {
+  ONGOING
+  RETURNED
+  OVERDUE
+  LOST
+}
+
+// Un emprunt appartient soit à un élève, soit à un enseignant (l'un des deux doit être renseigné)
+model Loan {
+  id         Int        @id @default(autoincrement())
+  bookCopyId Int
+  studentId  Int?
+  teacherId  Int?
+  loanDate   DateTime   @default(now())
+  dueDate    DateTime
+  returnDate DateTime?
+  status     LoanStatus @default(ONGOING)
+
+  bookCopy BookCopy @relation(fields: [bookCopyId], references: [id], onDelete: Cascade)
+  student  Student? @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  teacher  Teacher? @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([bookCopyId])
+  @@index([studentId])
+  @@index([teacherId])
+}
+
+// =============================================================================
+// 10. Orientation
+// =============================================================================
+
+enum OrientationStatus {
+  PENDING
+  VALIDATED
+  REJECTED
+}
+
+model OrientationRecord {
+  id               Int               @id @default(autoincrement())
+  studentId        Int
+  academicYearId   Int
+  recommendedTrack String?
+  finalDecision    String?
+  status           OrientationStatus @default(PENDING)
+
+  student      Student      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+
+  sessions CounselingSession[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([studentId, academicYearId])
+  @@index([academicYearId])
+}
+
+model CounselingSession {
+  id                  Int       @id @default(autoincrement())
+  orientationRecordId Int
+  counselorId         Int
+  date                DateTime  @default(now())
+  notes               String?   @db.Text
+  followUpDate        DateTime?
+
+  orientationRecord OrientationRecord @relation(fields: [orientationRecordId], references: [id], onDelete: Cascade)
+  counselor         User              @relation("CounselingCounselor", fields: [counselorId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([orientationRecordId])
+  @@index([counselorId])
+}

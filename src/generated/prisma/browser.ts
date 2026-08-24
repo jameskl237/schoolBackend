@@ -22,3 +22,203 @@ export * from './enums.js';
  * 
  */
 export type Establishment = Prisma.EstablishmentModel
+/**
+ * Model AcademicYear
+ * 
+ */
+export type AcademicYear = Prisma.AcademicYearModel
+/**
+ * Model Period
+ * 
+ */
+export type Period = Prisma.PeriodModel
+/**
+ * Model SchoolLevel
+ * 
+ */
+export type SchoolLevel = Prisma.SchoolLevelModel
+/**
+ * Model Cycle
+ * 
+ */
+export type Cycle = Prisma.CycleModel
+/**
+ * Model Class
+ * 
+ */
+export type Class = Prisma.ClassModel
+/**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
+ * Model Role
+ * 
+ */
+export type Role = Prisma.RoleModel
+/**
+ * Model Permission
+ * 
+ */
+export type Permission = Prisma.PermissionModel
+/**
+ * Model UserRole
+ * 
+ */
+export type UserRole = Prisma.UserRoleModel
+/**
+ * Model RolePermission
+ * 
+ */
+export type RolePermission = Prisma.RolePermissionModel
+/**
+ * Model Teacher
+ * 
+ */
+export type Teacher = Prisma.TeacherModel
+/**
+ * Model Subject
+ * 
+ */
+export type Subject = Prisma.SubjectModel
+/**
+ * Model Classroom
+ * 
+ */
+export type Classroom = Prisma.ClassroomModel
+/**
+ * Model ClassSubject
+ * 
+ */
+export type ClassSubject = Prisma.ClassSubjectModel
+/**
+ * Model Timetable
+ * 
+ */
+export type Timetable = Prisma.TimetableModel
+/**
+ * Model Student
+ * 
+ */
+export type Student = Prisma.StudentModel
+/**
+ * Model Parent
+ * 
+ */
+export type Parent = Prisma.ParentModel
+/**
+ * Model StudentParent
+ * 
+ */
+export type StudentParent = Prisma.StudentParentModel
+/**
+ * Model Guardian
+ * 
+ */
+export type Guardian = Prisma.GuardianModel
+/**
+ * Model StudentGuardian
+ * 
+ */
+export type StudentGuardian = Prisma.StudentGuardianModel
+/**
+ * Model Enrollment
+ * 
+ */
+export type Enrollment = Prisma.EnrollmentModel
+/**
+ * Model Evaluation
+ * 
+ */
+export type Evaluation = Prisma.EvaluationModel
+/**
+ * Model Grade
+ * 
+ */
+export type Grade = Prisma.GradeModel
+/**
+ * Model ReportCard
+ * 
+ */
+export type ReportCard = Prisma.ReportCardModel
+/**
+ * Model ReportCardLine
+ * 
+ */
+export type ReportCardLine = Prisma.ReportCardLineModel
+/**
+ * Model Attendance
+ * 
+ */
+export type Attendance = Prisma.AttendanceModel
+/**
+ * Model DisciplineRecord
+ * 
+ */
+export type DisciplineRecord = Prisma.DisciplineRecordModel
+/**
+ * Model FeeType
+ * 
+ */
+export type FeeType = Prisma.FeeTypeModel
+/**
+ * Model FeeStructure
+ * 
+ */
+export type FeeStructure = Prisma.FeeStructureModel
+/**
+ * Model Invoice
+ * 
+ */
+export type Invoice = Prisma.InvoiceModel
+/**
+ * Model InvoiceLine
+ * 
+ */
+export type InvoiceLine = Prisma.InvoiceLineModel
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = Prisma.PaymentModel
+/**
+ * Model MedicalRecord
+ * 
+ */
+export type MedicalRecord = Prisma.MedicalRecordModel
+/**
+ * Model Vaccination
+ * 
+ */
+export type Vaccination = Prisma.VaccinationModel
+/**
+ * Model InfirmaryVisit
+ * 
+ */
+export type InfirmaryVisit = Prisma.InfirmaryVisitModel
+/**
+ * Model Book
+ * 
+ */
+export type Book = Prisma.BookModel
+/**
+ * Model BookCopy
+ * 
+ */
+export type BookCopy = Prisma.BookCopyModel
+/**
+ * Model Loan
+ * 
+ */
+export type Loan = Prisma.LoanModel
+/**
+ * Model OrientationRecord
+ * 
+ */
+export type OrientationRecord = Prisma.OrientationRecordModel
+/**
+ * Model CounselingSession
+ * 
+ */
+export type CounselingSession = Prisma.CounselingSessionModel
