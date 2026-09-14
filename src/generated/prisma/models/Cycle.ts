@@ -28,17 +28,17 @@ export type AggregateCycle = {
 
 export type CycleAvgAggregateOutputType = {
   id: number | null
-  schoolLevelId: number | null
+  sectionId: number | null
 }
 
 export type CycleSumAggregateOutputType = {
   id: number | null
-  schoolLevelId: number | null
+  sectionId: number | null
 }
 
 export type CycleMinAggregateOutputType = {
   id: number | null
-  schoolLevelId: number | null
+  sectionId: number | null
   name: string | null
   code: string | null
   createdAt: Date | null
@@ -47,7 +47,7 @@ export type CycleMinAggregateOutputType = {
 
 export type CycleMaxAggregateOutputType = {
   id: number | null
-  schoolLevelId: number | null
+  sectionId: number | null
   name: string | null
   code: string | null
   createdAt: Date | null
@@ -56,7 +56,7 @@ export type CycleMaxAggregateOutputType = {
 
 export type CycleCountAggregateOutputType = {
   id: number
-  schoolLevelId: number
+  sectionId: number
   name: number
   code: number
   createdAt: number
@@ -67,17 +67,17 @@ export type CycleCountAggregateOutputType = {
 
 export type CycleAvgAggregateInputType = {
   id?: true
-  schoolLevelId?: true
+  sectionId?: true
 }
 
 export type CycleSumAggregateInputType = {
   id?: true
-  schoolLevelId?: true
+  sectionId?: true
 }
 
 export type CycleMinAggregateInputType = {
   id?: true
-  schoolLevelId?: true
+  sectionId?: true
   name?: true
   code?: true
   createdAt?: true
@@ -86,7 +86,7 @@ export type CycleMinAggregateInputType = {
 
 export type CycleMaxAggregateInputType = {
   id?: true
-  schoolLevelId?: true
+  sectionId?: true
   name?: true
   code?: true
   createdAt?: true
@@ -95,7 +95,7 @@ export type CycleMaxAggregateInputType = {
 
 export type CycleCountAggregateInputType = {
   id?: true
-  schoolLevelId?: true
+  sectionId?: true
   name?: true
   code?: true
   createdAt?: true
@@ -191,7 +191,7 @@ export type CycleGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 
 export type CycleGroupByOutputType = {
   id: number
-  schoolLevelId: number
+  sectionId: number
   name: string
   code: string
   createdAt: Date
@@ -223,45 +223,45 @@ export type CycleWhereInput = {
   OR?: Prisma.CycleWhereInput[]
   NOT?: Prisma.CycleWhereInput | Prisma.CycleWhereInput[]
   id?: Prisma.IntFilter<"Cycle"> | number
-  schoolLevelId?: Prisma.IntFilter<"Cycle"> | number
+  sectionId?: Prisma.IntFilter<"Cycle"> | number
   name?: Prisma.StringFilter<"Cycle"> | string
   code?: Prisma.StringFilter<"Cycle"> | string
   createdAt?: Prisma.DateTimeFilter<"Cycle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Cycle"> | Date | string
-  schoolLevel?: Prisma.XOR<Prisma.SchoolLevelScalarRelationFilter, Prisma.SchoolLevelWhereInput>
-  classes?: Prisma.ClassListRelationFilter
+  section?: Prisma.XOR<Prisma.SectionScalarRelationFilter, Prisma.SectionWhereInput>
+  gradeLevels?: Prisma.GradeLevelListRelationFilter
 }
 
 export type CycleOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  schoolLevelId?: Prisma.SortOrder
+  sectionId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  schoolLevel?: Prisma.SchoolLevelOrderByWithRelationInput
-  classes?: Prisma.ClassOrderByRelationAggregateInput
+  section?: Prisma.SectionOrderByWithRelationInput
+  gradeLevels?: Prisma.GradeLevelOrderByRelationAggregateInput
   _relevance?: Prisma.CycleOrderByRelevanceInput
 }
 
 export type CycleWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  schoolLevelId_code?: Prisma.CycleSchoolLevelIdCodeCompoundUniqueInput
+  sectionId_code?: Prisma.CycleSectionIdCodeCompoundUniqueInput
   AND?: Prisma.CycleWhereInput | Prisma.CycleWhereInput[]
   OR?: Prisma.CycleWhereInput[]
   NOT?: Prisma.CycleWhereInput | Prisma.CycleWhereInput[]
-  schoolLevelId?: Prisma.IntFilter<"Cycle"> | number
+  sectionId?: Prisma.IntFilter<"Cycle"> | number
   name?: Prisma.StringFilter<"Cycle"> | string
   code?: Prisma.StringFilter<"Cycle"> | string
   createdAt?: Prisma.DateTimeFilter<"Cycle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Cycle"> | Date | string
-  schoolLevel?: Prisma.XOR<Prisma.SchoolLevelScalarRelationFilter, Prisma.SchoolLevelWhereInput>
-  classes?: Prisma.ClassListRelationFilter
-}, "id" | "schoolLevelId_code">
+  section?: Prisma.XOR<Prisma.SectionScalarRelationFilter, Prisma.SectionWhereInput>
+  gradeLevels?: Prisma.GradeLevelListRelationFilter
+}, "id" | "sectionId_code">
 
 export type CycleOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  schoolLevelId?: Prisma.SortOrder
+  sectionId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -278,7 +278,7 @@ export type CycleScalarWhereWithAggregatesInput = {
   OR?: Prisma.CycleScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CycleScalarWhereWithAggregatesInput | Prisma.CycleScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Cycle"> | number
-  schoolLevelId?: Prisma.IntWithAggregatesFilter<"Cycle"> | number
+  sectionId?: Prisma.IntWithAggregatesFilter<"Cycle"> | number
   name?: Prisma.StringWithAggregatesFilter<"Cycle"> | string
   code?: Prisma.StringWithAggregatesFilter<"Cycle"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Cycle"> | Date | string
@@ -290,18 +290,18 @@ export type CycleCreateInput = {
   code: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  schoolLevel: Prisma.SchoolLevelCreateNestedOneWithoutCyclesInput
-  classes?: Prisma.ClassCreateNestedManyWithoutCycleInput
+  section: Prisma.SectionCreateNestedOneWithoutCyclesInput
+  gradeLevels?: Prisma.GradeLevelCreateNestedManyWithoutCycleInput
 }
 
 export type CycleUncheckedCreateInput = {
   id?: number
-  schoolLevelId: number
+  sectionId: number
   name: string
   code: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  classes?: Prisma.ClassUncheckedCreateNestedManyWithoutCycleInput
+  gradeLevels?: Prisma.GradeLevelUncheckedCreateNestedManyWithoutCycleInput
 }
 
 export type CycleUpdateInput = {
@@ -309,23 +309,23 @@ export type CycleUpdateInput = {
   code?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  schoolLevel?: Prisma.SchoolLevelUpdateOneRequiredWithoutCyclesNestedInput
-  classes?: Prisma.ClassUpdateManyWithoutCycleNestedInput
+  section?: Prisma.SectionUpdateOneRequiredWithoutCyclesNestedInput
+  gradeLevels?: Prisma.GradeLevelUpdateManyWithoutCycleNestedInput
 }
 
 export type CycleUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  schoolLevelId?: Prisma.IntFieldUpdateOperationsInput | number
+  sectionId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  classes?: Prisma.ClassUncheckedUpdateManyWithoutCycleNestedInput
+  gradeLevels?: Prisma.GradeLevelUncheckedUpdateManyWithoutCycleNestedInput
 }
 
 export type CycleCreateManyInput = {
   id?: number
-  schoolLevelId: number
+  sectionId: number
   name: string
   code: string
   createdAt?: Date | string
@@ -341,7 +341,7 @@ export type CycleUpdateManyMutationInput = {
 
 export type CycleUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  schoolLevelId?: Prisma.IntFieldUpdateOperationsInput | number
+  sectionId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -364,14 +364,14 @@ export type CycleOrderByRelevanceInput = {
   search: string
 }
 
-export type CycleSchoolLevelIdCodeCompoundUniqueInput = {
-  schoolLevelId: number
+export type CycleSectionIdCodeCompoundUniqueInput = {
+  sectionId: number
   code: string
 }
 
 export type CycleCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  schoolLevelId?: Prisma.SortOrder
+  sectionId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -380,12 +380,12 @@ export type CycleCountOrderByAggregateInput = {
 
 export type CycleAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  schoolLevelId?: Prisma.SortOrder
+  sectionId?: Prisma.SortOrder
 }
 
 export type CycleMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  schoolLevelId?: Prisma.SortOrder
+  sectionId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -394,7 +394,7 @@ export type CycleMaxOrderByAggregateInput = {
 
 export type CycleMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  schoolLevelId?: Prisma.SortOrder
+  sectionId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -403,7 +403,7 @@ export type CycleMinOrderByAggregateInput = {
 
 export type CycleSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  schoolLevelId?: Prisma.SortOrder
+  sectionId?: Prisma.SortOrder
 }
 
 export type CycleScalarRelationFilter = {
@@ -411,103 +411,103 @@ export type CycleScalarRelationFilter = {
   isNot?: Prisma.CycleWhereInput
 }
 
-export type CycleCreateNestedManyWithoutSchoolLevelInput = {
-  create?: Prisma.XOR<Prisma.CycleCreateWithoutSchoolLevelInput, Prisma.CycleUncheckedCreateWithoutSchoolLevelInput> | Prisma.CycleCreateWithoutSchoolLevelInput[] | Prisma.CycleUncheckedCreateWithoutSchoolLevelInput[]
-  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutSchoolLevelInput | Prisma.CycleCreateOrConnectWithoutSchoolLevelInput[]
-  createMany?: Prisma.CycleCreateManySchoolLevelInputEnvelope
+export type CycleCreateNestedManyWithoutSectionInput = {
+  create?: Prisma.XOR<Prisma.CycleCreateWithoutSectionInput, Prisma.CycleUncheckedCreateWithoutSectionInput> | Prisma.CycleCreateWithoutSectionInput[] | Prisma.CycleUncheckedCreateWithoutSectionInput[]
+  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutSectionInput | Prisma.CycleCreateOrConnectWithoutSectionInput[]
+  createMany?: Prisma.CycleCreateManySectionInputEnvelope
   connect?: Prisma.CycleWhereUniqueInput | Prisma.CycleWhereUniqueInput[]
 }
 
-export type CycleUncheckedCreateNestedManyWithoutSchoolLevelInput = {
-  create?: Prisma.XOR<Prisma.CycleCreateWithoutSchoolLevelInput, Prisma.CycleUncheckedCreateWithoutSchoolLevelInput> | Prisma.CycleCreateWithoutSchoolLevelInput[] | Prisma.CycleUncheckedCreateWithoutSchoolLevelInput[]
-  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutSchoolLevelInput | Prisma.CycleCreateOrConnectWithoutSchoolLevelInput[]
-  createMany?: Prisma.CycleCreateManySchoolLevelInputEnvelope
+export type CycleUncheckedCreateNestedManyWithoutSectionInput = {
+  create?: Prisma.XOR<Prisma.CycleCreateWithoutSectionInput, Prisma.CycleUncheckedCreateWithoutSectionInput> | Prisma.CycleCreateWithoutSectionInput[] | Prisma.CycleUncheckedCreateWithoutSectionInput[]
+  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutSectionInput | Prisma.CycleCreateOrConnectWithoutSectionInput[]
+  createMany?: Prisma.CycleCreateManySectionInputEnvelope
   connect?: Prisma.CycleWhereUniqueInput | Prisma.CycleWhereUniqueInput[]
 }
 
-export type CycleUpdateManyWithoutSchoolLevelNestedInput = {
-  create?: Prisma.XOR<Prisma.CycleCreateWithoutSchoolLevelInput, Prisma.CycleUncheckedCreateWithoutSchoolLevelInput> | Prisma.CycleCreateWithoutSchoolLevelInput[] | Prisma.CycleUncheckedCreateWithoutSchoolLevelInput[]
-  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutSchoolLevelInput | Prisma.CycleCreateOrConnectWithoutSchoolLevelInput[]
-  upsert?: Prisma.CycleUpsertWithWhereUniqueWithoutSchoolLevelInput | Prisma.CycleUpsertWithWhereUniqueWithoutSchoolLevelInput[]
-  createMany?: Prisma.CycleCreateManySchoolLevelInputEnvelope
+export type CycleUpdateManyWithoutSectionNestedInput = {
+  create?: Prisma.XOR<Prisma.CycleCreateWithoutSectionInput, Prisma.CycleUncheckedCreateWithoutSectionInput> | Prisma.CycleCreateWithoutSectionInput[] | Prisma.CycleUncheckedCreateWithoutSectionInput[]
+  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutSectionInput | Prisma.CycleCreateOrConnectWithoutSectionInput[]
+  upsert?: Prisma.CycleUpsertWithWhereUniqueWithoutSectionInput | Prisma.CycleUpsertWithWhereUniqueWithoutSectionInput[]
+  createMany?: Prisma.CycleCreateManySectionInputEnvelope
   set?: Prisma.CycleWhereUniqueInput | Prisma.CycleWhereUniqueInput[]
   disconnect?: Prisma.CycleWhereUniqueInput | Prisma.CycleWhereUniqueInput[]
   delete?: Prisma.CycleWhereUniqueInput | Prisma.CycleWhereUniqueInput[]
   connect?: Prisma.CycleWhereUniqueInput | Prisma.CycleWhereUniqueInput[]
-  update?: Prisma.CycleUpdateWithWhereUniqueWithoutSchoolLevelInput | Prisma.CycleUpdateWithWhereUniqueWithoutSchoolLevelInput[]
-  updateMany?: Prisma.CycleUpdateManyWithWhereWithoutSchoolLevelInput | Prisma.CycleUpdateManyWithWhereWithoutSchoolLevelInput[]
+  update?: Prisma.CycleUpdateWithWhereUniqueWithoutSectionInput | Prisma.CycleUpdateWithWhereUniqueWithoutSectionInput[]
+  updateMany?: Prisma.CycleUpdateManyWithWhereWithoutSectionInput | Prisma.CycleUpdateManyWithWhereWithoutSectionInput[]
   deleteMany?: Prisma.CycleScalarWhereInput | Prisma.CycleScalarWhereInput[]
 }
 
-export type CycleUncheckedUpdateManyWithoutSchoolLevelNestedInput = {
-  create?: Prisma.XOR<Prisma.CycleCreateWithoutSchoolLevelInput, Prisma.CycleUncheckedCreateWithoutSchoolLevelInput> | Prisma.CycleCreateWithoutSchoolLevelInput[] | Prisma.CycleUncheckedCreateWithoutSchoolLevelInput[]
-  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutSchoolLevelInput | Prisma.CycleCreateOrConnectWithoutSchoolLevelInput[]
-  upsert?: Prisma.CycleUpsertWithWhereUniqueWithoutSchoolLevelInput | Prisma.CycleUpsertWithWhereUniqueWithoutSchoolLevelInput[]
-  createMany?: Prisma.CycleCreateManySchoolLevelInputEnvelope
+export type CycleUncheckedUpdateManyWithoutSectionNestedInput = {
+  create?: Prisma.XOR<Prisma.CycleCreateWithoutSectionInput, Prisma.CycleUncheckedCreateWithoutSectionInput> | Prisma.CycleCreateWithoutSectionInput[] | Prisma.CycleUncheckedCreateWithoutSectionInput[]
+  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutSectionInput | Prisma.CycleCreateOrConnectWithoutSectionInput[]
+  upsert?: Prisma.CycleUpsertWithWhereUniqueWithoutSectionInput | Prisma.CycleUpsertWithWhereUniqueWithoutSectionInput[]
+  createMany?: Prisma.CycleCreateManySectionInputEnvelope
   set?: Prisma.CycleWhereUniqueInput | Prisma.CycleWhereUniqueInput[]
   disconnect?: Prisma.CycleWhereUniqueInput | Prisma.CycleWhereUniqueInput[]
   delete?: Prisma.CycleWhereUniqueInput | Prisma.CycleWhereUniqueInput[]
   connect?: Prisma.CycleWhereUniqueInput | Prisma.CycleWhereUniqueInput[]
-  update?: Prisma.CycleUpdateWithWhereUniqueWithoutSchoolLevelInput | Prisma.CycleUpdateWithWhereUniqueWithoutSchoolLevelInput[]
-  updateMany?: Prisma.CycleUpdateManyWithWhereWithoutSchoolLevelInput | Prisma.CycleUpdateManyWithWhereWithoutSchoolLevelInput[]
+  update?: Prisma.CycleUpdateWithWhereUniqueWithoutSectionInput | Prisma.CycleUpdateWithWhereUniqueWithoutSectionInput[]
+  updateMany?: Prisma.CycleUpdateManyWithWhereWithoutSectionInput | Prisma.CycleUpdateManyWithWhereWithoutSectionInput[]
   deleteMany?: Prisma.CycleScalarWhereInput | Prisma.CycleScalarWhereInput[]
 }
 
-export type CycleCreateNestedOneWithoutClassesInput = {
-  create?: Prisma.XOR<Prisma.CycleCreateWithoutClassesInput, Prisma.CycleUncheckedCreateWithoutClassesInput>
-  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutClassesInput
+export type CycleCreateNestedOneWithoutGradeLevelsInput = {
+  create?: Prisma.XOR<Prisma.CycleCreateWithoutGradeLevelsInput, Prisma.CycleUncheckedCreateWithoutGradeLevelsInput>
+  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutGradeLevelsInput
   connect?: Prisma.CycleWhereUniqueInput
 }
 
-export type CycleUpdateOneRequiredWithoutClassesNestedInput = {
-  create?: Prisma.XOR<Prisma.CycleCreateWithoutClassesInput, Prisma.CycleUncheckedCreateWithoutClassesInput>
-  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutClassesInput
-  upsert?: Prisma.CycleUpsertWithoutClassesInput
+export type CycleUpdateOneRequiredWithoutGradeLevelsNestedInput = {
+  create?: Prisma.XOR<Prisma.CycleCreateWithoutGradeLevelsInput, Prisma.CycleUncheckedCreateWithoutGradeLevelsInput>
+  connectOrCreate?: Prisma.CycleCreateOrConnectWithoutGradeLevelsInput
+  upsert?: Prisma.CycleUpsertWithoutGradeLevelsInput
   connect?: Prisma.CycleWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CycleUpdateToOneWithWhereWithoutClassesInput, Prisma.CycleUpdateWithoutClassesInput>, Prisma.CycleUncheckedUpdateWithoutClassesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CycleUpdateToOneWithWhereWithoutGradeLevelsInput, Prisma.CycleUpdateWithoutGradeLevelsInput>, Prisma.CycleUncheckedUpdateWithoutGradeLevelsInput>
 }
 
-export type CycleCreateWithoutSchoolLevelInput = {
+export type CycleCreateWithoutSectionInput = {
   name: string
   code: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  classes?: Prisma.ClassCreateNestedManyWithoutCycleInput
+  gradeLevels?: Prisma.GradeLevelCreateNestedManyWithoutCycleInput
 }
 
-export type CycleUncheckedCreateWithoutSchoolLevelInput = {
+export type CycleUncheckedCreateWithoutSectionInput = {
   id?: number
   name: string
   code: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  classes?: Prisma.ClassUncheckedCreateNestedManyWithoutCycleInput
+  gradeLevels?: Prisma.GradeLevelUncheckedCreateNestedManyWithoutCycleInput
 }
 
-export type CycleCreateOrConnectWithoutSchoolLevelInput = {
+export type CycleCreateOrConnectWithoutSectionInput = {
   where: Prisma.CycleWhereUniqueInput
-  create: Prisma.XOR<Prisma.CycleCreateWithoutSchoolLevelInput, Prisma.CycleUncheckedCreateWithoutSchoolLevelInput>
+  create: Prisma.XOR<Prisma.CycleCreateWithoutSectionInput, Prisma.CycleUncheckedCreateWithoutSectionInput>
 }
 
-export type CycleCreateManySchoolLevelInputEnvelope = {
-  data: Prisma.CycleCreateManySchoolLevelInput | Prisma.CycleCreateManySchoolLevelInput[]
+export type CycleCreateManySectionInputEnvelope = {
+  data: Prisma.CycleCreateManySectionInput | Prisma.CycleCreateManySectionInput[]
   skipDuplicates?: boolean
 }
 
-export type CycleUpsertWithWhereUniqueWithoutSchoolLevelInput = {
+export type CycleUpsertWithWhereUniqueWithoutSectionInput = {
   where: Prisma.CycleWhereUniqueInput
-  update: Prisma.XOR<Prisma.CycleUpdateWithoutSchoolLevelInput, Prisma.CycleUncheckedUpdateWithoutSchoolLevelInput>
-  create: Prisma.XOR<Prisma.CycleCreateWithoutSchoolLevelInput, Prisma.CycleUncheckedCreateWithoutSchoolLevelInput>
+  update: Prisma.XOR<Prisma.CycleUpdateWithoutSectionInput, Prisma.CycleUncheckedUpdateWithoutSectionInput>
+  create: Prisma.XOR<Prisma.CycleCreateWithoutSectionInput, Prisma.CycleUncheckedCreateWithoutSectionInput>
 }
 
-export type CycleUpdateWithWhereUniqueWithoutSchoolLevelInput = {
+export type CycleUpdateWithWhereUniqueWithoutSectionInput = {
   where: Prisma.CycleWhereUniqueInput
-  data: Prisma.XOR<Prisma.CycleUpdateWithoutSchoolLevelInput, Prisma.CycleUncheckedUpdateWithoutSchoolLevelInput>
+  data: Prisma.XOR<Prisma.CycleUpdateWithoutSectionInput, Prisma.CycleUncheckedUpdateWithoutSectionInput>
 }
 
-export type CycleUpdateManyWithWhereWithoutSchoolLevelInput = {
+export type CycleUpdateManyWithWhereWithoutSectionInput = {
   where: Prisma.CycleScalarWhereInput
-  data: Prisma.XOR<Prisma.CycleUpdateManyMutationInput, Prisma.CycleUncheckedUpdateManyWithoutSchoolLevelInput>
+  data: Prisma.XOR<Prisma.CycleUpdateManyMutationInput, Prisma.CycleUncheckedUpdateManyWithoutSectionInput>
 }
 
 export type CycleScalarWhereInput = {
@@ -515,64 +515,64 @@ export type CycleScalarWhereInput = {
   OR?: Prisma.CycleScalarWhereInput[]
   NOT?: Prisma.CycleScalarWhereInput | Prisma.CycleScalarWhereInput[]
   id?: Prisma.IntFilter<"Cycle"> | number
-  schoolLevelId?: Prisma.IntFilter<"Cycle"> | number
+  sectionId?: Prisma.IntFilter<"Cycle"> | number
   name?: Prisma.StringFilter<"Cycle"> | string
   code?: Prisma.StringFilter<"Cycle"> | string
   createdAt?: Prisma.DateTimeFilter<"Cycle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Cycle"> | Date | string
 }
 
-export type CycleCreateWithoutClassesInput = {
+export type CycleCreateWithoutGradeLevelsInput = {
   name: string
   code: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  schoolLevel: Prisma.SchoolLevelCreateNestedOneWithoutCyclesInput
+  section: Prisma.SectionCreateNestedOneWithoutCyclesInput
 }
 
-export type CycleUncheckedCreateWithoutClassesInput = {
+export type CycleUncheckedCreateWithoutGradeLevelsInput = {
   id?: number
-  schoolLevelId: number
+  sectionId: number
   name: string
   code: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type CycleCreateOrConnectWithoutClassesInput = {
+export type CycleCreateOrConnectWithoutGradeLevelsInput = {
   where: Prisma.CycleWhereUniqueInput
-  create: Prisma.XOR<Prisma.CycleCreateWithoutClassesInput, Prisma.CycleUncheckedCreateWithoutClassesInput>
+  create: Prisma.XOR<Prisma.CycleCreateWithoutGradeLevelsInput, Prisma.CycleUncheckedCreateWithoutGradeLevelsInput>
 }
 
-export type CycleUpsertWithoutClassesInput = {
-  update: Prisma.XOR<Prisma.CycleUpdateWithoutClassesInput, Prisma.CycleUncheckedUpdateWithoutClassesInput>
-  create: Prisma.XOR<Prisma.CycleCreateWithoutClassesInput, Prisma.CycleUncheckedCreateWithoutClassesInput>
+export type CycleUpsertWithoutGradeLevelsInput = {
+  update: Prisma.XOR<Prisma.CycleUpdateWithoutGradeLevelsInput, Prisma.CycleUncheckedUpdateWithoutGradeLevelsInput>
+  create: Prisma.XOR<Prisma.CycleCreateWithoutGradeLevelsInput, Prisma.CycleUncheckedCreateWithoutGradeLevelsInput>
   where?: Prisma.CycleWhereInput
 }
 
-export type CycleUpdateToOneWithWhereWithoutClassesInput = {
+export type CycleUpdateToOneWithWhereWithoutGradeLevelsInput = {
   where?: Prisma.CycleWhereInput
-  data: Prisma.XOR<Prisma.CycleUpdateWithoutClassesInput, Prisma.CycleUncheckedUpdateWithoutClassesInput>
+  data: Prisma.XOR<Prisma.CycleUpdateWithoutGradeLevelsInput, Prisma.CycleUncheckedUpdateWithoutGradeLevelsInput>
 }
 
-export type CycleUpdateWithoutClassesInput = {
+export type CycleUpdateWithoutGradeLevelsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  schoolLevel?: Prisma.SchoolLevelUpdateOneRequiredWithoutCyclesNestedInput
+  section?: Prisma.SectionUpdateOneRequiredWithoutCyclesNestedInput
 }
 
-export type CycleUncheckedUpdateWithoutClassesInput = {
+export type CycleUncheckedUpdateWithoutGradeLevelsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  schoolLevelId?: Prisma.IntFieldUpdateOperationsInput | number
+  sectionId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type CycleCreateManySchoolLevelInput = {
+export type CycleCreateManySectionInput = {
   id?: number
   name: string
   code: string
@@ -580,24 +580,24 @@ export type CycleCreateManySchoolLevelInput = {
   updatedAt?: Date | string
 }
 
-export type CycleUpdateWithoutSchoolLevelInput = {
+export type CycleUpdateWithoutSectionInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  classes?: Prisma.ClassUpdateManyWithoutCycleNestedInput
+  gradeLevels?: Prisma.GradeLevelUpdateManyWithoutCycleNestedInput
 }
 
-export type CycleUncheckedUpdateWithoutSchoolLevelInput = {
+export type CycleUncheckedUpdateWithoutSectionInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  classes?: Prisma.ClassUncheckedUpdateManyWithoutCycleNestedInput
+  gradeLevels?: Prisma.GradeLevelUncheckedUpdateManyWithoutCycleNestedInput
 }
 
-export type CycleUncheckedUpdateManyWithoutSchoolLevelInput = {
+export type CycleUncheckedUpdateManyWithoutSectionInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
@@ -611,11 +611,11 @@ export type CycleUncheckedUpdateManyWithoutSchoolLevelInput = {
  */
 
 export type CycleCountOutputType = {
-  classes: number
+  gradeLevels: number
 }
 
 export type CycleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  classes?: boolean | CycleCountOutputTypeCountClassesArgs
+  gradeLevels?: boolean | CycleCountOutputTypeCountGradeLevelsArgs
 }
 
 /**
@@ -631,20 +631,20 @@ export type CycleCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extens
 /**
  * CycleCountOutputType without action
  */
-export type CycleCountOutputTypeCountClassesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ClassWhereInput
+export type CycleCountOutputTypeCountGradeLevelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GradeLevelWhereInput
 }
 
 
 export type CycleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  schoolLevelId?: boolean
+  sectionId?: boolean
   name?: boolean
   code?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  schoolLevel?: boolean | Prisma.SchoolLevelDefaultArgs<ExtArgs>
-  classes?: boolean | Prisma.Cycle$classesArgs<ExtArgs>
+  section?: boolean | Prisma.SectionDefaultArgs<ExtArgs>
+  gradeLevels?: boolean | Prisma.Cycle$gradeLevelsArgs<ExtArgs>
   _count?: boolean | Prisma.CycleCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cycle"]>
 
@@ -652,29 +652,29 @@ export type CycleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 
 export type CycleSelectScalar = {
   id?: boolean
-  schoolLevelId?: boolean
+  sectionId?: boolean
   name?: boolean
   code?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CycleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "schoolLevelId" | "name" | "code" | "createdAt" | "updatedAt", ExtArgs["result"]["cycle"]>
+export type CycleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sectionId" | "name" | "code" | "createdAt" | "updatedAt", ExtArgs["result"]["cycle"]>
 export type CycleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  schoolLevel?: boolean | Prisma.SchoolLevelDefaultArgs<ExtArgs>
-  classes?: boolean | Prisma.Cycle$classesArgs<ExtArgs>
+  section?: boolean | Prisma.SectionDefaultArgs<ExtArgs>
+  gradeLevels?: boolean | Prisma.Cycle$gradeLevelsArgs<ExtArgs>
   _count?: boolean | Prisma.CycleCountOutputTypeDefaultArgs<ExtArgs>
 }
 
 export type $CyclePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Cycle"
   objects: {
-    schoolLevel: Prisma.$SchoolLevelPayload<ExtArgs>
-    classes: Prisma.$ClassPayload<ExtArgs>[]
+    section: Prisma.$SectionPayload<ExtArgs>
+    gradeLevels: Prisma.$GradeLevelPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    schoolLevelId: number
+    sectionId: number
     name: string
     code: string
     createdAt: Date
@@ -1019,8 +1019,8 @@ readonly fields: CycleFieldRefs;
  */
 export interface Prisma__CycleClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  schoolLevel<T extends Prisma.SchoolLevelDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SchoolLevelDefaultArgs<ExtArgs>>): Prisma.Prisma__SchoolLevelClient<runtime.Types.Result.GetResult<Prisma.$SchoolLevelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  classes<T extends Prisma.Cycle$classesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Cycle$classesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  section<T extends Prisma.SectionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SectionDefaultArgs<ExtArgs>>): Prisma.Prisma__SectionClient<runtime.Types.Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  gradeLevels<T extends Prisma.Cycle$gradeLevelsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Cycle$gradeLevelsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GradeLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1051,7 +1051,7 @@ export interface Prisma__CycleClient<T, Null = never, ExtArgs extends runtime.Ty
  */
 export interface CycleFieldRefs {
   readonly id: Prisma.FieldRef<"Cycle", 'Int'>
-  readonly schoolLevelId: Prisma.FieldRef<"Cycle", 'Int'>
+  readonly sectionId: Prisma.FieldRef<"Cycle", 'Int'>
   readonly name: Prisma.FieldRef<"Cycle", 'String'>
   readonly code: Prisma.FieldRef<"Cycle", 'String'>
   readonly createdAt: Prisma.FieldRef<"Cycle", 'DateTime'>
@@ -1404,27 +1404,27 @@ export type CycleDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
- * Cycle.classes
+ * Cycle.gradeLevels
  */
-export type Cycle$classesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Cycle$gradeLevelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Class
+   * Select specific fields to fetch from the GradeLevel
    */
-  select?: Prisma.ClassSelect<ExtArgs> | null
+  select?: Prisma.GradeLevelSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Class
+   * Omit specific fields from the GradeLevel
    */
-  omit?: Prisma.ClassOmit<ExtArgs> | null
+  omit?: Prisma.GradeLevelOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ClassInclude<ExtArgs> | null
-  where?: Prisma.ClassWhereInput
-  orderBy?: Prisma.ClassOrderByWithRelationInput | Prisma.ClassOrderByWithRelationInput[]
-  cursor?: Prisma.ClassWhereUniqueInput
+  include?: Prisma.GradeLevelInclude<ExtArgs> | null
+  where?: Prisma.GradeLevelWhereInput
+  orderBy?: Prisma.GradeLevelOrderByWithRelationInput | Prisma.GradeLevelOrderByWithRelationInput[]
+  cursor?: Prisma.GradeLevelWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ClassScalarFieldEnum | Prisma.ClassScalarFieldEnum[]
+  distinct?: Prisma.GradeLevelScalarFieldEnum | Prisma.GradeLevelScalarFieldEnum[]
 }
 
 /**

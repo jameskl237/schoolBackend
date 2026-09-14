@@ -1,13 +1,33 @@
+import type { Prisma } from "../../generated/prisma/client.js";
 import { prisma } from "../../infrastructure/database/prisma.js";
 
 export class AuthRepository {
-  findByEmailAndEstablishment(email: string, establishmentId: number) {
-    return prisma.user.findUnique({
+  createUser(data: Prisma.UserCreateInput) {
+    return prisma.user.create({ data });
+  }
+
+  findByEmailAndEstablishmentCode(email: string, establishmentCode: string) {
+    return prisma.user.findFirst({
       where: {
-        establishmentId_email: {
-          establishmentId,
-          email,
-        },
+        email,
+        establishment: { code: establishmentCode },
+      },
+    });
+  }
+
+  findEstablishmentByCode(code: string) {
+    return prisma.establishment.findUnique({ where: { code } });
+  }
+
+  /** Profils applicatifs rattachés au compte : ils déterminent son périmètre de lecture. */
+  findProfileIds(userId: number) {
+    return prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        teacher: { select: { id: true } },
+        student: { select: { id: true } },
+        parent: { select: { id: true } },
+        guardian: { select: { id: true } },
       },
     });
   }

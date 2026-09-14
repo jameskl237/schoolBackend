@@ -6,6 +6,15 @@ export interface AccessTokenPayload {
   sub: number;
   email: string;
   establishmentId: number;
+  permissions: string[];
+  /**
+   * Identité applicative du compte, quand il en a une. Elle porte le périmètre
+   * de l'utilisateur : un enseignant ne voit que ses classes, un élève que lui-même.
+   */
+  teacherId?: number;
+  studentId?: number;
+  parentId?: number;
+  guardianId?: number;
 }
 
 export interface RefreshTokenPayload {

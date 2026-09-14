@@ -6,6 +6,11 @@ declare module "express-serve-static-core" {
       id: number;
       email: string;
       establishmentId: number;
+      permissions: string[];
+      teacherId?: number;
+      studentId?: number;
+      parentId?: number;
+      guardianId?: number;
     };
   }
 }

@@ -1,4 +1,5 @@
 import { AppError } from "../../common/errors/app-error.js";
+import { getUserPermissions } from "../../common/utils/get-user-permissions.js";
 import {
   signAccessToken,
   signRefreshToken,
@@ -6,49 +7,81 @@ import {
 } from "../../common/utils/jwt.js";
 import { comparePassword, hashPassword } from "../../common/utils/password.js";
 import type { User } from "../../generated/prisma/client.js";
-import { UserRepository } from "../users/user.repository.js";
 
 import type { LoginInput, RegisterInput } from "./auth.dto.js";
 import { AuthRepository } from "./auth.repository.js";
 
 const sanitizeUser = ({ password: _password, ...rest }: User) => rest;
 
+/** Profils rattachés au compte : le client en a besoin pour savoir ce qu'il peut éditer. */
+interface ProfileIds {
+  teacherId: number | null;
+  studentId: number | null;
+  parentId: number | null;
+  guardianId: number | null;
+}
+
 export class AuthService {
-  constructor(
-    private readonly authRepository = new AuthRepository(),
-    private readonly userRepository = new UserRepository(),
-  ) {}
+  constructor(private readonly authRepository = new AuthRepository()) {}
 
   async register(input: RegisterInput) {
-    const existing = await this.authRepository.findByEmailAndEstablishment(
+    const establishment = await this.authRepository.findEstablishmentByCode(
+      input.establishmentCode,
+    );
+
+    if (!establishment) {
+      throw new AppError("Establishment not found", 404, "ESTABLISHMENT_NOT_FOUND");
+    }
+
+    const existing = await this.authRepository.findByEmailAndEstablishmentCode(
       input.email,
-      input.establishmentId,
+      input.establishmentCode,
     );
 
     if (existing) {
       throw new AppError("Email already in use", 409, "EMAIL_ALREADY_EXISTS");
     }
 
-    const { establishmentId, password, phone, ...rest } = input;
+    const { establishmentCode: _establishmentCode, password, phone, ...rest } = input;
 
-    const user = await this.userRepository.create({
+    const user = await this.authRepository.createUser({
       ...rest,
       password: await hashPassword(password),
       phone: phone ?? null,
-      establishment: { connect: { id: establishmentId } },
+      establishment: { connect: { id: establishment.id } },
     });
 
     return this.issueTokens(user);
   }
 
   async login(input: LoginInput) {
-    const user = await this.authRepository.findByEmailAndEstablishment(
-      input.email,
-      input.establishmentId,
+    const establishment = await this.authRepository.findEstablishmentByCode(
+      input.establishmentCode,
     );
 
-    if (!user || !(await comparePassword(input.password, user.password))) {
-      throw new AppError("Invalid credentials", 401, "INVALID_CREDENTIALS");
+    if (!establishment) {
+      throw new AppError(
+        "This establishment code does not exist",
+        404,
+        "ESTABLISHMENT_NOT_FOUND",
+      );
+    }
+
+    const user = await this.authRepository.findByEmailAndEstablishmentCode(
+      input.email,
+      input.establishmentCode,
+    );
+
+    if (!user) {
+      throw new AppError(
+        "No account with this email in this establishment",
+        404,
+        "USER_NOT_IN_ESTABLISHMENT",
+      );
+    }
+
+    if (!(await comparePassword(input.password, user.password))) {
+      throw new AppError("Incorrect password", 401, "INVALID_PASSWORD");
     }
 
     if (!user.isActive) {
@@ -85,18 +118,55 @@ export class AuthService {
       throw new AppError("User not found", 404, "USER_NOT_FOUND");
     }
 
-    return sanitizeUser(user);
+    const [permissions, profiles] = await Promise.all([
+      getUserPermissions(id),
+      this.loadProfileIds(id),
+    ]);
+
+    return { ...sanitizeUser(user), permissions, ...profiles };
   }
 
-  private issueTokens(user: User) {
+  private async loadProfileIds(userId: number): Promise<ProfileIds> {
+    const profiles = await this.authRepository.findProfileIds(userId);
+
+    return {
+      teacherId: profiles?.teacher?.id ?? null,
+      studentId: profiles?.student?.id ?? null,
+      parentId: profiles?.parent?.id ?? null,
+      guardianId: profiles?.guardian?.id ?? null,
+    };
+  }
+
+  private async issueTokens(user: User) {
+    const [permissions, profiles] = await Promise.all([
+      getUserPermissions(user.id),
+      this.authRepository.findProfileIds(user.id),
+    ]);
+
     const accessToken = signAccessToken({
       sub: user.id,
       email: user.email,
       establishmentId: user.establishmentId,
+      permissions,
+      ...(profiles?.teacher ? { teacherId: profiles.teacher.id } : {}),
+      ...(profiles?.student ? { studentId: profiles.student.id } : {}),
+      ...(profiles?.parent ? { parentId: profiles.parent.id } : {}),
+      ...(profiles?.guardian ? { guardianId: profiles.guardian.id } : {}),
     });
 
     const refreshToken = signRefreshToken({ sub: user.id });
 
-    return { user: sanitizeUser(user), accessToken, refreshToken };
+    return {
+      user: {
+        ...sanitizeUser(user),
+        permissions,
+        teacherId: profiles?.teacher?.id ?? null,
+        studentId: profiles?.student?.id ?? null,
+        parentId: profiles?.parent?.id ?? null,
+        guardianId: profiles?.guardian?.id ?? null,
+      },
+      accessToken,
+      refreshToken,
+    };
   }
 }

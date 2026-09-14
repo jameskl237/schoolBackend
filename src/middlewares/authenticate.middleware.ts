@@ -20,6 +20,11 @@ export const authenticate = (req: Request, _res: Response, next: NextFunction): 
       id: payload.sub,
       email: payload.email,
       establishmentId: payload.establishmentId,
+      permissions: payload.permissions,
+      ...(payload.teacherId !== undefined ? { teacherId: payload.teacherId } : {}),
+      ...(payload.studentId !== undefined ? { studentId: payload.studentId } : {}),
+      ...(payload.parentId !== undefined ? { parentId: payload.parentId } : {}),
+      ...(payload.guardianId !== undefined ? { guardianId: payload.guardianId } : {}),
     };
 
     next();

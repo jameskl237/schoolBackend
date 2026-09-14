@@ -27,16 +27,12 @@ export async function seedRoles(establishments: Establishment[]) {
         },
       });
 
-      for (const code of role.permissions) {
-        const permission = await prisma.permission.findUnique({
-          where: { code },
-          select: { id: true },
-        });
+      const granted = await prisma.permission.findMany({
+        where: { code: { in: role.permissions } },
+        select: { id: true },
+      });
 
-        if (!permission) {
-          continue;
-        }
-
+      for (const permission of granted) {
         await prisma.rolePermission.upsert({
           where: {
             roleId_permissionId: {
@@ -51,6 +47,15 @@ export async function seedRoles(establishments: Establishment[]) {
           },
         });
       }
+
+      // Le seed fait converger la base vers la définition : ce qui a été retiré
+      // d'un rôle doit lui être révoqué, pas seulement absent des nouveaux octrois.
+      await prisma.rolePermission.deleteMany({
+        where: {
+          roleId: seededRole.id,
+          permissionId: { notIn: granted.map((permission) => permission.id) },
+        },
+      });
     }
   }
 }

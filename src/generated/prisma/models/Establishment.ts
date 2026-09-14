@@ -236,6 +236,7 @@ export type EstablishmentWhereInput = {
   guardians?: Prisma.GuardianListRelationFilter
   feeTypes?: Prisma.FeeTypeListRelationFilter
   books?: Prisma.BookListRelationFilter
+  transportRoutes?: Prisma.TransportRouteListRelationFilter
 }
 
 export type EstablishmentOrderByWithRelationInput = {
@@ -257,6 +258,7 @@ export type EstablishmentOrderByWithRelationInput = {
   guardians?: Prisma.GuardianOrderByRelationAggregateInput
   feeTypes?: Prisma.FeeTypeOrderByRelationAggregateInput
   books?: Prisma.BookOrderByRelationAggregateInput
+  transportRoutes?: Prisma.TransportRouteOrderByRelationAggregateInput
   _relevance?: Prisma.EstablishmentOrderByRelevanceInput
 }
 
@@ -282,6 +284,7 @@ export type EstablishmentWhereUniqueInput = Prisma.AtLeast<{
   guardians?: Prisma.GuardianListRelationFilter
   feeTypes?: Prisma.FeeTypeListRelationFilter
   books?: Prisma.BookListRelationFilter
+  transportRoutes?: Prisma.TransportRouteListRelationFilter
 }, "id" | "code">
 
 export type EstablishmentOrderByWithAggregationInput = {
@@ -328,6 +331,7 @@ export type EstablishmentCreateInput = {
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateInput = {
@@ -349,6 +353,7 @@ export type EstablishmentUncheckedCreateInput = {
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUpdateInput = {
@@ -369,6 +374,7 @@ export type EstablishmentUpdateInput = {
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateInput = {
@@ -390,6 +396,7 @@ export type EstablishmentUncheckedUpdateInput = {
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateManyInput = {
@@ -638,6 +645,20 @@ export type EstablishmentUpdateOneRequiredWithoutFeeTypesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutFeeTypesInput, Prisma.EstablishmentUpdateWithoutFeeTypesInput>, Prisma.EstablishmentUncheckedUpdateWithoutFeeTypesInput>
 }
 
+export type EstablishmentCreateNestedOneWithoutTransportRoutesInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutTransportRoutesInput, Prisma.EstablishmentUncheckedCreateWithoutTransportRoutesInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutTransportRoutesInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+}
+
+export type EstablishmentUpdateOneRequiredWithoutTransportRoutesNestedInput = {
+  create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutTransportRoutesInput, Prisma.EstablishmentUncheckedCreateWithoutTransportRoutesInput>
+  connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutTransportRoutesInput
+  upsert?: Prisma.EstablishmentUpsertWithoutTransportRoutesInput
+  connect?: Prisma.EstablishmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EstablishmentUpdateToOneWithWhereWithoutTransportRoutesInput, Prisma.EstablishmentUpdateWithoutTransportRoutesInput>, Prisma.EstablishmentUncheckedUpdateWithoutTransportRoutesInput>
+}
+
 export type EstablishmentCreateNestedOneWithoutBooksInput = {
   create?: Prisma.XOR<Prisma.EstablishmentCreateWithoutBooksInput, Prisma.EstablishmentUncheckedCreateWithoutBooksInput>
   connectOrCreate?: Prisma.EstablishmentCreateOrConnectWithoutBooksInput
@@ -669,6 +690,7 @@ export type EstablishmentCreateWithoutAcademicYearsInput = {
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutAcademicYearsInput = {
@@ -689,6 +711,7 @@ export type EstablishmentUncheckedCreateWithoutAcademicYearsInput = {
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutAcademicYearsInput = {
@@ -724,6 +747,7 @@ export type EstablishmentUpdateWithoutAcademicYearsInput = {
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutAcademicYearsInput = {
@@ -744,6 +768,7 @@ export type EstablishmentUncheckedUpdateWithoutAcademicYearsInput = {
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutSchoolLevelsInput = {
@@ -763,6 +788,7 @@ export type EstablishmentCreateWithoutSchoolLevelsInput = {
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutSchoolLevelsInput = {
@@ -783,6 +809,7 @@ export type EstablishmentUncheckedCreateWithoutSchoolLevelsInput = {
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutSchoolLevelsInput = {
@@ -818,6 +845,7 @@ export type EstablishmentUpdateWithoutSchoolLevelsInput = {
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutSchoolLevelsInput = {
@@ -838,6 +866,7 @@ export type EstablishmentUncheckedUpdateWithoutSchoolLevelsInput = {
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutUsersInput = {
@@ -857,6 +886,7 @@ export type EstablishmentCreateWithoutUsersInput = {
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutUsersInput = {
@@ -877,6 +907,7 @@ export type EstablishmentUncheckedCreateWithoutUsersInput = {
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutUsersInput = {
@@ -912,6 +943,7 @@ export type EstablishmentUpdateWithoutUsersInput = {
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutUsersInput = {
@@ -932,6 +964,7 @@ export type EstablishmentUncheckedUpdateWithoutUsersInput = {
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutRolesInput = {
@@ -951,6 +984,7 @@ export type EstablishmentCreateWithoutRolesInput = {
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutRolesInput = {
@@ -971,6 +1005,7 @@ export type EstablishmentUncheckedCreateWithoutRolesInput = {
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutRolesInput = {
@@ -1006,6 +1041,7 @@ export type EstablishmentUpdateWithoutRolesInput = {
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutRolesInput = {
@@ -1026,6 +1062,7 @@ export type EstablishmentUncheckedUpdateWithoutRolesInput = {
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutTeachersInput = {
@@ -1045,6 +1082,7 @@ export type EstablishmentCreateWithoutTeachersInput = {
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutTeachersInput = {
@@ -1065,6 +1103,7 @@ export type EstablishmentUncheckedCreateWithoutTeachersInput = {
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutTeachersInput = {
@@ -1100,6 +1139,7 @@ export type EstablishmentUpdateWithoutTeachersInput = {
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutTeachersInput = {
@@ -1120,6 +1160,7 @@ export type EstablishmentUncheckedUpdateWithoutTeachersInput = {
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutSubjectsInput = {
@@ -1139,6 +1180,7 @@ export type EstablishmentCreateWithoutSubjectsInput = {
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutSubjectsInput = {
@@ -1159,6 +1201,7 @@ export type EstablishmentUncheckedCreateWithoutSubjectsInput = {
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutSubjectsInput = {
@@ -1194,6 +1237,7 @@ export type EstablishmentUpdateWithoutSubjectsInput = {
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutSubjectsInput = {
@@ -1214,6 +1258,7 @@ export type EstablishmentUncheckedUpdateWithoutSubjectsInput = {
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutClassroomsInput = {
@@ -1233,6 +1278,7 @@ export type EstablishmentCreateWithoutClassroomsInput = {
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutClassroomsInput = {
@@ -1253,6 +1299,7 @@ export type EstablishmentUncheckedCreateWithoutClassroomsInput = {
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutClassroomsInput = {
@@ -1288,6 +1335,7 @@ export type EstablishmentUpdateWithoutClassroomsInput = {
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutClassroomsInput = {
@@ -1308,6 +1356,7 @@ export type EstablishmentUncheckedUpdateWithoutClassroomsInput = {
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutStudentsInput = {
@@ -1327,6 +1376,7 @@ export type EstablishmentCreateWithoutStudentsInput = {
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutStudentsInput = {
@@ -1347,6 +1397,7 @@ export type EstablishmentUncheckedCreateWithoutStudentsInput = {
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutStudentsInput = {
@@ -1382,6 +1433,7 @@ export type EstablishmentUpdateWithoutStudentsInput = {
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutStudentsInput = {
@@ -1402,6 +1454,7 @@ export type EstablishmentUncheckedUpdateWithoutStudentsInput = {
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutParentsInput = {
@@ -1421,6 +1474,7 @@ export type EstablishmentCreateWithoutParentsInput = {
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutParentsInput = {
@@ -1441,6 +1495,7 @@ export type EstablishmentUncheckedCreateWithoutParentsInput = {
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutParentsInput = {
@@ -1476,6 +1531,7 @@ export type EstablishmentUpdateWithoutParentsInput = {
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutParentsInput = {
@@ -1496,6 +1552,7 @@ export type EstablishmentUncheckedUpdateWithoutParentsInput = {
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutGuardiansInput = {
@@ -1515,6 +1572,7 @@ export type EstablishmentCreateWithoutGuardiansInput = {
   parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutGuardiansInput = {
@@ -1535,6 +1593,7 @@ export type EstablishmentUncheckedCreateWithoutGuardiansInput = {
   parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutGuardiansInput = {
@@ -1570,6 +1629,7 @@ export type EstablishmentUpdateWithoutGuardiansInput = {
   parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutGuardiansInput = {
@@ -1590,6 +1650,7 @@ export type EstablishmentUncheckedUpdateWithoutGuardiansInput = {
   parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutFeeTypesInput = {
@@ -1609,6 +1670,7 @@ export type EstablishmentCreateWithoutFeeTypesInput = {
   parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutFeeTypesInput = {
@@ -1629,6 +1691,7 @@ export type EstablishmentUncheckedCreateWithoutFeeTypesInput = {
   parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutFeeTypesInput = {
@@ -1664,6 +1727,7 @@ export type EstablishmentUpdateWithoutFeeTypesInput = {
   parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutFeeTypesInput = {
@@ -1684,6 +1748,105 @@ export type EstablishmentUncheckedUpdateWithoutFeeTypesInput = {
   parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentCreateWithoutTransportRoutesInput = {
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentUncheckedCreateWithoutTransportRoutesInput = {
+  id?: number
+  name: string
+  code: string
+  type: $Enums.SchoolType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutEstablishmentInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutEstablishmentInput
+  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutEstablishmentInput
+  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutEstablishmentInput
+  classrooms?: Prisma.ClassroomUncheckedCreateNestedManyWithoutEstablishmentInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutEstablishmentInput
+  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
+  guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
+  feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  books?: Prisma.BookUncheckedCreateNestedManyWithoutEstablishmentInput
+}
+
+export type EstablishmentCreateOrConnectWithoutTransportRoutesInput = {
+  where: Prisma.EstablishmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutTransportRoutesInput, Prisma.EstablishmentUncheckedCreateWithoutTransportRoutesInput>
+}
+
+export type EstablishmentUpsertWithoutTransportRoutesInput = {
+  update: Prisma.XOR<Prisma.EstablishmentUpdateWithoutTransportRoutesInput, Prisma.EstablishmentUncheckedUpdateWithoutTransportRoutesInput>
+  create: Prisma.XOR<Prisma.EstablishmentCreateWithoutTransportRoutesInput, Prisma.EstablishmentUncheckedCreateWithoutTransportRoutesInput>
+  where?: Prisma.EstablishmentWhereInput
+}
+
+export type EstablishmentUpdateToOneWithWhereWithoutTransportRoutesInput = {
+  where?: Prisma.EstablishmentWhereInput
+  data: Prisma.XOR<Prisma.EstablishmentUpdateWithoutTransportRoutesInput, Prisma.EstablishmentUncheckedUpdateWithoutTransportRoutesInput>
+}
+
+export type EstablishmentUpdateWithoutTransportRoutesInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUpdateManyWithoutEstablishmentNestedInput
+}
+
+export type EstablishmentUncheckedUpdateWithoutTransportRoutesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
+  schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutEstablishmentNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutEstablishmentNestedInput
+  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutEstablishmentNestedInput
+  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutEstablishmentNestedInput
+  classrooms?: Prisma.ClassroomUncheckedUpdateManyWithoutEstablishmentNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
+  guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
+  feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  books?: Prisma.BookUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentCreateWithoutBooksInput = {
@@ -1703,6 +1866,7 @@ export type EstablishmentCreateWithoutBooksInput = {
   parents?: Prisma.ParentCreateNestedManyWithoutEstablishmentInput
   guardians?: Prisma.GuardianCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentUncheckedCreateWithoutBooksInput = {
@@ -1723,6 +1887,7 @@ export type EstablishmentUncheckedCreateWithoutBooksInput = {
   parents?: Prisma.ParentUncheckedCreateNestedManyWithoutEstablishmentInput
   guardians?: Prisma.GuardianUncheckedCreateNestedManyWithoutEstablishmentInput
   feeTypes?: Prisma.FeeTypeUncheckedCreateNestedManyWithoutEstablishmentInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutEstablishmentInput
 }
 
 export type EstablishmentCreateOrConnectWithoutBooksInput = {
@@ -1758,6 +1923,7 @@ export type EstablishmentUpdateWithoutBooksInput = {
   parents?: Prisma.ParentUpdateManyWithoutEstablishmentNestedInput
   guardians?: Prisma.GuardianUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutEstablishmentNestedInput
 }
 
 export type EstablishmentUncheckedUpdateWithoutBooksInput = {
@@ -1778,6 +1944,7 @@ export type EstablishmentUncheckedUpdateWithoutBooksInput = {
   parents?: Prisma.ParentUncheckedUpdateManyWithoutEstablishmentNestedInput
   guardians?: Prisma.GuardianUncheckedUpdateManyWithoutEstablishmentNestedInput
   feeTypes?: Prisma.FeeTypeUncheckedUpdateManyWithoutEstablishmentNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutEstablishmentNestedInput
 }
 
 
@@ -1798,6 +1965,7 @@ export type EstablishmentCountOutputType = {
   guardians: number
   feeTypes: number
   books: number
+  transportRoutes: number
 }
 
 export type EstablishmentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1813,6 +1981,7 @@ export type EstablishmentCountOutputTypeSelect<ExtArgs extends runtime.Types.Ext
   guardians?: boolean | EstablishmentCountOutputTypeCountGuardiansArgs
   feeTypes?: boolean | EstablishmentCountOutputTypeCountFeeTypesArgs
   books?: boolean | EstablishmentCountOutputTypeCountBooksArgs
+  transportRoutes?: boolean | EstablishmentCountOutputTypeCountTransportRoutesArgs
 }
 
 /**
@@ -1909,6 +2078,13 @@ export type EstablishmentCountOutputTypeCountBooksArgs<ExtArgs extends runtime.T
   where?: Prisma.BookWhereInput
 }
 
+/**
+ * EstablishmentCountOutputType without action
+ */
+export type EstablishmentCountOutputTypeCountTransportRoutesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TransportRouteWhereInput
+}
+
 
 export type EstablishmentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1929,6 +2105,7 @@ export type EstablishmentSelect<ExtArgs extends runtime.Types.Extensions.Interna
   guardians?: boolean | Prisma.Establishment$guardiansArgs<ExtArgs>
   feeTypes?: boolean | Prisma.Establishment$feeTypesArgs<ExtArgs>
   books?: boolean | Prisma.Establishment$booksArgs<ExtArgs>
+  transportRoutes?: boolean | Prisma.Establishment$transportRoutesArgs<ExtArgs>
   _count?: boolean | Prisma.EstablishmentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["establishment"]>
 
@@ -1957,6 +2134,7 @@ export type EstablishmentInclude<ExtArgs extends runtime.Types.Extensions.Intern
   guardians?: boolean | Prisma.Establishment$guardiansArgs<ExtArgs>
   feeTypes?: boolean | Prisma.Establishment$feeTypesArgs<ExtArgs>
   books?: boolean | Prisma.Establishment$booksArgs<ExtArgs>
+  transportRoutes?: boolean | Prisma.Establishment$transportRoutesArgs<ExtArgs>
   _count?: boolean | Prisma.EstablishmentCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1975,6 +2153,7 @@ export type $EstablishmentPayload<ExtArgs extends runtime.Types.Extensions.Inter
     guardians: Prisma.$GuardianPayload<ExtArgs>[]
     feeTypes: Prisma.$FeeTypePayload<ExtArgs>[]
     books: Prisma.$BookPayload<ExtArgs>[]
+    transportRoutes: Prisma.$TransportRoutePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -2335,6 +2514,7 @@ export interface Prisma__EstablishmentClient<T, Null = never, ExtArgs extends ru
   guardians<T extends Prisma.Establishment$guardiansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$guardiansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GuardianPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   feeTypes<T extends Prisma.Establishment$feeTypesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$feeTypesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeeTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   books<T extends Prisma.Establishment$booksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$booksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  transportRoutes<T extends Prisma.Establishment$transportRoutesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Establishment$transportRoutesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransportRoutePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3003,6 +3183,30 @@ export type Establishment$booksArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.BookScalarFieldEnum | Prisma.BookScalarFieldEnum[]
+}
+
+/**
+ * Establishment.transportRoutes
+ */
+export type Establishment$transportRoutesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TransportRoute
+   */
+  select?: Prisma.TransportRouteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TransportRoute
+   */
+  omit?: Prisma.TransportRouteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TransportRouteInclude<ExtArgs> | null
+  where?: Prisma.TransportRouteWhereInput
+  orderBy?: Prisma.TransportRouteOrderByWithRelationInput | Prisma.TransportRouteOrderByWithRelationInput[]
+  cursor?: Prisma.TransportRouteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TransportRouteScalarFieldEnum | Prisma.TransportRouteScalarFieldEnum[]
 }
 
 /**

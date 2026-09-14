@@ -30,27 +30,34 @@ export type EvaluationAvgAggregateOutputType = {
   id: number | null
   classSubjectId: number | null
   periodId: number | null
+  sequenceId: number | null
   maxScore: number | null
   coefficient: number | null
+  validatedById: number | null
 }
 
 export type EvaluationSumAggregateOutputType = {
   id: number | null
   classSubjectId: number | null
   periodId: number | null
+  sequenceId: number | null
   maxScore: number | null
   coefficient: number | null
+  validatedById: number | null
 }
 
 export type EvaluationMinAggregateOutputType = {
   id: number | null
   classSubjectId: number | null
   periodId: number | null
+  sequenceId: number | null
   title: string | null
   type: $Enums.EvaluationType | null
   date: Date | null
   maxScore: number | null
   coefficient: number | null
+  validatedAt: Date | null
+  validatedById: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,11 +66,14 @@ export type EvaluationMaxAggregateOutputType = {
   id: number | null
   classSubjectId: number | null
   periodId: number | null
+  sequenceId: number | null
   title: string | null
   type: $Enums.EvaluationType | null
   date: Date | null
   maxScore: number | null
   coefficient: number | null
+  validatedAt: Date | null
+  validatedById: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -72,11 +82,14 @@ export type EvaluationCountAggregateOutputType = {
   id: number
   classSubjectId: number
   periodId: number
+  sequenceId: number
   title: number
   type: number
   date: number
   maxScore: number
   coefficient: number
+  validatedAt: number
+  validatedById: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -87,27 +100,34 @@ export type EvaluationAvgAggregateInputType = {
   id?: true
   classSubjectId?: true
   periodId?: true
+  sequenceId?: true
   maxScore?: true
   coefficient?: true
+  validatedById?: true
 }
 
 export type EvaluationSumAggregateInputType = {
   id?: true
   classSubjectId?: true
   periodId?: true
+  sequenceId?: true
   maxScore?: true
   coefficient?: true
+  validatedById?: true
 }
 
 export type EvaluationMinAggregateInputType = {
   id?: true
   classSubjectId?: true
   periodId?: true
+  sequenceId?: true
   title?: true
   type?: true
   date?: true
   maxScore?: true
   coefficient?: true
+  validatedAt?: true
+  validatedById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -116,11 +136,14 @@ export type EvaluationMaxAggregateInputType = {
   id?: true
   classSubjectId?: true
   periodId?: true
+  sequenceId?: true
   title?: true
   type?: true
   date?: true
   maxScore?: true
   coefficient?: true
+  validatedAt?: true
+  validatedById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -129,11 +152,14 @@ export type EvaluationCountAggregateInputType = {
   id?: true
   classSubjectId?: true
   periodId?: true
+  sequenceId?: true
   title?: true
   type?: true
   date?: true
   maxScore?: true
   coefficient?: true
+  validatedAt?: true
+  validatedById?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -229,11 +255,14 @@ export type EvaluationGroupByOutputType = {
   id: number
   classSubjectId: number
   periodId: number
+  sequenceId: number | null
   title: string
   type: $Enums.EvaluationType
   date: Date
   maxScore: number
   coefficient: number
+  validatedAt: Date | null
+  validatedById: number | null
   createdAt: Date
   updatedAt: Date
   _count: EvaluationCountAggregateOutputType | null
@@ -265,32 +294,44 @@ export type EvaluationWhereInput = {
   id?: Prisma.IntFilter<"Evaluation"> | number
   classSubjectId?: Prisma.IntFilter<"Evaluation"> | number
   periodId?: Prisma.IntFilter<"Evaluation"> | number
+  sequenceId?: Prisma.IntNullableFilter<"Evaluation"> | number | null
   title?: Prisma.StringFilter<"Evaluation"> | string
   type?: Prisma.EnumEvaluationTypeFilter<"Evaluation"> | $Enums.EvaluationType
   date?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   maxScore?: Prisma.FloatFilter<"Evaluation"> | number
   coefficient?: Prisma.FloatFilter<"Evaluation"> | number
+  validatedAt?: Prisma.DateTimeNullableFilter<"Evaluation"> | Date | string | null
+  validatedById?: Prisma.IntNullableFilter<"Evaluation"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   classSubject?: Prisma.XOR<Prisma.ClassSubjectScalarRelationFilter, Prisma.ClassSubjectWhereInput>
   period?: Prisma.XOR<Prisma.PeriodScalarRelationFilter, Prisma.PeriodWhereInput>
+  sequence?: Prisma.XOR<Prisma.SequenceNullableScalarRelationFilter, Prisma.SequenceWhereInput> | null
+  validatedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   grades?: Prisma.GradeListRelationFilter
+  reviews?: Prisma.EvaluationReviewListRelationFilter
 }
 
 export type EvaluationOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   classSubjectId?: Prisma.SortOrder
   periodId?: Prisma.SortOrder
+  sequenceId?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrder
   type?: Prisma.SortOrder
   date?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  validatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  validatedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   classSubject?: Prisma.ClassSubjectOrderByWithRelationInput
   period?: Prisma.PeriodOrderByWithRelationInput
+  sequence?: Prisma.SequenceOrderByWithRelationInput
+  validatedBy?: Prisma.UserOrderByWithRelationInput
   grades?: Prisma.GradeOrderByRelationAggregateInput
+  reviews?: Prisma.EvaluationReviewOrderByRelationAggregateInput
   _relevance?: Prisma.EvaluationOrderByRelevanceInput
 }
 
@@ -301,27 +342,36 @@ export type EvaluationWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.EvaluationWhereInput | Prisma.EvaluationWhereInput[]
   classSubjectId?: Prisma.IntFilter<"Evaluation"> | number
   periodId?: Prisma.IntFilter<"Evaluation"> | number
+  sequenceId?: Prisma.IntNullableFilter<"Evaluation"> | number | null
   title?: Prisma.StringFilter<"Evaluation"> | string
   type?: Prisma.EnumEvaluationTypeFilter<"Evaluation"> | $Enums.EvaluationType
   date?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   maxScore?: Prisma.FloatFilter<"Evaluation"> | number
   coefficient?: Prisma.FloatFilter<"Evaluation"> | number
+  validatedAt?: Prisma.DateTimeNullableFilter<"Evaluation"> | Date | string | null
+  validatedById?: Prisma.IntNullableFilter<"Evaluation"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   classSubject?: Prisma.XOR<Prisma.ClassSubjectScalarRelationFilter, Prisma.ClassSubjectWhereInput>
   period?: Prisma.XOR<Prisma.PeriodScalarRelationFilter, Prisma.PeriodWhereInput>
+  sequence?: Prisma.XOR<Prisma.SequenceNullableScalarRelationFilter, Prisma.SequenceWhereInput> | null
+  validatedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   grades?: Prisma.GradeListRelationFilter
+  reviews?: Prisma.EvaluationReviewListRelationFilter
 }, "id">
 
 export type EvaluationOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   classSubjectId?: Prisma.SortOrder
   periodId?: Prisma.SortOrder
+  sequenceId?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrder
   type?: Prisma.SortOrder
   date?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  validatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  validatedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.EvaluationCountOrderByAggregateInput
@@ -338,11 +388,14 @@ export type EvaluationScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Evaluation"> | number
   classSubjectId?: Prisma.IntWithAggregatesFilter<"Evaluation"> | number
   periodId?: Prisma.IntWithAggregatesFilter<"Evaluation"> | number
+  sequenceId?: Prisma.IntNullableWithAggregatesFilter<"Evaluation"> | number | null
   title?: Prisma.StringWithAggregatesFilter<"Evaluation"> | string
   type?: Prisma.EnumEvaluationTypeWithAggregatesFilter<"Evaluation"> | $Enums.EvaluationType
   date?: Prisma.DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
   maxScore?: Prisma.FloatWithAggregatesFilter<"Evaluation"> | number
   coefficient?: Prisma.FloatWithAggregatesFilter<"Evaluation"> | number
+  validatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
+  validatedById?: Prisma.IntNullableWithAggregatesFilter<"Evaluation"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
 }
@@ -353,25 +406,33 @@ export type EvaluationCreateInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   classSubject: Prisma.ClassSubjectCreateNestedOneWithoutEvaluationsInput
   period: Prisma.PeriodCreateNestedOneWithoutEvaluationsInput
+  sequence?: Prisma.SequenceCreateNestedOneWithoutEvaluationsInput
+  validatedBy?: Prisma.UserCreateNestedOneWithoutValidatedEvaluationsInput
   grades?: Prisma.GradeCreateNestedManyWithoutEvaluationInput
+  reviews?: Prisma.EvaluationReviewCreateNestedManyWithoutEvaluationInput
 }
 
 export type EvaluationUncheckedCreateInput = {
   id?: number
   classSubjectId: number
   periodId: number
+  sequenceId?: number | null
   title: string
   type: $Enums.EvaluationType
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
+  validatedById?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   grades?: Prisma.GradeUncheckedCreateNestedManyWithoutEvaluationInput
+  reviews?: Prisma.EvaluationReviewUncheckedCreateNestedManyWithoutEvaluationInput
 }
 
 export type EvaluationUpdateInput = {
@@ -380,36 +441,47 @@ export type EvaluationUpdateInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   classSubject?: Prisma.ClassSubjectUpdateOneRequiredWithoutEvaluationsNestedInput
   period?: Prisma.PeriodUpdateOneRequiredWithoutEvaluationsNestedInput
+  sequence?: Prisma.SequenceUpdateOneWithoutEvaluationsNestedInput
+  validatedBy?: Prisma.UserUpdateOneWithoutValidatedEvaluationsNestedInput
   grades?: Prisma.GradeUpdateManyWithoutEvaluationNestedInput
+  reviews?: Prisma.EvaluationReviewUpdateManyWithoutEvaluationNestedInput
 }
 
 export type EvaluationUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   classSubjectId?: Prisma.IntFieldUpdateOperationsInput | number
   periodId?: Prisma.IntFieldUpdateOperationsInput | number
+  sequenceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grades?: Prisma.GradeUncheckedUpdateManyWithoutEvaluationNestedInput
+  reviews?: Prisma.EvaluationReviewUncheckedUpdateManyWithoutEvaluationNestedInput
 }
 
 export type EvaluationCreateManyInput = {
   id?: number
   classSubjectId: number
   periodId: number
+  sequenceId?: number | null
   title: string
   type: $Enums.EvaluationType
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
+  validatedById?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -420,6 +492,7 @@ export type EvaluationUpdateManyMutationInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -428,11 +501,14 @@ export type EvaluationUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   classSubjectId?: Prisma.IntFieldUpdateOperationsInput | number
   periodId?: Prisma.IntFieldUpdateOperationsInput | number
+  sequenceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -457,11 +533,14 @@ export type EvaluationCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   classSubjectId?: Prisma.SortOrder
   periodId?: Prisma.SortOrder
+  sequenceId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   type?: Prisma.SortOrder
   date?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  validatedAt?: Prisma.SortOrder
+  validatedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -470,19 +549,24 @@ export type EvaluationAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   classSubjectId?: Prisma.SortOrder
   periodId?: Prisma.SortOrder
+  sequenceId?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  validatedById?: Prisma.SortOrder
 }
 
 export type EvaluationMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   classSubjectId?: Prisma.SortOrder
   periodId?: Prisma.SortOrder
+  sequenceId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   type?: Prisma.SortOrder
   date?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  validatedAt?: Prisma.SortOrder
+  validatedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -491,11 +575,14 @@ export type EvaluationMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   classSubjectId?: Prisma.SortOrder
   periodId?: Prisma.SortOrder
+  sequenceId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   type?: Prisma.SortOrder
   date?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  validatedAt?: Prisma.SortOrder
+  validatedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -504,8 +591,10 @@ export type EvaluationSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   classSubjectId?: Prisma.SortOrder
   periodId?: Prisma.SortOrder
+  sequenceId?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  validatedById?: Prisma.SortOrder
 }
 
 export type EvaluationScalarRelationFilter = {
@@ -552,6 +641,90 @@ export type EvaluationUncheckedUpdateManyWithoutPeriodNestedInput = {
   connect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
   update?: Prisma.EvaluationUpdateWithWhereUniqueWithoutPeriodInput | Prisma.EvaluationUpdateWithWhereUniqueWithoutPeriodInput[]
   updateMany?: Prisma.EvaluationUpdateManyWithWhereWithoutPeriodInput | Prisma.EvaluationUpdateManyWithWhereWithoutPeriodInput[]
+  deleteMany?: Prisma.EvaluationScalarWhereInput | Prisma.EvaluationScalarWhereInput[]
+}
+
+export type EvaluationCreateNestedManyWithoutSequenceInput = {
+  create?: Prisma.XOR<Prisma.EvaluationCreateWithoutSequenceInput, Prisma.EvaluationUncheckedCreateWithoutSequenceInput> | Prisma.EvaluationCreateWithoutSequenceInput[] | Prisma.EvaluationUncheckedCreateWithoutSequenceInput[]
+  connectOrCreate?: Prisma.EvaluationCreateOrConnectWithoutSequenceInput | Prisma.EvaluationCreateOrConnectWithoutSequenceInput[]
+  createMany?: Prisma.EvaluationCreateManySequenceInputEnvelope
+  connect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+}
+
+export type EvaluationUncheckedCreateNestedManyWithoutSequenceInput = {
+  create?: Prisma.XOR<Prisma.EvaluationCreateWithoutSequenceInput, Prisma.EvaluationUncheckedCreateWithoutSequenceInput> | Prisma.EvaluationCreateWithoutSequenceInput[] | Prisma.EvaluationUncheckedCreateWithoutSequenceInput[]
+  connectOrCreate?: Prisma.EvaluationCreateOrConnectWithoutSequenceInput | Prisma.EvaluationCreateOrConnectWithoutSequenceInput[]
+  createMany?: Prisma.EvaluationCreateManySequenceInputEnvelope
+  connect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+}
+
+export type EvaluationUpdateManyWithoutSequenceNestedInput = {
+  create?: Prisma.XOR<Prisma.EvaluationCreateWithoutSequenceInput, Prisma.EvaluationUncheckedCreateWithoutSequenceInput> | Prisma.EvaluationCreateWithoutSequenceInput[] | Prisma.EvaluationUncheckedCreateWithoutSequenceInput[]
+  connectOrCreate?: Prisma.EvaluationCreateOrConnectWithoutSequenceInput | Prisma.EvaluationCreateOrConnectWithoutSequenceInput[]
+  upsert?: Prisma.EvaluationUpsertWithWhereUniqueWithoutSequenceInput | Prisma.EvaluationUpsertWithWhereUniqueWithoutSequenceInput[]
+  createMany?: Prisma.EvaluationCreateManySequenceInputEnvelope
+  set?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  disconnect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  delete?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  connect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  update?: Prisma.EvaluationUpdateWithWhereUniqueWithoutSequenceInput | Prisma.EvaluationUpdateWithWhereUniqueWithoutSequenceInput[]
+  updateMany?: Prisma.EvaluationUpdateManyWithWhereWithoutSequenceInput | Prisma.EvaluationUpdateManyWithWhereWithoutSequenceInput[]
+  deleteMany?: Prisma.EvaluationScalarWhereInput | Prisma.EvaluationScalarWhereInput[]
+}
+
+export type EvaluationUncheckedUpdateManyWithoutSequenceNestedInput = {
+  create?: Prisma.XOR<Prisma.EvaluationCreateWithoutSequenceInput, Prisma.EvaluationUncheckedCreateWithoutSequenceInput> | Prisma.EvaluationCreateWithoutSequenceInput[] | Prisma.EvaluationUncheckedCreateWithoutSequenceInput[]
+  connectOrCreate?: Prisma.EvaluationCreateOrConnectWithoutSequenceInput | Prisma.EvaluationCreateOrConnectWithoutSequenceInput[]
+  upsert?: Prisma.EvaluationUpsertWithWhereUniqueWithoutSequenceInput | Prisma.EvaluationUpsertWithWhereUniqueWithoutSequenceInput[]
+  createMany?: Prisma.EvaluationCreateManySequenceInputEnvelope
+  set?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  disconnect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  delete?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  connect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  update?: Prisma.EvaluationUpdateWithWhereUniqueWithoutSequenceInput | Prisma.EvaluationUpdateWithWhereUniqueWithoutSequenceInput[]
+  updateMany?: Prisma.EvaluationUpdateManyWithWhereWithoutSequenceInput | Prisma.EvaluationUpdateManyWithWhereWithoutSequenceInput[]
+  deleteMany?: Prisma.EvaluationScalarWhereInput | Prisma.EvaluationScalarWhereInput[]
+}
+
+export type EvaluationCreateNestedManyWithoutValidatedByInput = {
+  create?: Prisma.XOR<Prisma.EvaluationCreateWithoutValidatedByInput, Prisma.EvaluationUncheckedCreateWithoutValidatedByInput> | Prisma.EvaluationCreateWithoutValidatedByInput[] | Prisma.EvaluationUncheckedCreateWithoutValidatedByInput[]
+  connectOrCreate?: Prisma.EvaluationCreateOrConnectWithoutValidatedByInput | Prisma.EvaluationCreateOrConnectWithoutValidatedByInput[]
+  createMany?: Prisma.EvaluationCreateManyValidatedByInputEnvelope
+  connect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+}
+
+export type EvaluationUncheckedCreateNestedManyWithoutValidatedByInput = {
+  create?: Prisma.XOR<Prisma.EvaluationCreateWithoutValidatedByInput, Prisma.EvaluationUncheckedCreateWithoutValidatedByInput> | Prisma.EvaluationCreateWithoutValidatedByInput[] | Prisma.EvaluationUncheckedCreateWithoutValidatedByInput[]
+  connectOrCreate?: Prisma.EvaluationCreateOrConnectWithoutValidatedByInput | Prisma.EvaluationCreateOrConnectWithoutValidatedByInput[]
+  createMany?: Prisma.EvaluationCreateManyValidatedByInputEnvelope
+  connect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+}
+
+export type EvaluationUpdateManyWithoutValidatedByNestedInput = {
+  create?: Prisma.XOR<Prisma.EvaluationCreateWithoutValidatedByInput, Prisma.EvaluationUncheckedCreateWithoutValidatedByInput> | Prisma.EvaluationCreateWithoutValidatedByInput[] | Prisma.EvaluationUncheckedCreateWithoutValidatedByInput[]
+  connectOrCreate?: Prisma.EvaluationCreateOrConnectWithoutValidatedByInput | Prisma.EvaluationCreateOrConnectWithoutValidatedByInput[]
+  upsert?: Prisma.EvaluationUpsertWithWhereUniqueWithoutValidatedByInput | Prisma.EvaluationUpsertWithWhereUniqueWithoutValidatedByInput[]
+  createMany?: Prisma.EvaluationCreateManyValidatedByInputEnvelope
+  set?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  disconnect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  delete?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  connect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  update?: Prisma.EvaluationUpdateWithWhereUniqueWithoutValidatedByInput | Prisma.EvaluationUpdateWithWhereUniqueWithoutValidatedByInput[]
+  updateMany?: Prisma.EvaluationUpdateManyWithWhereWithoutValidatedByInput | Prisma.EvaluationUpdateManyWithWhereWithoutValidatedByInput[]
+  deleteMany?: Prisma.EvaluationScalarWhereInput | Prisma.EvaluationScalarWhereInput[]
+}
+
+export type EvaluationUncheckedUpdateManyWithoutValidatedByNestedInput = {
+  create?: Prisma.XOR<Prisma.EvaluationCreateWithoutValidatedByInput, Prisma.EvaluationUncheckedCreateWithoutValidatedByInput> | Prisma.EvaluationCreateWithoutValidatedByInput[] | Prisma.EvaluationUncheckedCreateWithoutValidatedByInput[]
+  connectOrCreate?: Prisma.EvaluationCreateOrConnectWithoutValidatedByInput | Prisma.EvaluationCreateOrConnectWithoutValidatedByInput[]
+  upsert?: Prisma.EvaluationUpsertWithWhereUniqueWithoutValidatedByInput | Prisma.EvaluationUpsertWithWhereUniqueWithoutValidatedByInput[]
+  createMany?: Prisma.EvaluationCreateManyValidatedByInputEnvelope
+  set?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  disconnect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  delete?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  connect?: Prisma.EvaluationWhereUniqueInput | Prisma.EvaluationWhereUniqueInput[]
+  update?: Prisma.EvaluationUpdateWithWhereUniqueWithoutValidatedByInput | Prisma.EvaluationUpdateWithWhereUniqueWithoutValidatedByInput[]
+  updateMany?: Prisma.EvaluationUpdateManyWithWhereWithoutValidatedByInput | Prisma.EvaluationUpdateManyWithWhereWithoutValidatedByInput[]
   deleteMany?: Prisma.EvaluationScalarWhereInput | Prisma.EvaluationScalarWhereInput[]
 }
 
@@ -615,29 +788,51 @@ export type EvaluationUpdateOneRequiredWithoutGradesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.EvaluationUpdateToOneWithWhereWithoutGradesInput, Prisma.EvaluationUpdateWithoutGradesInput>, Prisma.EvaluationUncheckedUpdateWithoutGradesInput>
 }
 
+export type EvaluationCreateNestedOneWithoutReviewsInput = {
+  create?: Prisma.XOR<Prisma.EvaluationCreateWithoutReviewsInput, Prisma.EvaluationUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.EvaluationCreateOrConnectWithoutReviewsInput
+  connect?: Prisma.EvaluationWhereUniqueInput
+}
+
+export type EvaluationUpdateOneRequiredWithoutReviewsNestedInput = {
+  create?: Prisma.XOR<Prisma.EvaluationCreateWithoutReviewsInput, Prisma.EvaluationUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.EvaluationCreateOrConnectWithoutReviewsInput
+  upsert?: Prisma.EvaluationUpsertWithoutReviewsInput
+  connect?: Prisma.EvaluationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EvaluationUpdateToOneWithWhereWithoutReviewsInput, Prisma.EvaluationUpdateWithoutReviewsInput>, Prisma.EvaluationUncheckedUpdateWithoutReviewsInput>
+}
+
 export type EvaluationCreateWithoutPeriodInput = {
   title: string
   type: $Enums.EvaluationType
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   classSubject: Prisma.ClassSubjectCreateNestedOneWithoutEvaluationsInput
+  sequence?: Prisma.SequenceCreateNestedOneWithoutEvaluationsInput
+  validatedBy?: Prisma.UserCreateNestedOneWithoutValidatedEvaluationsInput
   grades?: Prisma.GradeCreateNestedManyWithoutEvaluationInput
+  reviews?: Prisma.EvaluationReviewCreateNestedManyWithoutEvaluationInput
 }
 
 export type EvaluationUncheckedCreateWithoutPeriodInput = {
   id?: number
   classSubjectId: number
+  sequenceId?: number | null
   title: string
   type: $Enums.EvaluationType
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
+  validatedById?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   grades?: Prisma.GradeUncheckedCreateNestedManyWithoutEvaluationInput
+  reviews?: Prisma.EvaluationReviewUncheckedCreateNestedManyWithoutEvaluationInput
 }
 
 export type EvaluationCreateOrConnectWithoutPeriodInput = {
@@ -673,13 +868,134 @@ export type EvaluationScalarWhereInput = {
   id?: Prisma.IntFilter<"Evaluation"> | number
   classSubjectId?: Prisma.IntFilter<"Evaluation"> | number
   periodId?: Prisma.IntFilter<"Evaluation"> | number
+  sequenceId?: Prisma.IntNullableFilter<"Evaluation"> | number | null
   title?: Prisma.StringFilter<"Evaluation"> | string
   type?: Prisma.EnumEvaluationTypeFilter<"Evaluation"> | $Enums.EvaluationType
   date?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   maxScore?: Prisma.FloatFilter<"Evaluation"> | number
   coefficient?: Prisma.FloatFilter<"Evaluation"> | number
+  validatedAt?: Prisma.DateTimeNullableFilter<"Evaluation"> | Date | string | null
+  validatedById?: Prisma.IntNullableFilter<"Evaluation"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
+}
+
+export type EvaluationCreateWithoutSequenceInput = {
+  title: string
+  type: $Enums.EvaluationType
+  date: Date | string
+  maxScore?: number
+  coefficient?: number
+  validatedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  classSubject: Prisma.ClassSubjectCreateNestedOneWithoutEvaluationsInput
+  period: Prisma.PeriodCreateNestedOneWithoutEvaluationsInput
+  validatedBy?: Prisma.UserCreateNestedOneWithoutValidatedEvaluationsInput
+  grades?: Prisma.GradeCreateNestedManyWithoutEvaluationInput
+  reviews?: Prisma.EvaluationReviewCreateNestedManyWithoutEvaluationInput
+}
+
+export type EvaluationUncheckedCreateWithoutSequenceInput = {
+  id?: number
+  classSubjectId: number
+  periodId: number
+  title: string
+  type: $Enums.EvaluationType
+  date: Date | string
+  maxScore?: number
+  coefficient?: number
+  validatedAt?: Date | string | null
+  validatedById?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  grades?: Prisma.GradeUncheckedCreateNestedManyWithoutEvaluationInput
+  reviews?: Prisma.EvaluationReviewUncheckedCreateNestedManyWithoutEvaluationInput
+}
+
+export type EvaluationCreateOrConnectWithoutSequenceInput = {
+  where: Prisma.EvaluationWhereUniqueInput
+  create: Prisma.XOR<Prisma.EvaluationCreateWithoutSequenceInput, Prisma.EvaluationUncheckedCreateWithoutSequenceInput>
+}
+
+export type EvaluationCreateManySequenceInputEnvelope = {
+  data: Prisma.EvaluationCreateManySequenceInput | Prisma.EvaluationCreateManySequenceInput[]
+  skipDuplicates?: boolean
+}
+
+export type EvaluationUpsertWithWhereUniqueWithoutSequenceInput = {
+  where: Prisma.EvaluationWhereUniqueInput
+  update: Prisma.XOR<Prisma.EvaluationUpdateWithoutSequenceInput, Prisma.EvaluationUncheckedUpdateWithoutSequenceInput>
+  create: Prisma.XOR<Prisma.EvaluationCreateWithoutSequenceInput, Prisma.EvaluationUncheckedCreateWithoutSequenceInput>
+}
+
+export type EvaluationUpdateWithWhereUniqueWithoutSequenceInput = {
+  where: Prisma.EvaluationWhereUniqueInput
+  data: Prisma.XOR<Prisma.EvaluationUpdateWithoutSequenceInput, Prisma.EvaluationUncheckedUpdateWithoutSequenceInput>
+}
+
+export type EvaluationUpdateManyWithWhereWithoutSequenceInput = {
+  where: Prisma.EvaluationScalarWhereInput
+  data: Prisma.XOR<Prisma.EvaluationUpdateManyMutationInput, Prisma.EvaluationUncheckedUpdateManyWithoutSequenceInput>
+}
+
+export type EvaluationCreateWithoutValidatedByInput = {
+  title: string
+  type: $Enums.EvaluationType
+  date: Date | string
+  maxScore?: number
+  coefficient?: number
+  validatedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  classSubject: Prisma.ClassSubjectCreateNestedOneWithoutEvaluationsInput
+  period: Prisma.PeriodCreateNestedOneWithoutEvaluationsInput
+  sequence?: Prisma.SequenceCreateNestedOneWithoutEvaluationsInput
+  grades?: Prisma.GradeCreateNestedManyWithoutEvaluationInput
+  reviews?: Prisma.EvaluationReviewCreateNestedManyWithoutEvaluationInput
+}
+
+export type EvaluationUncheckedCreateWithoutValidatedByInput = {
+  id?: number
+  classSubjectId: number
+  periodId: number
+  sequenceId?: number | null
+  title: string
+  type: $Enums.EvaluationType
+  date: Date | string
+  maxScore?: number
+  coefficient?: number
+  validatedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  grades?: Prisma.GradeUncheckedCreateNestedManyWithoutEvaluationInput
+  reviews?: Prisma.EvaluationReviewUncheckedCreateNestedManyWithoutEvaluationInput
+}
+
+export type EvaluationCreateOrConnectWithoutValidatedByInput = {
+  where: Prisma.EvaluationWhereUniqueInput
+  create: Prisma.XOR<Prisma.EvaluationCreateWithoutValidatedByInput, Prisma.EvaluationUncheckedCreateWithoutValidatedByInput>
+}
+
+export type EvaluationCreateManyValidatedByInputEnvelope = {
+  data: Prisma.EvaluationCreateManyValidatedByInput | Prisma.EvaluationCreateManyValidatedByInput[]
+  skipDuplicates?: boolean
+}
+
+export type EvaluationUpsertWithWhereUniqueWithoutValidatedByInput = {
+  where: Prisma.EvaluationWhereUniqueInput
+  update: Prisma.XOR<Prisma.EvaluationUpdateWithoutValidatedByInput, Prisma.EvaluationUncheckedUpdateWithoutValidatedByInput>
+  create: Prisma.XOR<Prisma.EvaluationCreateWithoutValidatedByInput, Prisma.EvaluationUncheckedCreateWithoutValidatedByInput>
+}
+
+export type EvaluationUpdateWithWhereUniqueWithoutValidatedByInput = {
+  where: Prisma.EvaluationWhereUniqueInput
+  data: Prisma.XOR<Prisma.EvaluationUpdateWithoutValidatedByInput, Prisma.EvaluationUncheckedUpdateWithoutValidatedByInput>
+}
+
+export type EvaluationUpdateManyWithWhereWithoutValidatedByInput = {
+  where: Prisma.EvaluationScalarWhereInput
+  data: Prisma.XOR<Prisma.EvaluationUpdateManyMutationInput, Prisma.EvaluationUncheckedUpdateManyWithoutValidatedByInput>
 }
 
 export type EvaluationCreateWithoutClassSubjectInput = {
@@ -688,23 +1004,31 @@ export type EvaluationCreateWithoutClassSubjectInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   period: Prisma.PeriodCreateNestedOneWithoutEvaluationsInput
+  sequence?: Prisma.SequenceCreateNestedOneWithoutEvaluationsInput
+  validatedBy?: Prisma.UserCreateNestedOneWithoutValidatedEvaluationsInput
   grades?: Prisma.GradeCreateNestedManyWithoutEvaluationInput
+  reviews?: Prisma.EvaluationReviewCreateNestedManyWithoutEvaluationInput
 }
 
 export type EvaluationUncheckedCreateWithoutClassSubjectInput = {
   id?: number
   periodId: number
+  sequenceId?: number | null
   title: string
   type: $Enums.EvaluationType
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
+  validatedById?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   grades?: Prisma.GradeUncheckedCreateNestedManyWithoutEvaluationInput
+  reviews?: Prisma.EvaluationReviewUncheckedCreateNestedManyWithoutEvaluationInput
 }
 
 export type EvaluationCreateOrConnectWithoutClassSubjectInput = {
@@ -739,23 +1063,31 @@ export type EvaluationCreateWithoutGradesInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   classSubject: Prisma.ClassSubjectCreateNestedOneWithoutEvaluationsInput
   period: Prisma.PeriodCreateNestedOneWithoutEvaluationsInput
+  sequence?: Prisma.SequenceCreateNestedOneWithoutEvaluationsInput
+  validatedBy?: Prisma.UserCreateNestedOneWithoutValidatedEvaluationsInput
+  reviews?: Prisma.EvaluationReviewCreateNestedManyWithoutEvaluationInput
 }
 
 export type EvaluationUncheckedCreateWithoutGradesInput = {
   id?: number
   classSubjectId: number
   periodId: number
+  sequenceId?: number | null
   title: string
   type: $Enums.EvaluationType
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
+  validatedById?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  reviews?: Prisma.EvaluationReviewUncheckedCreateNestedManyWithoutEvaluationInput
 }
 
 export type EvaluationCreateOrConnectWithoutGradesInput = {
@@ -780,33 +1112,126 @@ export type EvaluationUpdateWithoutGradesInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   classSubject?: Prisma.ClassSubjectUpdateOneRequiredWithoutEvaluationsNestedInput
   period?: Prisma.PeriodUpdateOneRequiredWithoutEvaluationsNestedInput
+  sequence?: Prisma.SequenceUpdateOneWithoutEvaluationsNestedInput
+  validatedBy?: Prisma.UserUpdateOneWithoutValidatedEvaluationsNestedInput
+  reviews?: Prisma.EvaluationReviewUpdateManyWithoutEvaluationNestedInput
 }
 
 export type EvaluationUncheckedUpdateWithoutGradesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   classSubjectId?: Prisma.IntFieldUpdateOperationsInput | number
   periodId?: Prisma.IntFieldUpdateOperationsInput | number
+  sequenceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reviews?: Prisma.EvaluationReviewUncheckedUpdateManyWithoutEvaluationNestedInput
 }
 
-export type EvaluationCreateManyPeriodInput = {
-  id?: number
-  classSubjectId: number
+export type EvaluationCreateWithoutReviewsInput = {
   title: string
   type: $Enums.EvaluationType
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  classSubject: Prisma.ClassSubjectCreateNestedOneWithoutEvaluationsInput
+  period: Prisma.PeriodCreateNestedOneWithoutEvaluationsInput
+  sequence?: Prisma.SequenceCreateNestedOneWithoutEvaluationsInput
+  validatedBy?: Prisma.UserCreateNestedOneWithoutValidatedEvaluationsInput
+  grades?: Prisma.GradeCreateNestedManyWithoutEvaluationInput
+}
+
+export type EvaluationUncheckedCreateWithoutReviewsInput = {
+  id?: number
+  classSubjectId: number
+  periodId: number
+  sequenceId?: number | null
+  title: string
+  type: $Enums.EvaluationType
+  date: Date | string
+  maxScore?: number
+  coefficient?: number
+  validatedAt?: Date | string | null
+  validatedById?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  grades?: Prisma.GradeUncheckedCreateNestedManyWithoutEvaluationInput
+}
+
+export type EvaluationCreateOrConnectWithoutReviewsInput = {
+  where: Prisma.EvaluationWhereUniqueInput
+  create: Prisma.XOR<Prisma.EvaluationCreateWithoutReviewsInput, Prisma.EvaluationUncheckedCreateWithoutReviewsInput>
+}
+
+export type EvaluationUpsertWithoutReviewsInput = {
+  update: Prisma.XOR<Prisma.EvaluationUpdateWithoutReviewsInput, Prisma.EvaluationUncheckedUpdateWithoutReviewsInput>
+  create: Prisma.XOR<Prisma.EvaluationCreateWithoutReviewsInput, Prisma.EvaluationUncheckedCreateWithoutReviewsInput>
+  where?: Prisma.EvaluationWhereInput
+}
+
+export type EvaluationUpdateToOneWithWhereWithoutReviewsInput = {
+  where?: Prisma.EvaluationWhereInput
+  data: Prisma.XOR<Prisma.EvaluationUpdateWithoutReviewsInput, Prisma.EvaluationUncheckedUpdateWithoutReviewsInput>
+}
+
+export type EvaluationUpdateWithoutReviewsInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  classSubject?: Prisma.ClassSubjectUpdateOneRequiredWithoutEvaluationsNestedInput
+  period?: Prisma.PeriodUpdateOneRequiredWithoutEvaluationsNestedInput
+  sequence?: Prisma.SequenceUpdateOneWithoutEvaluationsNestedInput
+  validatedBy?: Prisma.UserUpdateOneWithoutValidatedEvaluationsNestedInput
+  grades?: Prisma.GradeUpdateManyWithoutEvaluationNestedInput
+}
+
+export type EvaluationUncheckedUpdateWithoutReviewsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  classSubjectId?: Prisma.IntFieldUpdateOperationsInput | number
+  periodId?: Prisma.IntFieldUpdateOperationsInput | number
+  sequenceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  grades?: Prisma.GradeUncheckedUpdateManyWithoutEvaluationNestedInput
+}
+
+export type EvaluationCreateManyPeriodInput = {
+  id?: number
+  classSubjectId: number
+  sequenceId?: number | null
+  title: string
+  type: $Enums.EvaluationType
+  date: Date | string
+  maxScore?: number
+  coefficient?: number
+  validatedAt?: Date | string | null
+  validatedById?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -817,33 +1242,170 @@ export type EvaluationUpdateWithoutPeriodInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   classSubject?: Prisma.ClassSubjectUpdateOneRequiredWithoutEvaluationsNestedInput
+  sequence?: Prisma.SequenceUpdateOneWithoutEvaluationsNestedInput
+  validatedBy?: Prisma.UserUpdateOneWithoutValidatedEvaluationsNestedInput
   grades?: Prisma.GradeUpdateManyWithoutEvaluationNestedInput
+  reviews?: Prisma.EvaluationReviewUpdateManyWithoutEvaluationNestedInput
 }
 
 export type EvaluationUncheckedUpdateWithoutPeriodInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   classSubjectId?: Prisma.IntFieldUpdateOperationsInput | number
+  sequenceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grades?: Prisma.GradeUncheckedUpdateManyWithoutEvaluationNestedInput
+  reviews?: Prisma.EvaluationReviewUncheckedUpdateManyWithoutEvaluationNestedInput
 }
 
 export type EvaluationUncheckedUpdateManyWithoutPeriodInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   classSubjectId?: Prisma.IntFieldUpdateOperationsInput | number
+  sequenceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type EvaluationCreateManySequenceInput = {
+  id?: number
+  classSubjectId: number
+  periodId: number
+  title: string
+  type: $Enums.EvaluationType
+  date: Date | string
+  maxScore?: number
+  coefficient?: number
+  validatedAt?: Date | string | null
+  validatedById?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type EvaluationUpdateWithoutSequenceInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  classSubject?: Prisma.ClassSubjectUpdateOneRequiredWithoutEvaluationsNestedInput
+  period?: Prisma.PeriodUpdateOneRequiredWithoutEvaluationsNestedInput
+  validatedBy?: Prisma.UserUpdateOneWithoutValidatedEvaluationsNestedInput
+  grades?: Prisma.GradeUpdateManyWithoutEvaluationNestedInput
+  reviews?: Prisma.EvaluationReviewUpdateManyWithoutEvaluationNestedInput
+}
+
+export type EvaluationUncheckedUpdateWithoutSequenceInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  classSubjectId?: Prisma.IntFieldUpdateOperationsInput | number
+  periodId?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  grades?: Prisma.GradeUncheckedUpdateManyWithoutEvaluationNestedInput
+  reviews?: Prisma.EvaluationReviewUncheckedUpdateManyWithoutEvaluationNestedInput
+}
+
+export type EvaluationUncheckedUpdateManyWithoutSequenceInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  classSubjectId?: Prisma.IntFieldUpdateOperationsInput | number
+  periodId?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type EvaluationCreateManyValidatedByInput = {
+  id?: number
+  classSubjectId: number
+  periodId: number
+  sequenceId?: number | null
+  title: string
+  type: $Enums.EvaluationType
+  date: Date | string
+  maxScore?: number
+  coefficient?: number
+  validatedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type EvaluationUpdateWithoutValidatedByInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  classSubject?: Prisma.ClassSubjectUpdateOneRequiredWithoutEvaluationsNestedInput
+  period?: Prisma.PeriodUpdateOneRequiredWithoutEvaluationsNestedInput
+  sequence?: Prisma.SequenceUpdateOneWithoutEvaluationsNestedInput
+  grades?: Prisma.GradeUpdateManyWithoutEvaluationNestedInput
+  reviews?: Prisma.EvaluationReviewUpdateManyWithoutEvaluationNestedInput
+}
+
+export type EvaluationUncheckedUpdateWithoutValidatedByInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  classSubjectId?: Prisma.IntFieldUpdateOperationsInput | number
+  periodId?: Prisma.IntFieldUpdateOperationsInput | number
+  sequenceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  grades?: Prisma.GradeUncheckedUpdateManyWithoutEvaluationNestedInput
+  reviews?: Prisma.EvaluationReviewUncheckedUpdateManyWithoutEvaluationNestedInput
+}
+
+export type EvaluationUncheckedUpdateManyWithoutValidatedByInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  classSubjectId?: Prisma.IntFieldUpdateOperationsInput | number
+  periodId?: Prisma.IntFieldUpdateOperationsInput | number
+  sequenceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
+  coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -851,11 +1413,14 @@ export type EvaluationUncheckedUpdateManyWithoutPeriodInput = {
 export type EvaluationCreateManyClassSubjectInput = {
   id?: number
   periodId: number
+  sequenceId?: number | null
   title: string
   type: $Enums.EvaluationType
   date: Date | string
   maxScore?: number
   coefficient?: number
+  validatedAt?: Date | string | null
+  validatedById?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -866,33 +1431,44 @@ export type EvaluationUpdateWithoutClassSubjectInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   period?: Prisma.PeriodUpdateOneRequiredWithoutEvaluationsNestedInput
+  sequence?: Prisma.SequenceUpdateOneWithoutEvaluationsNestedInput
+  validatedBy?: Prisma.UserUpdateOneWithoutValidatedEvaluationsNestedInput
   grades?: Prisma.GradeUpdateManyWithoutEvaluationNestedInput
+  reviews?: Prisma.EvaluationReviewUpdateManyWithoutEvaluationNestedInput
 }
 
 export type EvaluationUncheckedUpdateWithoutClassSubjectInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   periodId?: Prisma.IntFieldUpdateOperationsInput | number
+  sequenceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grades?: Prisma.GradeUncheckedUpdateManyWithoutEvaluationNestedInput
+  reviews?: Prisma.EvaluationReviewUncheckedUpdateManyWithoutEvaluationNestedInput
 }
 
 export type EvaluationUncheckedUpdateManyWithoutClassSubjectInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   periodId?: Prisma.IntFieldUpdateOperationsInput | number
+  sequenceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumEvaluationTypeFieldUpdateOperationsInput | $Enums.EvaluationType
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -904,10 +1480,12 @@ export type EvaluationUncheckedUpdateManyWithoutClassSubjectInput = {
 
 export type EvaluationCountOutputType = {
   grades: number
+  reviews: number
 }
 
 export type EvaluationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   grades?: boolean | EvaluationCountOutputTypeCountGradesArgs
+  reviews?: boolean | EvaluationCountOutputTypeCountReviewsArgs
 }
 
 /**
@@ -927,21 +1505,34 @@ export type EvaluationCountOutputTypeCountGradesArgs<ExtArgs extends runtime.Typ
   where?: Prisma.GradeWhereInput
 }
 
+/**
+ * EvaluationCountOutputType without action
+ */
+export type EvaluationCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EvaluationReviewWhereInput
+}
+
 
 export type EvaluationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   classSubjectId?: boolean
   periodId?: boolean
+  sequenceId?: boolean
   title?: boolean
   type?: boolean
   date?: boolean
   maxScore?: boolean
   coefficient?: boolean
+  validatedAt?: boolean
+  validatedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   classSubject?: boolean | Prisma.ClassSubjectDefaultArgs<ExtArgs>
   period?: boolean | Prisma.PeriodDefaultArgs<ExtArgs>
+  sequence?: boolean | Prisma.Evaluation$sequenceArgs<ExtArgs>
+  validatedBy?: boolean | Prisma.Evaluation$validatedByArgs<ExtArgs>
   grades?: boolean | Prisma.Evaluation$gradesArgs<ExtArgs>
+  reviews?: boolean | Prisma.Evaluation$reviewsArgs<ExtArgs>
   _count?: boolean | Prisma.EvaluationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["evaluation"]>
 
@@ -951,20 +1542,26 @@ export type EvaluationSelectScalar = {
   id?: boolean
   classSubjectId?: boolean
   periodId?: boolean
+  sequenceId?: boolean
   title?: boolean
   type?: boolean
   date?: boolean
   maxScore?: boolean
   coefficient?: boolean
+  validatedAt?: boolean
+  validatedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type EvaluationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "classSubjectId" | "periodId" | "title" | "type" | "date" | "maxScore" | "coefficient" | "createdAt" | "updatedAt", ExtArgs["result"]["evaluation"]>
+export type EvaluationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "classSubjectId" | "periodId" | "sequenceId" | "title" | "type" | "date" | "maxScore" | "coefficient" | "validatedAt" | "validatedById" | "createdAt" | "updatedAt", ExtArgs["result"]["evaluation"]>
 export type EvaluationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   classSubject?: boolean | Prisma.ClassSubjectDefaultArgs<ExtArgs>
   period?: boolean | Prisma.PeriodDefaultArgs<ExtArgs>
+  sequence?: boolean | Prisma.Evaluation$sequenceArgs<ExtArgs>
+  validatedBy?: boolean | Prisma.Evaluation$validatedByArgs<ExtArgs>
   grades?: boolean | Prisma.Evaluation$gradesArgs<ExtArgs>
+  reviews?: boolean | Prisma.Evaluation$reviewsArgs<ExtArgs>
   _count?: boolean | Prisma.EvaluationCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -973,17 +1570,23 @@ export type $EvaluationPayload<ExtArgs extends runtime.Types.Extensions.Internal
   objects: {
     classSubject: Prisma.$ClassSubjectPayload<ExtArgs>
     period: Prisma.$PeriodPayload<ExtArgs>
+    sequence: Prisma.$SequencePayload<ExtArgs> | null
+    validatedBy: Prisma.$UserPayload<ExtArgs> | null
     grades: Prisma.$GradePayload<ExtArgs>[]
+    reviews: Prisma.$EvaluationReviewPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     classSubjectId: number
     periodId: number
+    sequenceId: number | null
     title: string
     type: $Enums.EvaluationType
     date: Date
     maxScore: number
     coefficient: number
+    validatedAt: Date | null
+    validatedById: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["evaluation"]>
@@ -1328,7 +1931,10 @@ export interface Prisma__EvaluationClient<T, Null = never, ExtArgs extends runti
   readonly [Symbol.toStringTag]: "PrismaPromise"
   classSubject<T extends Prisma.ClassSubjectDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClassSubjectDefaultArgs<ExtArgs>>): Prisma.Prisma__ClassSubjectClient<runtime.Types.Result.GetResult<Prisma.$ClassSubjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   period<T extends Prisma.PeriodDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeriodDefaultArgs<ExtArgs>>): Prisma.Prisma__PeriodClient<runtime.Types.Result.GetResult<Prisma.$PeriodPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  sequence<T extends Prisma.Evaluation$sequenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Evaluation$sequenceArgs<ExtArgs>>): Prisma.Prisma__SequenceClient<runtime.Types.Result.GetResult<Prisma.$SequencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  validatedBy<T extends Prisma.Evaluation$validatedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Evaluation$validatedByArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   grades<T extends Prisma.Evaluation$gradesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Evaluation$gradesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reviews<T extends Prisma.Evaluation$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Evaluation$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EvaluationReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1361,11 +1967,14 @@ export interface EvaluationFieldRefs {
   readonly id: Prisma.FieldRef<"Evaluation", 'Int'>
   readonly classSubjectId: Prisma.FieldRef<"Evaluation", 'Int'>
   readonly periodId: Prisma.FieldRef<"Evaluation", 'Int'>
+  readonly sequenceId: Prisma.FieldRef<"Evaluation", 'Int'>
   readonly title: Prisma.FieldRef<"Evaluation", 'String'>
   readonly type: Prisma.FieldRef<"Evaluation", 'EvaluationType'>
   readonly date: Prisma.FieldRef<"Evaluation", 'DateTime'>
   readonly maxScore: Prisma.FieldRef<"Evaluation", 'Float'>
   readonly coefficient: Prisma.FieldRef<"Evaluation", 'Float'>
+  readonly validatedAt: Prisma.FieldRef<"Evaluation", 'DateTime'>
+  readonly validatedById: Prisma.FieldRef<"Evaluation", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Evaluation", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Evaluation", 'DateTime'>
 }
@@ -1716,6 +2325,44 @@ export type EvaluationDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
+ * Evaluation.sequence
+ */
+export type Evaluation$sequenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Sequence
+   */
+  select?: Prisma.SequenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Sequence
+   */
+  omit?: Prisma.SequenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SequenceInclude<ExtArgs> | null
+  where?: Prisma.SequenceWhereInput
+}
+
+/**
+ * Evaluation.validatedBy
+ */
+export type Evaluation$validatedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
  * Evaluation.grades
  */
 export type Evaluation$gradesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1737,6 +2384,30 @@ export type Evaluation$gradesArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.GradeScalarFieldEnum | Prisma.GradeScalarFieldEnum[]
+}
+
+/**
+ * Evaluation.reviews
+ */
+export type Evaluation$reviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EvaluationReview
+   */
+  select?: Prisma.EvaluationReviewSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EvaluationReview
+   */
+  omit?: Prisma.EvaluationReviewOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EvaluationReviewInclude<ExtArgs> | null
+  where?: Prisma.EvaluationReviewWhereInput
+  orderBy?: Prisma.EvaluationReviewOrderByWithRelationInput | Prisma.EvaluationReviewOrderByWithRelationInput[]
+  cursor?: Prisma.EvaluationReviewWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EvaluationReviewScalarFieldEnum | Prisma.EvaluationReviewScalarFieldEnum[]
 }
 
 /**

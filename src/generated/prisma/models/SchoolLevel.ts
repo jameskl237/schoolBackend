@@ -229,7 +229,7 @@ export type SchoolLevelWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"SchoolLevel"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SchoolLevel"> | Date | string
   establishment?: Prisma.XOR<Prisma.EstablishmentScalarRelationFilter, Prisma.EstablishmentWhereInput>
-  cycles?: Prisma.CycleListRelationFilter
+  sections?: Prisma.SectionListRelationFilter
 }
 
 export type SchoolLevelOrderByWithRelationInput = {
@@ -240,7 +240,7 @@ export type SchoolLevelOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   establishment?: Prisma.EstablishmentOrderByWithRelationInput
-  cycles?: Prisma.CycleOrderByRelationAggregateInput
+  sections?: Prisma.SectionOrderByRelationAggregateInput
   _relevance?: Prisma.SchoolLevelOrderByRelevanceInput
 }
 
@@ -256,7 +256,7 @@ export type SchoolLevelWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"SchoolLevel"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SchoolLevel"> | Date | string
   establishment?: Prisma.XOR<Prisma.EstablishmentScalarRelationFilter, Prisma.EstablishmentWhereInput>
-  cycles?: Prisma.CycleListRelationFilter
+  sections?: Prisma.SectionListRelationFilter
 }, "id" | "establishmentId_name">
 
 export type SchoolLevelOrderByWithAggregationInput = {
@@ -291,7 +291,7 @@ export type SchoolLevelCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutSchoolLevelsInput
-  cycles?: Prisma.CycleCreateNestedManyWithoutSchoolLevelInput
+  sections?: Prisma.SectionCreateNestedManyWithoutSchoolLevelInput
 }
 
 export type SchoolLevelUncheckedCreateInput = {
@@ -301,7 +301,7 @@ export type SchoolLevelUncheckedCreateInput = {
   type: $Enums.SchoolLevelType
   createdAt?: Date | string
   updatedAt?: Date | string
-  cycles?: Prisma.CycleUncheckedCreateNestedManyWithoutSchoolLevelInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutSchoolLevelInput
 }
 
 export type SchoolLevelUpdateInput = {
@@ -310,7 +310,7 @@ export type SchoolLevelUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutSchoolLevelsNestedInput
-  cycles?: Prisma.CycleUpdateManyWithoutSchoolLevelNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutSchoolLevelNestedInput
 }
 
 export type SchoolLevelUncheckedUpdateInput = {
@@ -320,7 +320,7 @@ export type SchoolLevelUncheckedUpdateInput = {
   type?: Prisma.EnumSchoolLevelTypeFieldUpdateOperationsInput | $Enums.SchoolLevelType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  cycles?: Prisma.CycleUncheckedUpdateManyWithoutSchoolLevelNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutSchoolLevelNestedInput
 }
 
 export type SchoolLevelCreateManyInput = {
@@ -457,18 +457,18 @@ export type EnumSchoolLevelTypeFieldUpdateOperationsInput = {
   set?: $Enums.SchoolLevelType
 }
 
-export type SchoolLevelCreateNestedOneWithoutCyclesInput = {
-  create?: Prisma.XOR<Prisma.SchoolLevelCreateWithoutCyclesInput, Prisma.SchoolLevelUncheckedCreateWithoutCyclesInput>
-  connectOrCreate?: Prisma.SchoolLevelCreateOrConnectWithoutCyclesInput
+export type SchoolLevelCreateNestedOneWithoutSectionsInput = {
+  create?: Prisma.XOR<Prisma.SchoolLevelCreateWithoutSectionsInput, Prisma.SchoolLevelUncheckedCreateWithoutSectionsInput>
+  connectOrCreate?: Prisma.SchoolLevelCreateOrConnectWithoutSectionsInput
   connect?: Prisma.SchoolLevelWhereUniqueInput
 }
 
-export type SchoolLevelUpdateOneRequiredWithoutCyclesNestedInput = {
-  create?: Prisma.XOR<Prisma.SchoolLevelCreateWithoutCyclesInput, Prisma.SchoolLevelUncheckedCreateWithoutCyclesInput>
-  connectOrCreate?: Prisma.SchoolLevelCreateOrConnectWithoutCyclesInput
-  upsert?: Prisma.SchoolLevelUpsertWithoutCyclesInput
+export type SchoolLevelUpdateOneRequiredWithoutSectionsNestedInput = {
+  create?: Prisma.XOR<Prisma.SchoolLevelCreateWithoutSectionsInput, Prisma.SchoolLevelUncheckedCreateWithoutSectionsInput>
+  connectOrCreate?: Prisma.SchoolLevelCreateOrConnectWithoutSectionsInput
+  upsert?: Prisma.SchoolLevelUpsertWithoutSectionsInput
   connect?: Prisma.SchoolLevelWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.SchoolLevelUpdateToOneWithWhereWithoutCyclesInput, Prisma.SchoolLevelUpdateWithoutCyclesInput>, Prisma.SchoolLevelUncheckedUpdateWithoutCyclesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SchoolLevelUpdateToOneWithWhereWithoutSectionsInput, Prisma.SchoolLevelUpdateWithoutSectionsInput>, Prisma.SchoolLevelUncheckedUpdateWithoutSectionsInput>
 }
 
 export type SchoolLevelCreateWithoutEstablishmentInput = {
@@ -476,7 +476,7 @@ export type SchoolLevelCreateWithoutEstablishmentInput = {
   type: $Enums.SchoolLevelType
   createdAt?: Date | string
   updatedAt?: Date | string
-  cycles?: Prisma.CycleCreateNestedManyWithoutSchoolLevelInput
+  sections?: Prisma.SectionCreateNestedManyWithoutSchoolLevelInput
 }
 
 export type SchoolLevelUncheckedCreateWithoutEstablishmentInput = {
@@ -485,7 +485,7 @@ export type SchoolLevelUncheckedCreateWithoutEstablishmentInput = {
   type: $Enums.SchoolLevelType
   createdAt?: Date | string
   updatedAt?: Date | string
-  cycles?: Prisma.CycleUncheckedCreateNestedManyWithoutSchoolLevelInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutSchoolLevelInput
 }
 
 export type SchoolLevelCreateOrConnectWithoutEstablishmentInput = {
@@ -526,7 +526,7 @@ export type SchoolLevelScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"SchoolLevel"> | Date | string
 }
 
-export type SchoolLevelCreateWithoutCyclesInput = {
+export type SchoolLevelCreateWithoutSectionsInput = {
   name: string
   type: $Enums.SchoolLevelType
   createdAt?: Date | string
@@ -534,7 +534,7 @@ export type SchoolLevelCreateWithoutCyclesInput = {
   establishment: Prisma.EstablishmentCreateNestedOneWithoutSchoolLevelsInput
 }
 
-export type SchoolLevelUncheckedCreateWithoutCyclesInput = {
+export type SchoolLevelUncheckedCreateWithoutSectionsInput = {
   id?: number
   establishmentId: number
   name: string
@@ -543,23 +543,23 @@ export type SchoolLevelUncheckedCreateWithoutCyclesInput = {
   updatedAt?: Date | string
 }
 
-export type SchoolLevelCreateOrConnectWithoutCyclesInput = {
+export type SchoolLevelCreateOrConnectWithoutSectionsInput = {
   where: Prisma.SchoolLevelWhereUniqueInput
-  create: Prisma.XOR<Prisma.SchoolLevelCreateWithoutCyclesInput, Prisma.SchoolLevelUncheckedCreateWithoutCyclesInput>
+  create: Prisma.XOR<Prisma.SchoolLevelCreateWithoutSectionsInput, Prisma.SchoolLevelUncheckedCreateWithoutSectionsInput>
 }
 
-export type SchoolLevelUpsertWithoutCyclesInput = {
-  update: Prisma.XOR<Prisma.SchoolLevelUpdateWithoutCyclesInput, Prisma.SchoolLevelUncheckedUpdateWithoutCyclesInput>
-  create: Prisma.XOR<Prisma.SchoolLevelCreateWithoutCyclesInput, Prisma.SchoolLevelUncheckedCreateWithoutCyclesInput>
+export type SchoolLevelUpsertWithoutSectionsInput = {
+  update: Prisma.XOR<Prisma.SchoolLevelUpdateWithoutSectionsInput, Prisma.SchoolLevelUncheckedUpdateWithoutSectionsInput>
+  create: Prisma.XOR<Prisma.SchoolLevelCreateWithoutSectionsInput, Prisma.SchoolLevelUncheckedCreateWithoutSectionsInput>
   where?: Prisma.SchoolLevelWhereInput
 }
 
-export type SchoolLevelUpdateToOneWithWhereWithoutCyclesInput = {
+export type SchoolLevelUpdateToOneWithWhereWithoutSectionsInput = {
   where?: Prisma.SchoolLevelWhereInput
-  data: Prisma.XOR<Prisma.SchoolLevelUpdateWithoutCyclesInput, Prisma.SchoolLevelUncheckedUpdateWithoutCyclesInput>
+  data: Prisma.XOR<Prisma.SchoolLevelUpdateWithoutSectionsInput, Prisma.SchoolLevelUncheckedUpdateWithoutSectionsInput>
 }
 
-export type SchoolLevelUpdateWithoutCyclesInput = {
+export type SchoolLevelUpdateWithoutSectionsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolLevelTypeFieldUpdateOperationsInput | $Enums.SchoolLevelType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -567,7 +567,7 @@ export type SchoolLevelUpdateWithoutCyclesInput = {
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutSchoolLevelsNestedInput
 }
 
-export type SchoolLevelUncheckedUpdateWithoutCyclesInput = {
+export type SchoolLevelUncheckedUpdateWithoutSectionsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   establishmentId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -589,7 +589,7 @@ export type SchoolLevelUpdateWithoutEstablishmentInput = {
   type?: Prisma.EnumSchoolLevelTypeFieldUpdateOperationsInput | $Enums.SchoolLevelType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  cycles?: Prisma.CycleUpdateManyWithoutSchoolLevelNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutSchoolLevelNestedInput
 }
 
 export type SchoolLevelUncheckedUpdateWithoutEstablishmentInput = {
@@ -598,7 +598,7 @@ export type SchoolLevelUncheckedUpdateWithoutEstablishmentInput = {
   type?: Prisma.EnumSchoolLevelTypeFieldUpdateOperationsInput | $Enums.SchoolLevelType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  cycles?: Prisma.CycleUncheckedUpdateManyWithoutSchoolLevelNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutSchoolLevelNestedInput
 }
 
 export type SchoolLevelUncheckedUpdateManyWithoutEstablishmentInput = {
@@ -615,11 +615,11 @@ export type SchoolLevelUncheckedUpdateManyWithoutEstablishmentInput = {
  */
 
 export type SchoolLevelCountOutputType = {
-  cycles: number
+  sections: number
 }
 
 export type SchoolLevelCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  cycles?: boolean | SchoolLevelCountOutputTypeCountCyclesArgs
+  sections?: boolean | SchoolLevelCountOutputTypeCountSectionsArgs
 }
 
 /**
@@ -635,8 +635,8 @@ export type SchoolLevelCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.
 /**
  * SchoolLevelCountOutputType without action
  */
-export type SchoolLevelCountOutputTypeCountCyclesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CycleWhereInput
+export type SchoolLevelCountOutputTypeCountSectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SectionWhereInput
 }
 
 
@@ -648,7 +648,7 @@ export type SchoolLevelSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   createdAt?: boolean
   updatedAt?: boolean
   establishment?: boolean | Prisma.EstablishmentDefaultArgs<ExtArgs>
-  cycles?: boolean | Prisma.SchoolLevel$cyclesArgs<ExtArgs>
+  sections?: boolean | Prisma.SchoolLevel$sectionsArgs<ExtArgs>
   _count?: boolean | Prisma.SchoolLevelCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["schoolLevel"]>
 
@@ -666,7 +666,7 @@ export type SchoolLevelSelectScalar = {
 export type SchoolLevelOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "establishmentId" | "name" | "type" | "createdAt" | "updatedAt", ExtArgs["result"]["schoolLevel"]>
 export type SchoolLevelInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   establishment?: boolean | Prisma.EstablishmentDefaultArgs<ExtArgs>
-  cycles?: boolean | Prisma.SchoolLevel$cyclesArgs<ExtArgs>
+  sections?: boolean | Prisma.SchoolLevel$sectionsArgs<ExtArgs>
   _count?: boolean | Prisma.SchoolLevelCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -674,7 +674,7 @@ export type $SchoolLevelPayload<ExtArgs extends runtime.Types.Extensions.Interna
   name: "SchoolLevel"
   objects: {
     establishment: Prisma.$EstablishmentPayload<ExtArgs>
-    cycles: Prisma.$CyclePayload<ExtArgs>[]
+    sections: Prisma.$SectionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1024,7 +1024,7 @@ readonly fields: SchoolLevelFieldRefs;
 export interface Prisma__SchoolLevelClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   establishment<T extends Prisma.EstablishmentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EstablishmentDefaultArgs<ExtArgs>>): Prisma.Prisma__EstablishmentClient<runtime.Types.Result.GetResult<Prisma.$EstablishmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  cycles<T extends Prisma.SchoolLevel$cyclesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SchoolLevel$cyclesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CyclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sections<T extends Prisma.SchoolLevel$sectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SchoolLevel$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1408,27 +1408,27 @@ export type SchoolLevelDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.I
 }
 
 /**
- * SchoolLevel.cycles
+ * SchoolLevel.sections
  */
-export type SchoolLevel$cyclesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SchoolLevel$sectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Cycle
+   * Select specific fields to fetch from the Section
    */
-  select?: Prisma.CycleSelect<ExtArgs> | null
+  select?: Prisma.SectionSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Cycle
+   * Omit specific fields from the Section
    */
-  omit?: Prisma.CycleOmit<ExtArgs> | null
+  omit?: Prisma.SectionOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.CycleInclude<ExtArgs> | null
-  where?: Prisma.CycleWhereInput
-  orderBy?: Prisma.CycleOrderByWithRelationInput | Prisma.CycleOrderByWithRelationInput[]
-  cursor?: Prisma.CycleWhereUniqueInput
+  include?: Prisma.SectionInclude<ExtArgs> | null
+  where?: Prisma.SectionWhereInput
+  orderBy?: Prisma.SectionOrderByWithRelationInput | Prisma.SectionOrderByWithRelationInput[]
+  cursor?: Prisma.SectionWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.CycleScalarFieldEnum | Prisma.CycleScalarFieldEnum[]
+  distinct?: Prisma.SectionScalarFieldEnum | Prisma.SectionScalarFieldEnum[]
 }
 
 /**

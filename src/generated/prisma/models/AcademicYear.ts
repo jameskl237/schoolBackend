@@ -251,6 +251,7 @@ export type AcademicYearWhereInput = {
   feeStructures?: Prisma.FeeStructureListRelationFilter
   invoices?: Prisma.InvoiceListRelationFilter
   orientationRecords?: Prisma.OrientationRecordListRelationFilter
+  transportSubscriptions?: Prisma.TransportSubscriptionListRelationFilter
 }
 
 export type AcademicYearOrderByWithRelationInput = {
@@ -269,6 +270,7 @@ export type AcademicYearOrderByWithRelationInput = {
   feeStructures?: Prisma.FeeStructureOrderByRelationAggregateInput
   invoices?: Prisma.InvoiceOrderByRelationAggregateInput
   orientationRecords?: Prisma.OrientationRecordOrderByRelationAggregateInput
+  transportSubscriptions?: Prisma.TransportSubscriptionOrderByRelationAggregateInput
   _relevance?: Prisma.AcademicYearOrderByRelevanceInput
 }
 
@@ -292,6 +294,7 @@ export type AcademicYearWhereUniqueInput = Prisma.AtLeast<{
   feeStructures?: Prisma.FeeStructureListRelationFilter
   invoices?: Prisma.InvoiceListRelationFilter
   orientationRecords?: Prisma.OrientationRecordListRelationFilter
+  transportSubscriptions?: Prisma.TransportSubscriptionListRelationFilter
 }, "id" | "establishmentId_name">
 
 export type AcademicYearOrderByWithAggregationInput = {
@@ -338,6 +341,7 @@ export type AcademicYearCreateInput = {
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearUncheckedCreateInput = {
@@ -355,6 +359,7 @@ export type AcademicYearUncheckedCreateInput = {
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordUncheckedCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearUpdateInput = {
@@ -371,6 +376,7 @@ export type AcademicYearUpdateInput = {
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearUncheckedUpdateInput = {
@@ -388,6 +394,7 @@ export type AcademicYearUncheckedUpdateInput = {
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUncheckedUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearCreateManyInput = {
@@ -606,6 +613,20 @@ export type AcademicYearUpdateOneRequiredWithoutInvoicesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.AcademicYearUpdateToOneWithWhereWithoutInvoicesInput, Prisma.AcademicYearUpdateWithoutInvoicesInput>, Prisma.AcademicYearUncheckedUpdateWithoutInvoicesInput>
 }
 
+export type AcademicYearCreateNestedOneWithoutTransportSubscriptionsInput = {
+  create?: Prisma.XOR<Prisma.AcademicYearCreateWithoutTransportSubscriptionsInput, Prisma.AcademicYearUncheckedCreateWithoutTransportSubscriptionsInput>
+  connectOrCreate?: Prisma.AcademicYearCreateOrConnectWithoutTransportSubscriptionsInput
+  connect?: Prisma.AcademicYearWhereUniqueInput
+}
+
+export type AcademicYearUpdateOneRequiredWithoutTransportSubscriptionsNestedInput = {
+  create?: Prisma.XOR<Prisma.AcademicYearCreateWithoutTransportSubscriptionsInput, Prisma.AcademicYearUncheckedCreateWithoutTransportSubscriptionsInput>
+  connectOrCreate?: Prisma.AcademicYearCreateOrConnectWithoutTransportSubscriptionsInput
+  upsert?: Prisma.AcademicYearUpsertWithoutTransportSubscriptionsInput
+  connect?: Prisma.AcademicYearWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AcademicYearUpdateToOneWithWhereWithoutTransportSubscriptionsInput, Prisma.AcademicYearUpdateWithoutTransportSubscriptionsInput>, Prisma.AcademicYearUncheckedUpdateWithoutTransportSubscriptionsInput>
+}
+
 export type AcademicYearCreateNestedOneWithoutOrientationRecordsInput = {
   create?: Prisma.XOR<Prisma.AcademicYearCreateWithoutOrientationRecordsInput, Prisma.AcademicYearUncheckedCreateWithoutOrientationRecordsInput>
   connectOrCreate?: Prisma.AcademicYearCreateOrConnectWithoutOrientationRecordsInput
@@ -633,6 +654,7 @@ export type AcademicYearCreateWithoutEstablishmentInput = {
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearUncheckedCreateWithoutEstablishmentInput = {
@@ -649,6 +671,7 @@ export type AcademicYearUncheckedCreateWithoutEstablishmentInput = {
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordUncheckedCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearCreateOrConnectWithoutEstablishmentInput = {
@@ -704,6 +727,7 @@ export type AcademicYearCreateWithoutPeriodsInput = {
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearUncheckedCreateWithoutPeriodsInput = {
@@ -720,6 +744,7 @@ export type AcademicYearUncheckedCreateWithoutPeriodsInput = {
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordUncheckedCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearCreateOrConnectWithoutPeriodsInput = {
@@ -751,6 +776,7 @@ export type AcademicYearUpdateWithoutPeriodsInput = {
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearUncheckedUpdateWithoutPeriodsInput = {
@@ -767,6 +793,7 @@ export type AcademicYearUncheckedUpdateWithoutPeriodsInput = {
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUncheckedUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearCreateWithoutClassSubjectsInput = {
@@ -782,6 +809,7 @@ export type AcademicYearCreateWithoutClassSubjectsInput = {
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearUncheckedCreateWithoutClassSubjectsInput = {
@@ -798,6 +826,7 @@ export type AcademicYearUncheckedCreateWithoutClassSubjectsInput = {
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordUncheckedCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearCreateOrConnectWithoutClassSubjectsInput = {
@@ -829,6 +858,7 @@ export type AcademicYearUpdateWithoutClassSubjectsInput = {
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearUncheckedUpdateWithoutClassSubjectsInput = {
@@ -845,6 +875,7 @@ export type AcademicYearUncheckedUpdateWithoutClassSubjectsInput = {
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUncheckedUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearCreateWithoutEnrollmentsInput = {
@@ -860,6 +891,7 @@ export type AcademicYearCreateWithoutEnrollmentsInput = {
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearUncheckedCreateWithoutEnrollmentsInput = {
@@ -876,6 +908,7 @@ export type AcademicYearUncheckedCreateWithoutEnrollmentsInput = {
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordUncheckedCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearCreateOrConnectWithoutEnrollmentsInput = {
@@ -907,6 +940,7 @@ export type AcademicYearUpdateWithoutEnrollmentsInput = {
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearUncheckedUpdateWithoutEnrollmentsInput = {
@@ -923,6 +957,7 @@ export type AcademicYearUncheckedUpdateWithoutEnrollmentsInput = {
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUncheckedUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearCreateWithoutFeeStructuresInput = {
@@ -938,6 +973,7 @@ export type AcademicYearCreateWithoutFeeStructuresInput = {
   classSubjects?: Prisma.ClassSubjectCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearUncheckedCreateWithoutFeeStructuresInput = {
@@ -954,6 +990,7 @@ export type AcademicYearUncheckedCreateWithoutFeeStructuresInput = {
   classSubjects?: Prisma.ClassSubjectUncheckedCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordUncheckedCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearCreateOrConnectWithoutFeeStructuresInput = {
@@ -985,6 +1022,7 @@ export type AcademicYearUpdateWithoutFeeStructuresInput = {
   classSubjects?: Prisma.ClassSubjectUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearUncheckedUpdateWithoutFeeStructuresInput = {
@@ -1001,6 +1039,7 @@ export type AcademicYearUncheckedUpdateWithoutFeeStructuresInput = {
   classSubjects?: Prisma.ClassSubjectUncheckedUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUncheckedUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearCreateWithoutInvoicesInput = {
@@ -1016,6 +1055,7 @@ export type AcademicYearCreateWithoutInvoicesInput = {
   classSubjects?: Prisma.ClassSubjectCreateNestedManyWithoutAcademicYearInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearUncheckedCreateWithoutInvoicesInput = {
@@ -1032,6 +1072,7 @@ export type AcademicYearUncheckedCreateWithoutInvoicesInput = {
   classSubjects?: Prisma.ClassSubjectUncheckedCreateNestedManyWithoutAcademicYearInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutAcademicYearInput
   orientationRecords?: Prisma.OrientationRecordUncheckedCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearCreateOrConnectWithoutInvoicesInput = {
@@ -1063,6 +1104,7 @@ export type AcademicYearUpdateWithoutInvoicesInput = {
   classSubjects?: Prisma.ClassSubjectUpdateManyWithoutAcademicYearNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearUncheckedUpdateWithoutInvoicesInput = {
@@ -1079,6 +1121,89 @@ export type AcademicYearUncheckedUpdateWithoutInvoicesInput = {
   classSubjects?: Prisma.ClassSubjectUncheckedUpdateManyWithoutAcademicYearNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUncheckedUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedUpdateManyWithoutAcademicYearNestedInput
+}
+
+export type AcademicYearCreateWithoutTransportSubscriptionsInput = {
+  name: string
+  startDate: Date | string
+  endDate: Date | string
+  isCurrent?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  establishment: Prisma.EstablishmentCreateNestedOneWithoutAcademicYearsInput
+  periods?: Prisma.PeriodCreateNestedManyWithoutAcademicYearInput
+  enrollments?: Prisma.EnrollmentCreateNestedManyWithoutAcademicYearInput
+  classSubjects?: Prisma.ClassSubjectCreateNestedManyWithoutAcademicYearInput
+  feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutAcademicYearInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutAcademicYearInput
+  orientationRecords?: Prisma.OrientationRecordCreateNestedManyWithoutAcademicYearInput
+}
+
+export type AcademicYearUncheckedCreateWithoutTransportSubscriptionsInput = {
+  id?: number
+  establishmentId: number
+  name: string
+  startDate: Date | string
+  endDate: Date | string
+  isCurrent?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  periods?: Prisma.PeriodUncheckedCreateNestedManyWithoutAcademicYearInput
+  enrollments?: Prisma.EnrollmentUncheckedCreateNestedManyWithoutAcademicYearInput
+  classSubjects?: Prisma.ClassSubjectUncheckedCreateNestedManyWithoutAcademicYearInput
+  feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutAcademicYearInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutAcademicYearInput
+  orientationRecords?: Prisma.OrientationRecordUncheckedCreateNestedManyWithoutAcademicYearInput
+}
+
+export type AcademicYearCreateOrConnectWithoutTransportSubscriptionsInput = {
+  where: Prisma.AcademicYearWhereUniqueInput
+  create: Prisma.XOR<Prisma.AcademicYearCreateWithoutTransportSubscriptionsInput, Prisma.AcademicYearUncheckedCreateWithoutTransportSubscriptionsInput>
+}
+
+export type AcademicYearUpsertWithoutTransportSubscriptionsInput = {
+  update: Prisma.XOR<Prisma.AcademicYearUpdateWithoutTransportSubscriptionsInput, Prisma.AcademicYearUncheckedUpdateWithoutTransportSubscriptionsInput>
+  create: Prisma.XOR<Prisma.AcademicYearCreateWithoutTransportSubscriptionsInput, Prisma.AcademicYearUncheckedCreateWithoutTransportSubscriptionsInput>
+  where?: Prisma.AcademicYearWhereInput
+}
+
+export type AcademicYearUpdateToOneWithWhereWithoutTransportSubscriptionsInput = {
+  where?: Prisma.AcademicYearWhereInput
+  data: Prisma.XOR<Prisma.AcademicYearUpdateWithoutTransportSubscriptionsInput, Prisma.AcademicYearUncheckedUpdateWithoutTransportSubscriptionsInput>
+}
+
+export type AcademicYearUpdateWithoutTransportSubscriptionsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutAcademicYearsNestedInput
+  periods?: Prisma.PeriodUpdateManyWithoutAcademicYearNestedInput
+  enrollments?: Prisma.EnrollmentUpdateManyWithoutAcademicYearNestedInput
+  classSubjects?: Prisma.ClassSubjectUpdateManyWithoutAcademicYearNestedInput
+  feeStructures?: Prisma.FeeStructureUpdateManyWithoutAcademicYearNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutAcademicYearNestedInput
+  orientationRecords?: Prisma.OrientationRecordUpdateManyWithoutAcademicYearNestedInput
+}
+
+export type AcademicYearUncheckedUpdateWithoutTransportSubscriptionsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  establishmentId?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  periods?: Prisma.PeriodUncheckedUpdateManyWithoutAcademicYearNestedInput
+  enrollments?: Prisma.EnrollmentUncheckedUpdateManyWithoutAcademicYearNestedInput
+  classSubjects?: Prisma.ClassSubjectUncheckedUpdateManyWithoutAcademicYearNestedInput
+  feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutAcademicYearNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutAcademicYearNestedInput
+  orientationRecords?: Prisma.OrientationRecordUncheckedUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearCreateWithoutOrientationRecordsInput = {
@@ -1094,6 +1219,7 @@ export type AcademicYearCreateWithoutOrientationRecordsInput = {
   classSubjects?: Prisma.ClassSubjectCreateNestedManyWithoutAcademicYearInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearUncheckedCreateWithoutOrientationRecordsInput = {
@@ -1110,6 +1236,7 @@ export type AcademicYearUncheckedCreateWithoutOrientationRecordsInput = {
   classSubjects?: Prisma.ClassSubjectUncheckedCreateNestedManyWithoutAcademicYearInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutAcademicYearInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutAcademicYearInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedCreateNestedManyWithoutAcademicYearInput
 }
 
 export type AcademicYearCreateOrConnectWithoutOrientationRecordsInput = {
@@ -1141,6 +1268,7 @@ export type AcademicYearUpdateWithoutOrientationRecordsInput = {
   classSubjects?: Prisma.ClassSubjectUpdateManyWithoutAcademicYearNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearUncheckedUpdateWithoutOrientationRecordsInput = {
@@ -1157,6 +1285,7 @@ export type AcademicYearUncheckedUpdateWithoutOrientationRecordsInput = {
   classSubjects?: Prisma.ClassSubjectUncheckedUpdateManyWithoutAcademicYearNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearCreateManyEstablishmentInput = {
@@ -1182,6 +1311,7 @@ export type AcademicYearUpdateWithoutEstablishmentInput = {
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearUncheckedUpdateWithoutEstablishmentInput = {
@@ -1198,6 +1328,7 @@ export type AcademicYearUncheckedUpdateWithoutEstablishmentInput = {
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutAcademicYearNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutAcademicYearNestedInput
   orientationRecords?: Prisma.OrientationRecordUncheckedUpdateManyWithoutAcademicYearNestedInput
+  transportSubscriptions?: Prisma.TransportSubscriptionUncheckedUpdateManyWithoutAcademicYearNestedInput
 }
 
 export type AcademicYearUncheckedUpdateManyWithoutEstablishmentInput = {
@@ -1222,6 +1353,7 @@ export type AcademicYearCountOutputType = {
   feeStructures: number
   invoices: number
   orientationRecords: number
+  transportSubscriptions: number
 }
 
 export type AcademicYearCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1231,6 +1363,7 @@ export type AcademicYearCountOutputTypeSelect<ExtArgs extends runtime.Types.Exte
   feeStructures?: boolean | AcademicYearCountOutputTypeCountFeeStructuresArgs
   invoices?: boolean | AcademicYearCountOutputTypeCountInvoicesArgs
   orientationRecords?: boolean | AcademicYearCountOutputTypeCountOrientationRecordsArgs
+  transportSubscriptions?: boolean | AcademicYearCountOutputTypeCountTransportSubscriptionsArgs
 }
 
 /**
@@ -1285,6 +1418,13 @@ export type AcademicYearCountOutputTypeCountOrientationRecordsArgs<ExtArgs exten
   where?: Prisma.OrientationRecordWhereInput
 }
 
+/**
+ * AcademicYearCountOutputType without action
+ */
+export type AcademicYearCountOutputTypeCountTransportSubscriptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TransportSubscriptionWhereInput
+}
+
 
 export type AcademicYearSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1302,6 +1442,7 @@ export type AcademicYearSelect<ExtArgs extends runtime.Types.Extensions.Internal
   feeStructures?: boolean | Prisma.AcademicYear$feeStructuresArgs<ExtArgs>
   invoices?: boolean | Prisma.AcademicYear$invoicesArgs<ExtArgs>
   orientationRecords?: boolean | Prisma.AcademicYear$orientationRecordsArgs<ExtArgs>
+  transportSubscriptions?: boolean | Prisma.AcademicYear$transportSubscriptionsArgs<ExtArgs>
   _count?: boolean | Prisma.AcademicYearCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["academicYear"]>
 
@@ -1327,6 +1468,7 @@ export type AcademicYearInclude<ExtArgs extends runtime.Types.Extensions.Interna
   feeStructures?: boolean | Prisma.AcademicYear$feeStructuresArgs<ExtArgs>
   invoices?: boolean | Prisma.AcademicYear$invoicesArgs<ExtArgs>
   orientationRecords?: boolean | Prisma.AcademicYear$orientationRecordsArgs<ExtArgs>
+  transportSubscriptions?: boolean | Prisma.AcademicYear$transportSubscriptionsArgs<ExtArgs>
   _count?: boolean | Prisma.AcademicYearCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1340,6 +1482,7 @@ export type $AcademicYearPayload<ExtArgs extends runtime.Types.Extensions.Intern
     feeStructures: Prisma.$FeeStructurePayload<ExtArgs>[]
     invoices: Prisma.$InvoicePayload<ExtArgs>[]
     orientationRecords: Prisma.$OrientationRecordPayload<ExtArgs>[]
+    transportSubscriptions: Prisma.$TransportSubscriptionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1697,6 +1840,7 @@ export interface Prisma__AcademicYearClient<T, Null = never, ExtArgs extends run
   feeStructures<T extends Prisma.AcademicYear$feeStructuresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AcademicYear$feeStructuresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeeStructurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invoices<T extends Prisma.AcademicYear$invoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AcademicYear$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   orientationRecords<T extends Prisma.AcademicYear$orientationRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AcademicYear$orientationRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrientationRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  transportSubscriptions<T extends Prisma.AcademicYear$transportSubscriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AcademicYear$transportSubscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransportSubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2223,6 +2367,30 @@ export type AcademicYear$orientationRecordsArgs<ExtArgs extends runtime.Types.Ex
   take?: number
   skip?: number
   distinct?: Prisma.OrientationRecordScalarFieldEnum | Prisma.OrientationRecordScalarFieldEnum[]
+}
+
+/**
+ * AcademicYear.transportSubscriptions
+ */
+export type AcademicYear$transportSubscriptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TransportSubscription
+   */
+  select?: Prisma.TransportSubscriptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TransportSubscription
+   */
+  omit?: Prisma.TransportSubscriptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TransportSubscriptionInclude<ExtArgs> | null
+  where?: Prisma.TransportSubscriptionWhereInput
+  orderBy?: Prisma.TransportSubscriptionOrderByWithRelationInput | Prisma.TransportSubscriptionOrderByWithRelationInput[]
+  cursor?: Prisma.TransportSubscriptionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TransportSubscriptionScalarFieldEnum | Prisma.TransportSubscriptionScalarFieldEnum[]
 }
 
 /**

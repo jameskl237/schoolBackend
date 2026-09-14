@@ -231,6 +231,7 @@ export type FeeTypeWhereInput = {
   establishment?: Prisma.XOR<Prisma.EstablishmentScalarRelationFilter, Prisma.EstablishmentWhereInput>
   feeStructures?: Prisma.FeeStructureListRelationFilter
   invoiceLines?: Prisma.InvoiceLineListRelationFilter
+  transportRoutes?: Prisma.TransportRouteListRelationFilter
 }
 
 export type FeeTypeOrderByWithRelationInput = {
@@ -243,6 +244,7 @@ export type FeeTypeOrderByWithRelationInput = {
   establishment?: Prisma.EstablishmentOrderByWithRelationInput
   feeStructures?: Prisma.FeeStructureOrderByRelationAggregateInput
   invoiceLines?: Prisma.InvoiceLineOrderByRelationAggregateInput
+  transportRoutes?: Prisma.TransportRouteOrderByRelationAggregateInput
   _relevance?: Prisma.FeeTypeOrderByRelevanceInput
 }
 
@@ -260,6 +262,7 @@ export type FeeTypeWhereUniqueInput = Prisma.AtLeast<{
   establishment?: Prisma.XOR<Prisma.EstablishmentScalarRelationFilter, Prisma.EstablishmentWhereInput>
   feeStructures?: Prisma.FeeStructureListRelationFilter
   invoiceLines?: Prisma.InvoiceLineListRelationFilter
+  transportRoutes?: Prisma.TransportRouteListRelationFilter
 }, "id" | "establishmentId_name">
 
 export type FeeTypeOrderByWithAggregationInput = {
@@ -296,6 +299,7 @@ export type FeeTypeCreateInput = {
   establishment: Prisma.EstablishmentCreateNestedOneWithoutFeeTypesInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutFeeTypeInput
   invoiceLines?: Prisma.InvoiceLineCreateNestedManyWithoutFeeTypeInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutFeeTypeInput
 }
 
 export type FeeTypeUncheckedCreateInput = {
@@ -307,6 +311,7 @@ export type FeeTypeUncheckedCreateInput = {
   updatedAt?: Date | string
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutFeeTypeInput
   invoiceLines?: Prisma.InvoiceLineUncheckedCreateNestedManyWithoutFeeTypeInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutFeeTypeInput
 }
 
 export type FeeTypeUpdateInput = {
@@ -317,6 +322,7 @@ export type FeeTypeUpdateInput = {
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutFeeTypesNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutFeeTypeNestedInput
   invoiceLines?: Prisma.InvoiceLineUpdateManyWithoutFeeTypeNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutFeeTypeNestedInput
 }
 
 export type FeeTypeUncheckedUpdateInput = {
@@ -328,6 +334,7 @@ export type FeeTypeUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutFeeTypeNestedInput
   invoiceLines?: Prisma.InvoiceLineUncheckedUpdateManyWithoutFeeTypeNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutFeeTypeNestedInput
 }
 
 export type FeeTypeCreateManyInput = {
@@ -418,6 +425,11 @@ export type FeeTypeScalarRelationFilter = {
   isNot?: Prisma.FeeTypeWhereInput
 }
 
+export type FeeTypeNullableScalarRelationFilter = {
+  is?: Prisma.FeeTypeWhereInput | null
+  isNot?: Prisma.FeeTypeWhereInput | null
+}
+
 export type FeeTypeCreateNestedManyWithoutEstablishmentInput = {
   create?: Prisma.XOR<Prisma.FeeTypeCreateWithoutEstablishmentInput, Prisma.FeeTypeUncheckedCreateWithoutEstablishmentInput> | Prisma.FeeTypeCreateWithoutEstablishmentInput[] | Prisma.FeeTypeUncheckedCreateWithoutEstablishmentInput[]
   connectOrCreate?: Prisma.FeeTypeCreateOrConnectWithoutEstablishmentInput | Prisma.FeeTypeCreateOrConnectWithoutEstablishmentInput[]
@@ -488,6 +500,22 @@ export type FeeTypeUpdateOneRequiredWithoutInvoiceLinesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.FeeTypeUpdateToOneWithWhereWithoutInvoiceLinesInput, Prisma.FeeTypeUpdateWithoutInvoiceLinesInput>, Prisma.FeeTypeUncheckedUpdateWithoutInvoiceLinesInput>
 }
 
+export type FeeTypeCreateNestedOneWithoutTransportRoutesInput = {
+  create?: Prisma.XOR<Prisma.FeeTypeCreateWithoutTransportRoutesInput, Prisma.FeeTypeUncheckedCreateWithoutTransportRoutesInput>
+  connectOrCreate?: Prisma.FeeTypeCreateOrConnectWithoutTransportRoutesInput
+  connect?: Prisma.FeeTypeWhereUniqueInput
+}
+
+export type FeeTypeUpdateOneWithoutTransportRoutesNestedInput = {
+  create?: Prisma.XOR<Prisma.FeeTypeCreateWithoutTransportRoutesInput, Prisma.FeeTypeUncheckedCreateWithoutTransportRoutesInput>
+  connectOrCreate?: Prisma.FeeTypeCreateOrConnectWithoutTransportRoutesInput
+  upsert?: Prisma.FeeTypeUpsertWithoutTransportRoutesInput
+  disconnect?: Prisma.FeeTypeWhereInput | boolean
+  delete?: Prisma.FeeTypeWhereInput | boolean
+  connect?: Prisma.FeeTypeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FeeTypeUpdateToOneWithWhereWithoutTransportRoutesInput, Prisma.FeeTypeUpdateWithoutTransportRoutesInput>, Prisma.FeeTypeUncheckedUpdateWithoutTransportRoutesInput>
+}
+
 export type FeeTypeCreateWithoutEstablishmentInput = {
   name: string
   description?: string | null
@@ -495,6 +523,7 @@ export type FeeTypeCreateWithoutEstablishmentInput = {
   updatedAt?: Date | string
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutFeeTypeInput
   invoiceLines?: Prisma.InvoiceLineCreateNestedManyWithoutFeeTypeInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutFeeTypeInput
 }
 
 export type FeeTypeUncheckedCreateWithoutEstablishmentInput = {
@@ -505,6 +534,7 @@ export type FeeTypeUncheckedCreateWithoutEstablishmentInput = {
   updatedAt?: Date | string
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutFeeTypeInput
   invoiceLines?: Prisma.InvoiceLineUncheckedCreateNestedManyWithoutFeeTypeInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutFeeTypeInput
 }
 
 export type FeeTypeCreateOrConnectWithoutEstablishmentInput = {
@@ -552,6 +582,7 @@ export type FeeTypeCreateWithoutFeeStructuresInput = {
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutFeeTypesInput
   invoiceLines?: Prisma.InvoiceLineCreateNestedManyWithoutFeeTypeInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutFeeTypeInput
 }
 
 export type FeeTypeUncheckedCreateWithoutFeeStructuresInput = {
@@ -562,6 +593,7 @@ export type FeeTypeUncheckedCreateWithoutFeeStructuresInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   invoiceLines?: Prisma.InvoiceLineUncheckedCreateNestedManyWithoutFeeTypeInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutFeeTypeInput
 }
 
 export type FeeTypeCreateOrConnectWithoutFeeStructuresInput = {
@@ -587,6 +619,7 @@ export type FeeTypeUpdateWithoutFeeStructuresInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutFeeTypesNestedInput
   invoiceLines?: Prisma.InvoiceLineUpdateManyWithoutFeeTypeNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutFeeTypeNestedInput
 }
 
 export type FeeTypeUncheckedUpdateWithoutFeeStructuresInput = {
@@ -597,6 +630,7 @@ export type FeeTypeUncheckedUpdateWithoutFeeStructuresInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   invoiceLines?: Prisma.InvoiceLineUncheckedUpdateManyWithoutFeeTypeNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutFeeTypeNestedInput
 }
 
 export type FeeTypeCreateWithoutInvoiceLinesInput = {
@@ -606,6 +640,7 @@ export type FeeTypeCreateWithoutInvoiceLinesInput = {
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutFeeTypesInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutFeeTypeInput
+  transportRoutes?: Prisma.TransportRouteCreateNestedManyWithoutFeeTypeInput
 }
 
 export type FeeTypeUncheckedCreateWithoutInvoiceLinesInput = {
@@ -616,6 +651,7 @@ export type FeeTypeUncheckedCreateWithoutInvoiceLinesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutFeeTypeInput
+  transportRoutes?: Prisma.TransportRouteUncheckedCreateNestedManyWithoutFeeTypeInput
 }
 
 export type FeeTypeCreateOrConnectWithoutInvoiceLinesInput = {
@@ -641,6 +677,7 @@ export type FeeTypeUpdateWithoutInvoiceLinesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutFeeTypesNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutFeeTypeNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutFeeTypeNestedInput
 }
 
 export type FeeTypeUncheckedUpdateWithoutInvoiceLinesInput = {
@@ -651,6 +688,65 @@ export type FeeTypeUncheckedUpdateWithoutInvoiceLinesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutFeeTypeNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutFeeTypeNestedInput
+}
+
+export type FeeTypeCreateWithoutTransportRoutesInput = {
+  name: string
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  establishment: Prisma.EstablishmentCreateNestedOneWithoutFeeTypesInput
+  feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutFeeTypeInput
+  invoiceLines?: Prisma.InvoiceLineCreateNestedManyWithoutFeeTypeInput
+}
+
+export type FeeTypeUncheckedCreateWithoutTransportRoutesInput = {
+  id?: number
+  establishmentId: number
+  name: string
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutFeeTypeInput
+  invoiceLines?: Prisma.InvoiceLineUncheckedCreateNestedManyWithoutFeeTypeInput
+}
+
+export type FeeTypeCreateOrConnectWithoutTransportRoutesInput = {
+  where: Prisma.FeeTypeWhereUniqueInput
+  create: Prisma.XOR<Prisma.FeeTypeCreateWithoutTransportRoutesInput, Prisma.FeeTypeUncheckedCreateWithoutTransportRoutesInput>
+}
+
+export type FeeTypeUpsertWithoutTransportRoutesInput = {
+  update: Prisma.XOR<Prisma.FeeTypeUpdateWithoutTransportRoutesInput, Prisma.FeeTypeUncheckedUpdateWithoutTransportRoutesInput>
+  create: Prisma.XOR<Prisma.FeeTypeCreateWithoutTransportRoutesInput, Prisma.FeeTypeUncheckedCreateWithoutTransportRoutesInput>
+  where?: Prisma.FeeTypeWhereInput
+}
+
+export type FeeTypeUpdateToOneWithWhereWithoutTransportRoutesInput = {
+  where?: Prisma.FeeTypeWhereInput
+  data: Prisma.XOR<Prisma.FeeTypeUpdateWithoutTransportRoutesInput, Prisma.FeeTypeUncheckedUpdateWithoutTransportRoutesInput>
+}
+
+export type FeeTypeUpdateWithoutTransportRoutesInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutFeeTypesNestedInput
+  feeStructures?: Prisma.FeeStructureUpdateManyWithoutFeeTypeNestedInput
+  invoiceLines?: Prisma.InvoiceLineUpdateManyWithoutFeeTypeNestedInput
+}
+
+export type FeeTypeUncheckedUpdateWithoutTransportRoutesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  establishmentId?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutFeeTypeNestedInput
+  invoiceLines?: Prisma.InvoiceLineUncheckedUpdateManyWithoutFeeTypeNestedInput
 }
 
 export type FeeTypeCreateManyEstablishmentInput = {
@@ -668,6 +764,7 @@ export type FeeTypeUpdateWithoutEstablishmentInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutFeeTypeNestedInput
   invoiceLines?: Prisma.InvoiceLineUpdateManyWithoutFeeTypeNestedInput
+  transportRoutes?: Prisma.TransportRouteUpdateManyWithoutFeeTypeNestedInput
 }
 
 export type FeeTypeUncheckedUpdateWithoutEstablishmentInput = {
@@ -678,6 +775,7 @@ export type FeeTypeUncheckedUpdateWithoutEstablishmentInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutFeeTypeNestedInput
   invoiceLines?: Prisma.InvoiceLineUncheckedUpdateManyWithoutFeeTypeNestedInput
+  transportRoutes?: Prisma.TransportRouteUncheckedUpdateManyWithoutFeeTypeNestedInput
 }
 
 export type FeeTypeUncheckedUpdateManyWithoutEstablishmentInput = {
@@ -696,11 +794,13 @@ export type FeeTypeUncheckedUpdateManyWithoutEstablishmentInput = {
 export type FeeTypeCountOutputType = {
   feeStructures: number
   invoiceLines: number
+  transportRoutes: number
 }
 
 export type FeeTypeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   feeStructures?: boolean | FeeTypeCountOutputTypeCountFeeStructuresArgs
   invoiceLines?: boolean | FeeTypeCountOutputTypeCountInvoiceLinesArgs
+  transportRoutes?: boolean | FeeTypeCountOutputTypeCountTransportRoutesArgs
 }
 
 /**
@@ -727,6 +827,13 @@ export type FeeTypeCountOutputTypeCountInvoiceLinesArgs<ExtArgs extends runtime.
   where?: Prisma.InvoiceLineWhereInput
 }
 
+/**
+ * FeeTypeCountOutputType without action
+ */
+export type FeeTypeCountOutputTypeCountTransportRoutesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TransportRouteWhereInput
+}
+
 
 export type FeeTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -738,6 +845,7 @@ export type FeeTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   establishment?: boolean | Prisma.EstablishmentDefaultArgs<ExtArgs>
   feeStructures?: boolean | Prisma.FeeType$feeStructuresArgs<ExtArgs>
   invoiceLines?: boolean | Prisma.FeeType$invoiceLinesArgs<ExtArgs>
+  transportRoutes?: boolean | Prisma.FeeType$transportRoutesArgs<ExtArgs>
   _count?: boolean | Prisma.FeeTypeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["feeType"]>
 
@@ -757,6 +865,7 @@ export type FeeTypeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   establishment?: boolean | Prisma.EstablishmentDefaultArgs<ExtArgs>
   feeStructures?: boolean | Prisma.FeeType$feeStructuresArgs<ExtArgs>
   invoiceLines?: boolean | Prisma.FeeType$invoiceLinesArgs<ExtArgs>
+  transportRoutes?: boolean | Prisma.FeeType$transportRoutesArgs<ExtArgs>
   _count?: boolean | Prisma.FeeTypeCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -766,6 +875,7 @@ export type $FeeTypePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     establishment: Prisma.$EstablishmentPayload<ExtArgs>
     feeStructures: Prisma.$FeeStructurePayload<ExtArgs>[]
     invoiceLines: Prisma.$InvoiceLinePayload<ExtArgs>[]
+    transportRoutes: Prisma.$TransportRoutePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1117,6 +1227,7 @@ export interface Prisma__FeeTypeClient<T, Null = never, ExtArgs extends runtime.
   establishment<T extends Prisma.EstablishmentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EstablishmentDefaultArgs<ExtArgs>>): Prisma.Prisma__EstablishmentClient<runtime.Types.Result.GetResult<Prisma.$EstablishmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   feeStructures<T extends Prisma.FeeType$feeStructuresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FeeType$feeStructuresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeeStructurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invoiceLines<T extends Prisma.FeeType$invoiceLinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FeeType$invoiceLinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvoiceLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  transportRoutes<T extends Prisma.FeeType$transportRoutesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FeeType$transportRoutesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransportRoutePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1545,6 +1656,30 @@ export type FeeType$invoiceLinesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.InvoiceLineScalarFieldEnum | Prisma.InvoiceLineScalarFieldEnum[]
+}
+
+/**
+ * FeeType.transportRoutes
+ */
+export type FeeType$transportRoutesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TransportRoute
+   */
+  select?: Prisma.TransportRouteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TransportRoute
+   */
+  omit?: Prisma.TransportRouteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TransportRouteInclude<ExtArgs> | null
+  where?: Prisma.TransportRouteWhereInput
+  orderBy?: Prisma.TransportRouteOrderByWithRelationInput | Prisma.TransportRouteOrderByWithRelationInput[]
+  cursor?: Prisma.TransportRouteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TransportRouteScalarFieldEnum | Prisma.TransportRouteScalarFieldEnum[]
 }
 
 /**

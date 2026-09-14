@@ -36,6 +36,14 @@ export const SchoolLevelType = {
 export type SchoolLevelType = (typeof SchoolLevelType)[keyof typeof SchoolLevelType]
 
 
+export const SectionLanguage = {
+  FRANCOPHONE: 'FRANCOPHONE',
+  ANGLOPHONE: 'ANGLOPHONE'
+} as const
+
+export type SectionLanguage = (typeof SectionLanguage)[keyof typeof SectionLanguage]
+
+
 export const DayOfWeek = {
   MONDAY: 'MONDAY',
   TUESDAY: 'TUESDAY',
@@ -73,6 +81,7 @@ export type GuardianRelationType = (typeof GuardianRelationType)[keyof typeof Gu
 
 
 export const EnrollmentStatus = {
+  PENDING: 'PENDING',
   ACTIVE: 'ACTIVE',
   TRANSFERRED: 'TRANSFERRED',
   WITHDRAWN: 'WITHDRAWN',
@@ -91,6 +100,25 @@ export const EvaluationType = {
 } as const
 
 export type EvaluationType = (typeof EvaluationType)[keyof typeof EvaluationType]
+
+
+export const ReviewDecision = {
+  APPROVED: 'APPROVED',
+  CHANGES_REQUESTED: 'CHANGES_REQUESTED'
+} as const
+
+export type ReviewDecision = (typeof ReviewDecision)[keyof typeof ReviewDecision]
+
+
+export const NotificationType = {
+  GENERAL: 'GENERAL',
+  EVALUATION_REVIEW: 'EVALUATION_REVIEW',
+  DISCIPLINE: 'DISCIPLINE',
+  REPORT_CARD: 'REPORT_CARD',
+  CONVOCATION: 'CONVOCATION'
+} as const
+
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
 
 
 export const AttendanceStatus = {
@@ -134,6 +162,16 @@ export const PaymentMethod = {
 } as const
 
 export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const TransportSubscriptionStatus = {
+  PENDING: 'PENDING',
+  ACTIVE: 'ACTIVE',
+  SUSPENDED: 'SUSPENDED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type TransportSubscriptionStatus = (typeof TransportSubscriptionStatus)[keyof typeof TransportSubscriptionStatus]
 
 
 export const BookCopyStatus = {

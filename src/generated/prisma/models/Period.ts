@@ -249,6 +249,7 @@ export type PeriodWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Period"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Period"> | Date | string
   academicYear?: Prisma.XOR<Prisma.AcademicYearScalarRelationFilter, Prisma.AcademicYearWhereInput>
+  sequences?: Prisma.SequenceListRelationFilter
   evaluations?: Prisma.EvaluationListRelationFilter
   reportCards?: Prisma.ReportCardListRelationFilter
 }
@@ -263,6 +264,7 @@ export type PeriodOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   academicYear?: Prisma.AcademicYearOrderByWithRelationInput
+  sequences?: Prisma.SequenceOrderByRelationAggregateInput
   evaluations?: Prisma.EvaluationOrderByRelationAggregateInput
   reportCards?: Prisma.ReportCardOrderByRelationAggregateInput
   _relevance?: Prisma.PeriodOrderByRelevanceInput
@@ -282,6 +284,7 @@ export type PeriodWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Period"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Period"> | Date | string
   academicYear?: Prisma.XOR<Prisma.AcademicYearScalarRelationFilter, Prisma.AcademicYearWhereInput>
+  sequences?: Prisma.SequenceListRelationFilter
   evaluations?: Prisma.EvaluationListRelationFilter
   reportCards?: Prisma.ReportCardListRelationFilter
 }, "id" | "academicYearId_order">
@@ -324,6 +327,7 @@ export type PeriodCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYear: Prisma.AcademicYearCreateNestedOneWithoutPeriodsInput
+  sequences?: Prisma.SequenceCreateNestedManyWithoutPeriodInput
   evaluations?: Prisma.EvaluationCreateNestedManyWithoutPeriodInput
   reportCards?: Prisma.ReportCardCreateNestedManyWithoutPeriodInput
 }
@@ -337,6 +341,7 @@ export type PeriodUncheckedCreateInput = {
   endDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  sequences?: Prisma.SequenceUncheckedCreateNestedManyWithoutPeriodInput
   evaluations?: Prisma.EvaluationUncheckedCreateNestedManyWithoutPeriodInput
   reportCards?: Prisma.ReportCardUncheckedCreateNestedManyWithoutPeriodInput
 }
@@ -349,6 +354,7 @@ export type PeriodUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYear?: Prisma.AcademicYearUpdateOneRequiredWithoutPeriodsNestedInput
+  sequences?: Prisma.SequenceUpdateManyWithoutPeriodNestedInput
   evaluations?: Prisma.EvaluationUpdateManyWithoutPeriodNestedInput
   reportCards?: Prisma.ReportCardUpdateManyWithoutPeriodNestedInput
 }
@@ -362,6 +368,7 @@ export type PeriodUncheckedUpdateInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sequences?: Prisma.SequenceUncheckedUpdateManyWithoutPeriodNestedInput
   evaluations?: Prisma.EvaluationUncheckedUpdateManyWithoutPeriodNestedInput
   reportCards?: Prisma.ReportCardUncheckedUpdateManyWithoutPeriodNestedInput
 }
@@ -510,6 +517,20 @@ export type PeriodUncheckedUpdateManyWithoutAcademicYearNestedInput = {
   deleteMany?: Prisma.PeriodScalarWhereInput | Prisma.PeriodScalarWhereInput[]
 }
 
+export type PeriodCreateNestedOneWithoutSequencesInput = {
+  create?: Prisma.XOR<Prisma.PeriodCreateWithoutSequencesInput, Prisma.PeriodUncheckedCreateWithoutSequencesInput>
+  connectOrCreate?: Prisma.PeriodCreateOrConnectWithoutSequencesInput
+  connect?: Prisma.PeriodWhereUniqueInput
+}
+
+export type PeriodUpdateOneRequiredWithoutSequencesNestedInput = {
+  create?: Prisma.XOR<Prisma.PeriodCreateWithoutSequencesInput, Prisma.PeriodUncheckedCreateWithoutSequencesInput>
+  connectOrCreate?: Prisma.PeriodCreateOrConnectWithoutSequencesInput
+  upsert?: Prisma.PeriodUpsertWithoutSequencesInput
+  connect?: Prisma.PeriodWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PeriodUpdateToOneWithWhereWithoutSequencesInput, Prisma.PeriodUpdateWithoutSequencesInput>, Prisma.PeriodUncheckedUpdateWithoutSequencesInput>
+}
+
 export type PeriodCreateNestedOneWithoutEvaluationsInput = {
   create?: Prisma.XOR<Prisma.PeriodCreateWithoutEvaluationsInput, Prisma.PeriodUncheckedCreateWithoutEvaluationsInput>
   connectOrCreate?: Prisma.PeriodCreateOrConnectWithoutEvaluationsInput
@@ -545,6 +566,7 @@ export type PeriodCreateWithoutAcademicYearInput = {
   endDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  sequences?: Prisma.SequenceCreateNestedManyWithoutPeriodInput
   evaluations?: Prisma.EvaluationCreateNestedManyWithoutPeriodInput
   reportCards?: Prisma.ReportCardCreateNestedManyWithoutPeriodInput
 }
@@ -557,6 +579,7 @@ export type PeriodUncheckedCreateWithoutAcademicYearInput = {
   endDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  sequences?: Prisma.SequenceUncheckedCreateNestedManyWithoutPeriodInput
   evaluations?: Prisma.EvaluationUncheckedCreateNestedManyWithoutPeriodInput
   reportCards?: Prisma.ReportCardUncheckedCreateNestedManyWithoutPeriodInput
 }
@@ -601,6 +624,72 @@ export type PeriodScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Period"> | Date | string
 }
 
+export type PeriodCreateWithoutSequencesInput = {
+  name: string
+  order: number
+  startDate: Date | string
+  endDate: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  academicYear: Prisma.AcademicYearCreateNestedOneWithoutPeriodsInput
+  evaluations?: Prisma.EvaluationCreateNestedManyWithoutPeriodInput
+  reportCards?: Prisma.ReportCardCreateNestedManyWithoutPeriodInput
+}
+
+export type PeriodUncheckedCreateWithoutSequencesInput = {
+  id?: number
+  academicYearId: number
+  name: string
+  order: number
+  startDate: Date | string
+  endDate: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  evaluations?: Prisma.EvaluationUncheckedCreateNestedManyWithoutPeriodInput
+  reportCards?: Prisma.ReportCardUncheckedCreateNestedManyWithoutPeriodInput
+}
+
+export type PeriodCreateOrConnectWithoutSequencesInput = {
+  where: Prisma.PeriodWhereUniqueInput
+  create: Prisma.XOR<Prisma.PeriodCreateWithoutSequencesInput, Prisma.PeriodUncheckedCreateWithoutSequencesInput>
+}
+
+export type PeriodUpsertWithoutSequencesInput = {
+  update: Prisma.XOR<Prisma.PeriodUpdateWithoutSequencesInput, Prisma.PeriodUncheckedUpdateWithoutSequencesInput>
+  create: Prisma.XOR<Prisma.PeriodCreateWithoutSequencesInput, Prisma.PeriodUncheckedCreateWithoutSequencesInput>
+  where?: Prisma.PeriodWhereInput
+}
+
+export type PeriodUpdateToOneWithWhereWithoutSequencesInput = {
+  where?: Prisma.PeriodWhereInput
+  data: Prisma.XOR<Prisma.PeriodUpdateWithoutSequencesInput, Prisma.PeriodUncheckedUpdateWithoutSequencesInput>
+}
+
+export type PeriodUpdateWithoutSequencesInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  order?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  academicYear?: Prisma.AcademicYearUpdateOneRequiredWithoutPeriodsNestedInput
+  evaluations?: Prisma.EvaluationUpdateManyWithoutPeriodNestedInput
+  reportCards?: Prisma.ReportCardUpdateManyWithoutPeriodNestedInput
+}
+
+export type PeriodUncheckedUpdateWithoutSequencesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  academicYearId?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  order?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  evaluations?: Prisma.EvaluationUncheckedUpdateManyWithoutPeriodNestedInput
+  reportCards?: Prisma.ReportCardUncheckedUpdateManyWithoutPeriodNestedInput
+}
+
 export type PeriodCreateWithoutEvaluationsInput = {
   name: string
   order: number
@@ -609,6 +698,7 @@ export type PeriodCreateWithoutEvaluationsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYear: Prisma.AcademicYearCreateNestedOneWithoutPeriodsInput
+  sequences?: Prisma.SequenceCreateNestedManyWithoutPeriodInput
   reportCards?: Prisma.ReportCardCreateNestedManyWithoutPeriodInput
 }
 
@@ -621,6 +711,7 @@ export type PeriodUncheckedCreateWithoutEvaluationsInput = {
   endDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  sequences?: Prisma.SequenceUncheckedCreateNestedManyWithoutPeriodInput
   reportCards?: Prisma.ReportCardUncheckedCreateNestedManyWithoutPeriodInput
 }
 
@@ -648,6 +739,7 @@ export type PeriodUpdateWithoutEvaluationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYear?: Prisma.AcademicYearUpdateOneRequiredWithoutPeriodsNestedInput
+  sequences?: Prisma.SequenceUpdateManyWithoutPeriodNestedInput
   reportCards?: Prisma.ReportCardUpdateManyWithoutPeriodNestedInput
 }
 
@@ -660,6 +752,7 @@ export type PeriodUncheckedUpdateWithoutEvaluationsInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sequences?: Prisma.SequenceUncheckedUpdateManyWithoutPeriodNestedInput
   reportCards?: Prisma.ReportCardUncheckedUpdateManyWithoutPeriodNestedInput
 }
 
@@ -671,6 +764,7 @@ export type PeriodCreateWithoutReportCardsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYear: Prisma.AcademicYearCreateNestedOneWithoutPeriodsInput
+  sequences?: Prisma.SequenceCreateNestedManyWithoutPeriodInput
   evaluations?: Prisma.EvaluationCreateNestedManyWithoutPeriodInput
 }
 
@@ -683,6 +777,7 @@ export type PeriodUncheckedCreateWithoutReportCardsInput = {
   endDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  sequences?: Prisma.SequenceUncheckedCreateNestedManyWithoutPeriodInput
   evaluations?: Prisma.EvaluationUncheckedCreateNestedManyWithoutPeriodInput
 }
 
@@ -710,6 +805,7 @@ export type PeriodUpdateWithoutReportCardsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYear?: Prisma.AcademicYearUpdateOneRequiredWithoutPeriodsNestedInput
+  sequences?: Prisma.SequenceUpdateManyWithoutPeriodNestedInput
   evaluations?: Prisma.EvaluationUpdateManyWithoutPeriodNestedInput
 }
 
@@ -722,6 +818,7 @@ export type PeriodUncheckedUpdateWithoutReportCardsInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sequences?: Prisma.SequenceUncheckedUpdateManyWithoutPeriodNestedInput
   evaluations?: Prisma.EvaluationUncheckedUpdateManyWithoutPeriodNestedInput
 }
 
@@ -742,6 +839,7 @@ export type PeriodUpdateWithoutAcademicYearInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sequences?: Prisma.SequenceUpdateManyWithoutPeriodNestedInput
   evaluations?: Prisma.EvaluationUpdateManyWithoutPeriodNestedInput
   reportCards?: Prisma.ReportCardUpdateManyWithoutPeriodNestedInput
 }
@@ -754,6 +852,7 @@ export type PeriodUncheckedUpdateWithoutAcademicYearInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sequences?: Prisma.SequenceUncheckedUpdateManyWithoutPeriodNestedInput
   evaluations?: Prisma.EvaluationUncheckedUpdateManyWithoutPeriodNestedInput
   reportCards?: Prisma.ReportCardUncheckedUpdateManyWithoutPeriodNestedInput
 }
@@ -774,11 +873,13 @@ export type PeriodUncheckedUpdateManyWithoutAcademicYearInput = {
  */
 
 export type PeriodCountOutputType = {
+  sequences: number
   evaluations: number
   reportCards: number
 }
 
 export type PeriodCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  sequences?: boolean | PeriodCountOutputTypeCountSequencesArgs
   evaluations?: boolean | PeriodCountOutputTypeCountEvaluationsArgs
   reportCards?: boolean | PeriodCountOutputTypeCountReportCardsArgs
 }
@@ -791,6 +892,13 @@ export type PeriodCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
    * Select specific fields to fetch from the PeriodCountOutputType
    */
   select?: Prisma.PeriodCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PeriodCountOutputType without action
+ */
+export type PeriodCountOutputTypeCountSequencesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SequenceWhereInput
 }
 
 /**
@@ -818,6 +926,7 @@ export type PeriodSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   createdAt?: boolean
   updatedAt?: boolean
   academicYear?: boolean | Prisma.AcademicYearDefaultArgs<ExtArgs>
+  sequences?: boolean | Prisma.Period$sequencesArgs<ExtArgs>
   evaluations?: boolean | Prisma.Period$evaluationsArgs<ExtArgs>
   reportCards?: boolean | Prisma.Period$reportCardsArgs<ExtArgs>
   _count?: boolean | Prisma.PeriodCountOutputTypeDefaultArgs<ExtArgs>
@@ -839,6 +948,7 @@ export type PeriodSelectScalar = {
 export type PeriodOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "academicYearId" | "name" | "order" | "startDate" | "endDate" | "createdAt" | "updatedAt", ExtArgs["result"]["period"]>
 export type PeriodInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   academicYear?: boolean | Prisma.AcademicYearDefaultArgs<ExtArgs>
+  sequences?: boolean | Prisma.Period$sequencesArgs<ExtArgs>
   evaluations?: boolean | Prisma.Period$evaluationsArgs<ExtArgs>
   reportCards?: boolean | Prisma.Period$reportCardsArgs<ExtArgs>
   _count?: boolean | Prisma.PeriodCountOutputTypeDefaultArgs<ExtArgs>
@@ -848,6 +958,7 @@ export type $PeriodPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   name: "Period"
   objects: {
     academicYear: Prisma.$AcademicYearPayload<ExtArgs>
+    sequences: Prisma.$SequencePayload<ExtArgs>[]
     evaluations: Prisma.$EvaluationPayload<ExtArgs>[]
     reportCards: Prisma.$ReportCardPayload<ExtArgs>[]
   }
@@ -1201,6 +1312,7 @@ readonly fields: PeriodFieldRefs;
 export interface Prisma__PeriodClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   academicYear<T extends Prisma.AcademicYearDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AcademicYearDefaultArgs<ExtArgs>>): Prisma.Prisma__AcademicYearClient<runtime.Types.Result.GetResult<Prisma.$AcademicYearPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  sequences<T extends Prisma.Period$sequencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Period$sequencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SequencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   evaluations<T extends Prisma.Period$evaluationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Period$evaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EvaluationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reportCards<T extends Prisma.Period$reportCardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Period$reportCardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReportCardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1585,6 +1697,30 @@ export type PeriodDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Limit how many Periods to delete.
    */
   limit?: number
+}
+
+/**
+ * Period.sequences
+ */
+export type Period$sequencesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Sequence
+   */
+  select?: Prisma.SequenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Sequence
+   */
+  omit?: Prisma.SequenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SequenceInclude<ExtArgs> | null
+  where?: Prisma.SequenceWhereInput
+  orderBy?: Prisma.SequenceOrderByWithRelationInput | Prisma.SequenceOrderByWithRelationInput[]
+  cursor?: Prisma.SequenceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SequenceScalarFieldEnum | Prisma.SequenceScalarFieldEnum[]
 }
 
 /**

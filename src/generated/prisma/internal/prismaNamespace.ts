@@ -400,8 +400,11 @@ export const ModelName = {
   Establishment: 'Establishment',
   AcademicYear: 'AcademicYear',
   Period: 'Period',
+  Sequence: 'Sequence',
   SchoolLevel: 'SchoolLevel',
+  Section: 'Section',
   Cycle: 'Cycle',
+  GradeLevel: 'GradeLevel',
   Class: 'Class',
   User: 'User',
   Role: 'Role',
@@ -423,6 +426,8 @@ export const ModelName = {
   Grade: 'Grade',
   ReportCard: 'ReportCard',
   ReportCardLine: 'ReportCardLine',
+  EvaluationReview: 'EvaluationReview',
+  Notification: 'Notification',
   Attendance: 'Attendance',
   DisciplineRecord: 'DisciplineRecord',
   FeeType: 'FeeType',
@@ -430,6 +435,8 @@ export const ModelName = {
   Invoice: 'Invoice',
   InvoiceLine: 'InvoiceLine',
   Payment: 'Payment',
+  TransportRoute: 'TransportRoute',
+  TransportSubscription: 'TransportSubscription',
   MedicalRecord: 'MedicalRecord',
   Vaccination: 'Vaccination',
   InfirmaryVisit: 'InfirmaryVisit',
@@ -453,7 +460,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "establishment" | "academicYear" | "period" | "schoolLevel" | "cycle" | "class" | "user" | "role" | "permission" | "userRole" | "rolePermission" | "teacher" | "subject" | "classroom" | "classSubject" | "timetable" | "student" | "parent" | "studentParent" | "guardian" | "studentGuardian" | "enrollment" | "evaluation" | "grade" | "reportCard" | "reportCardLine" | "attendance" | "disciplineRecord" | "feeType" | "feeStructure" | "invoice" | "invoiceLine" | "payment" | "medicalRecord" | "vaccination" | "infirmaryVisit" | "book" | "bookCopy" | "loan" | "orientationRecord" | "counselingSession"
+    modelProps: "establishment" | "academicYear" | "period" | "sequence" | "schoolLevel" | "section" | "cycle" | "gradeLevel" | "class" | "user" | "role" | "permission" | "userRole" | "rolePermission" | "teacher" | "subject" | "classroom" | "classSubject" | "timetable" | "student" | "parent" | "studentParent" | "guardian" | "studentGuardian" | "enrollment" | "evaluation" | "grade" | "reportCard" | "reportCardLine" | "evaluationReview" | "notification" | "attendance" | "disciplineRecord" | "feeType" | "feeStructure" | "invoice" | "invoiceLine" | "payment" | "transportRoute" | "transportSubscription" | "medicalRecord" | "vaccination" | "infirmaryVisit" | "book" | "bookCopy" | "loan" | "orientationRecord" | "counselingSession"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -655,6 +662,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Sequence: {
+      payload: Prisma.$SequencePayload<ExtArgs>
+      fields: Prisma.SequenceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SequenceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SequencePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SequenceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SequencePayload>
+        }
+        findFirst: {
+          args: Prisma.SequenceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SequencePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SequenceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SequencePayload>
+        }
+        findMany: {
+          args: Prisma.SequenceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SequencePayload>[]
+        }
+        create: {
+          args: Prisma.SequenceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SequencePayload>
+        }
+        createMany: {
+          args: Prisma.SequenceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.SequenceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SequencePayload>
+        }
+        update: {
+          args: Prisma.SequenceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SequencePayload>
+        }
+        deleteMany: {
+          args: Prisma.SequenceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SequenceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.SequenceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SequencePayload>
+        }
+        aggregate: {
+          args: Prisma.SequenceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSequence>
+        }
+        groupBy: {
+          args: Prisma.SequenceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SequenceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SequenceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SequenceCountAggregateOutputType> | number
+        }
+      }
+    }
     SchoolLevel: {
       payload: Prisma.$SchoolLevelPayload<ExtArgs>
       fields: Prisma.SchoolLevelFieldRefs
@@ -721,6 +794,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Section: {
+      payload: Prisma.$SectionPayload<ExtArgs>
+      fields: Prisma.SectionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SectionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SectionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SectionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SectionPayload>
+        }
+        findFirst: {
+          args: Prisma.SectionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SectionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SectionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SectionPayload>
+        }
+        findMany: {
+          args: Prisma.SectionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SectionPayload>[]
+        }
+        create: {
+          args: Prisma.SectionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SectionPayload>
+        }
+        createMany: {
+          args: Prisma.SectionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.SectionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SectionPayload>
+        }
+        update: {
+          args: Prisma.SectionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SectionPayload>
+        }
+        deleteMany: {
+          args: Prisma.SectionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SectionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.SectionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SectionPayload>
+        }
+        aggregate: {
+          args: Prisma.SectionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSection>
+        }
+        groupBy: {
+          args: Prisma.SectionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SectionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SectionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SectionCountAggregateOutputType> | number
+        }
+      }
+    }
     Cycle: {
       payload: Prisma.$CyclePayload<ExtArgs>
       fields: Prisma.CycleFieldRefs
@@ -784,6 +923,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.CycleCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.CycleCountAggregateOutputType> | number
+        }
+      }
+    }
+    GradeLevel: {
+      payload: Prisma.$GradeLevelPayload<ExtArgs>
+      fields: Prisma.GradeLevelFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GradeLevelFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradeLevelPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GradeLevelFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradeLevelPayload>
+        }
+        findFirst: {
+          args: Prisma.GradeLevelFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradeLevelPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GradeLevelFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradeLevelPayload>
+        }
+        findMany: {
+          args: Prisma.GradeLevelFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradeLevelPayload>[]
+        }
+        create: {
+          args: Prisma.GradeLevelCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradeLevelPayload>
+        }
+        createMany: {
+          args: Prisma.GradeLevelCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.GradeLevelDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradeLevelPayload>
+        }
+        update: {
+          args: Prisma.GradeLevelUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradeLevelPayload>
+        }
+        deleteMany: {
+          args: Prisma.GradeLevelDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GradeLevelUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.GradeLevelUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradeLevelPayload>
+        }
+        aggregate: {
+          args: Prisma.GradeLevelAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGradeLevel>
+        }
+        groupBy: {
+          args: Prisma.GradeLevelGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GradeLevelGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GradeLevelCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GradeLevelCountAggregateOutputType> | number
         }
       }
     }
@@ -2173,6 +2378,138 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    EvaluationReview: {
+      payload: Prisma.$EvaluationReviewPayload<ExtArgs>
+      fields: Prisma.EvaluationReviewFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EvaluationReviewFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EvaluationReviewPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EvaluationReviewFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EvaluationReviewPayload>
+        }
+        findFirst: {
+          args: Prisma.EvaluationReviewFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EvaluationReviewPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EvaluationReviewFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EvaluationReviewPayload>
+        }
+        findMany: {
+          args: Prisma.EvaluationReviewFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EvaluationReviewPayload>[]
+        }
+        create: {
+          args: Prisma.EvaluationReviewCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EvaluationReviewPayload>
+        }
+        createMany: {
+          args: Prisma.EvaluationReviewCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.EvaluationReviewDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EvaluationReviewPayload>
+        }
+        update: {
+          args: Prisma.EvaluationReviewUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EvaluationReviewPayload>
+        }
+        deleteMany: {
+          args: Prisma.EvaluationReviewDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EvaluationReviewUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.EvaluationReviewUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EvaluationReviewPayload>
+        }
+        aggregate: {
+          args: Prisma.EvaluationReviewAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEvaluationReview>
+        }
+        groupBy: {
+          args: Prisma.EvaluationReviewGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EvaluationReviewGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EvaluationReviewCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EvaluationReviewCountAggregateOutputType> | number
+        }
+      }
+    }
+    Notification: {
+      payload: Prisma.$NotificationPayload<ExtArgs>
+      fields: Prisma.NotificationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.NotificationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.NotificationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>
+        }
+        findFirst: {
+          args: Prisma.NotificationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.NotificationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>
+        }
+        findMany: {
+          args: Prisma.NotificationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+        }
+        create: {
+          args: Prisma.NotificationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>
+        }
+        createMany: {
+          args: Prisma.NotificationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.NotificationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>
+        }
+        update: {
+          args: Prisma.NotificationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>
+        }
+        deleteMany: {
+          args: Prisma.NotificationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.NotificationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.NotificationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationPayload>
+        }
+        aggregate: {
+          args: Prisma.NotificationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNotification>
+        }
+        groupBy: {
+          args: Prisma.NotificationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NotificationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.NotificationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NotificationCountAggregateOutputType> | number
+        }
+      }
+    }
     Attendance: {
       payload: Prisma.$AttendancePayload<ExtArgs>
       fields: Prisma.AttendanceFieldRefs
@@ -2632,6 +2969,138 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.PaymentCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.PaymentCountAggregateOutputType> | number
+        }
+      }
+    }
+    TransportRoute: {
+      payload: Prisma.$TransportRoutePayload<ExtArgs>
+      fields: Prisma.TransportRouteFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TransportRouteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportRoutePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TransportRouteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportRoutePayload>
+        }
+        findFirst: {
+          args: Prisma.TransportRouteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportRoutePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TransportRouteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportRoutePayload>
+        }
+        findMany: {
+          args: Prisma.TransportRouteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportRoutePayload>[]
+        }
+        create: {
+          args: Prisma.TransportRouteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportRoutePayload>
+        }
+        createMany: {
+          args: Prisma.TransportRouteCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.TransportRouteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportRoutePayload>
+        }
+        update: {
+          args: Prisma.TransportRouteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportRoutePayload>
+        }
+        deleteMany: {
+          args: Prisma.TransportRouteDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TransportRouteUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.TransportRouteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportRoutePayload>
+        }
+        aggregate: {
+          args: Prisma.TransportRouteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTransportRoute>
+        }
+        groupBy: {
+          args: Prisma.TransportRouteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransportRouteGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TransportRouteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransportRouteCountAggregateOutputType> | number
+        }
+      }
+    }
+    TransportSubscription: {
+      payload: Prisma.$TransportSubscriptionPayload<ExtArgs>
+      fields: Prisma.TransportSubscriptionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TransportSubscriptionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportSubscriptionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TransportSubscriptionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportSubscriptionPayload>
+        }
+        findFirst: {
+          args: Prisma.TransportSubscriptionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportSubscriptionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TransportSubscriptionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportSubscriptionPayload>
+        }
+        findMany: {
+          args: Prisma.TransportSubscriptionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportSubscriptionPayload>[]
+        }
+        create: {
+          args: Prisma.TransportSubscriptionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportSubscriptionPayload>
+        }
+        createMany: {
+          args: Prisma.TransportSubscriptionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.TransportSubscriptionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportSubscriptionPayload>
+        }
+        update: {
+          args: Prisma.TransportSubscriptionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportSubscriptionPayload>
+        }
+        deleteMany: {
+          args: Prisma.TransportSubscriptionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TransportSubscriptionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.TransportSubscriptionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransportSubscriptionPayload>
+        }
+        aggregate: {
+          args: Prisma.TransportSubscriptionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTransportSubscription>
+        }
+        groupBy: {
+          args: Prisma.TransportSubscriptionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransportSubscriptionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TransportSubscriptionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransportSubscriptionCountAggregateOutputType> | number
         }
       }
     }
@@ -3242,6 +3711,20 @@ export const PeriodScalarFieldEnum = {
 export type PeriodScalarFieldEnum = (typeof PeriodScalarFieldEnum)[keyof typeof PeriodScalarFieldEnum]
 
 
+export const SequenceScalarFieldEnum = {
+  id: 'id',
+  periodId: 'periodId',
+  name: 'name',
+  order: 'order',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SequenceScalarFieldEnum = (typeof SequenceScalarFieldEnum)[keyof typeof SequenceScalarFieldEnum]
+
+
 export const SchoolLevelScalarFieldEnum = {
   id: 'id',
   establishmentId: 'establishmentId',
@@ -3254,9 +3737,21 @@ export const SchoolLevelScalarFieldEnum = {
 export type SchoolLevelScalarFieldEnum = (typeof SchoolLevelScalarFieldEnum)[keyof typeof SchoolLevelScalarFieldEnum]
 
 
-export const CycleScalarFieldEnum = {
+export const SectionScalarFieldEnum = {
   id: 'id',
   schoolLevelId: 'schoolLevelId',
+  name: 'name',
+  language: 'language',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SectionScalarFieldEnum = (typeof SectionScalarFieldEnum)[keyof typeof SectionScalarFieldEnum]
+
+
+export const CycleScalarFieldEnum = {
+  id: 'id',
+  sectionId: 'sectionId',
   name: 'name',
   code: 'code',
   createdAt: 'createdAt',
@@ -3266,11 +3761,25 @@ export const CycleScalarFieldEnum = {
 export type CycleScalarFieldEnum = (typeof CycleScalarFieldEnum)[keyof typeof CycleScalarFieldEnum]
 
 
-export const ClassScalarFieldEnum = {
+export const GradeLevelScalarFieldEnum = {
   id: 'id',
   cycleId: 'cycleId',
   name: 'name',
   code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GradeLevelScalarFieldEnum = (typeof GradeLevelScalarFieldEnum)[keyof typeof GradeLevelScalarFieldEnum]
+
+
+export const ClassScalarFieldEnum = {
+  id: 'id',
+  gradeLevelId: 'gradeLevelId',
+  classroomId: 'classroomId',
+  name: 'name',
+  code: 'code',
+  mainTeacherId: 'mainTeacherId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -3505,11 +4014,14 @@ export const EvaluationScalarFieldEnum = {
   id: 'id',
   classSubjectId: 'classSubjectId',
   periodId: 'periodId',
+  sequenceId: 'sequenceId',
   title: 'title',
   type: 'type',
   date: 'date',
   maxScore: 'maxScore',
   coefficient: 'coefficient',
+  validatedAt: 'validatedAt',
+  validatedById: 'validatedById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -3559,6 +4071,34 @@ export const ReportCardLineScalarFieldEnum = {
 } as const
 
 export type ReportCardLineScalarFieldEnum = (typeof ReportCardLineScalarFieldEnum)[keyof typeof ReportCardLineScalarFieldEnum]
+
+
+export const EvaluationReviewScalarFieldEnum = {
+  id: 'id',
+  evaluationId: 'evaluationId',
+  authorId: 'authorId',
+  decision: 'decision',
+  comment: 'comment',
+  resolvedAt: 'resolvedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EvaluationReviewScalarFieldEnum = (typeof EvaluationReviewScalarFieldEnum)[keyof typeof EvaluationReviewScalarFieldEnum]
+
+
+export const NotificationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  title: 'title',
+  message: 'message',
+  link: 'link',
+  readAt: 'readAt',
+  createdAt: 'createdAt'
+} as const
+
+export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
 
 
 export const AttendanceScalarFieldEnum = {
@@ -3657,6 +4197,37 @@ export const PaymentScalarFieldEnum = {
 } as const
 
 export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+
+
+export const TransportRouteScalarFieldEnum = {
+  id: 'id',
+  establishmentId: 'establishmentId',
+  name: 'name',
+  code: 'code',
+  description: 'description',
+  fee: 'fee',
+  feeTypeId: 'feeTypeId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TransportRouteScalarFieldEnum = (typeof TransportRouteScalarFieldEnum)[keyof typeof TransportRouteScalarFieldEnum]
+
+
+export const TransportSubscriptionScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  routeId: 'routeId',
+  academicYearId: 'academicYearId',
+  status: 'status',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  pickupPoint: 'pickupPoint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TransportSubscriptionScalarFieldEnum = (typeof TransportSubscriptionScalarFieldEnum)[keyof typeof TransportSubscriptionScalarFieldEnum]
 
 
 export const MedicalRecordScalarFieldEnum = {
@@ -3804,11 +4375,25 @@ export const PeriodOrderByRelevanceFieldEnum = {
 export type PeriodOrderByRelevanceFieldEnum = (typeof PeriodOrderByRelevanceFieldEnum)[keyof typeof PeriodOrderByRelevanceFieldEnum]
 
 
+export const SequenceOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type SequenceOrderByRelevanceFieldEnum = (typeof SequenceOrderByRelevanceFieldEnum)[keyof typeof SequenceOrderByRelevanceFieldEnum]
+
+
 export const SchoolLevelOrderByRelevanceFieldEnum = {
   name: 'name'
 } as const
 
 export type SchoolLevelOrderByRelevanceFieldEnum = (typeof SchoolLevelOrderByRelevanceFieldEnum)[keyof typeof SchoolLevelOrderByRelevanceFieldEnum]
+
+
+export const SectionOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type SectionOrderByRelevanceFieldEnum = (typeof SectionOrderByRelevanceFieldEnum)[keyof typeof SectionOrderByRelevanceFieldEnum]
 
 
 export const CycleOrderByRelevanceFieldEnum = {
@@ -3819,12 +4404,12 @@ export const CycleOrderByRelevanceFieldEnum = {
 export type CycleOrderByRelevanceFieldEnum = (typeof CycleOrderByRelevanceFieldEnum)[keyof typeof CycleOrderByRelevanceFieldEnum]
 
 
-export const ClassOrderByRelevanceFieldEnum = {
+export const GradeLevelOrderByRelevanceFieldEnum = {
   name: 'name',
   code: 'code'
 } as const
 
-export type ClassOrderByRelevanceFieldEnum = (typeof ClassOrderByRelevanceFieldEnum)[keyof typeof ClassOrderByRelevanceFieldEnum]
+export type GradeLevelOrderByRelevanceFieldEnum = (typeof GradeLevelOrderByRelevanceFieldEnum)[keyof typeof GradeLevelOrderByRelevanceFieldEnum]
 
 
 export const NullsOrder = {
@@ -3833,6 +4418,14 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const ClassOrderByRelevanceFieldEnum = {
+  name: 'name',
+  code: 'code'
+} as const
+
+export type ClassOrderByRelevanceFieldEnum = (typeof ClassOrderByRelevanceFieldEnum)[keyof typeof ClassOrderByRelevanceFieldEnum]
 
 
 export const UserOrderByRelevanceFieldEnum = {
@@ -3956,6 +4549,22 @@ export const ReportCardLineOrderByRelevanceFieldEnum = {
 export type ReportCardLineOrderByRelevanceFieldEnum = (typeof ReportCardLineOrderByRelevanceFieldEnum)[keyof typeof ReportCardLineOrderByRelevanceFieldEnum]
 
 
+export const EvaluationReviewOrderByRelevanceFieldEnum = {
+  comment: 'comment'
+} as const
+
+export type EvaluationReviewOrderByRelevanceFieldEnum = (typeof EvaluationReviewOrderByRelevanceFieldEnum)[keyof typeof EvaluationReviewOrderByRelevanceFieldEnum]
+
+
+export const NotificationOrderByRelevanceFieldEnum = {
+  title: 'title',
+  message: 'message',
+  link: 'link'
+} as const
+
+export type NotificationOrderByRelevanceFieldEnum = (typeof NotificationOrderByRelevanceFieldEnum)[keyof typeof NotificationOrderByRelevanceFieldEnum]
+
+
 export const AttendanceOrderByRelevanceFieldEnum = {
   justification: 'justification'
 } as const
@@ -3991,6 +4600,22 @@ export const PaymentOrderByRelevanceFieldEnum = {
 } as const
 
 export type PaymentOrderByRelevanceFieldEnum = (typeof PaymentOrderByRelevanceFieldEnum)[keyof typeof PaymentOrderByRelevanceFieldEnum]
+
+
+export const TransportRouteOrderByRelevanceFieldEnum = {
+  name: 'name',
+  code: 'code',
+  description: 'description'
+} as const
+
+export type TransportRouteOrderByRelevanceFieldEnum = (typeof TransportRouteOrderByRelevanceFieldEnum)[keyof typeof TransportRouteOrderByRelevanceFieldEnum]
+
+
+export const TransportSubscriptionOrderByRelevanceFieldEnum = {
+  pickupPoint: 'pickupPoint'
+} as const
+
+export type TransportSubscriptionOrderByRelevanceFieldEnum = (typeof TransportSubscriptionOrderByRelevanceFieldEnum)[keyof typeof TransportSubscriptionOrderByRelevanceFieldEnum]
 
 
 export const MedicalRecordOrderByRelevanceFieldEnum = {
@@ -4104,6 +4729,13 @@ export type EnumSchoolLevelTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$
 
 
 /**
+ * Reference to a field of type 'SectionLanguage'
+ */
+export type EnumSectionLanguageFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SectionLanguage'>
+    
+
+
+/**
  * Reference to a field of type 'Gender'
  */
 export type EnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender'>
@@ -4153,6 +4785,20 @@ export type EnumEvaluationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$P
 
 
 /**
+ * Reference to a field of type 'ReviewDecision'
+ */
+export type EnumReviewDecisionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReviewDecision'>
+    
+
+
+/**
+ * Reference to a field of type 'NotificationType'
+ */
+export type EnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationType'>
+    
+
+
+/**
  * Reference to a field of type 'AttendanceStatus'
  */
 export type EnumAttendanceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AttendanceStatus'>
@@ -4184,6 +4830,13 @@ export type EnumInvoiceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'PaymentMethod'
  */
 export type EnumPaymentMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentMethod'>
+    
+
+
+/**
+ * Reference to a field of type 'TransportSubscriptionStatus'
+ */
+export type EnumTransportSubscriptionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransportSubscriptionStatus'>
     
 
 
@@ -4361,8 +5014,11 @@ export type GlobalOmitConfig = {
   establishment?: Prisma.EstablishmentOmit
   academicYear?: Prisma.AcademicYearOmit
   period?: Prisma.PeriodOmit
+  sequence?: Prisma.SequenceOmit
   schoolLevel?: Prisma.SchoolLevelOmit
+  section?: Prisma.SectionOmit
   cycle?: Prisma.CycleOmit
+  gradeLevel?: Prisma.GradeLevelOmit
   class?: Prisma.ClassOmit
   user?: Prisma.UserOmit
   role?: Prisma.RoleOmit
@@ -4384,6 +5040,8 @@ export type GlobalOmitConfig = {
   grade?: Prisma.GradeOmit
   reportCard?: Prisma.ReportCardOmit
   reportCardLine?: Prisma.ReportCardLineOmit
+  evaluationReview?: Prisma.EvaluationReviewOmit
+  notification?: Prisma.NotificationOmit
   attendance?: Prisma.AttendanceOmit
   disciplineRecord?: Prisma.DisciplineRecordOmit
   feeType?: Prisma.FeeTypeOmit
@@ -4391,6 +5049,8 @@ export type GlobalOmitConfig = {
   invoice?: Prisma.InvoiceOmit
   invoiceLine?: Prisma.InvoiceLineOmit
   payment?: Prisma.PaymentOmit
+  transportRoute?: Prisma.TransportRouteOmit
+  transportSubscription?: Prisma.TransportSubscriptionOmit
   medicalRecord?: Prisma.MedicalRecordOmit
   vaccination?: Prisma.VaccinationOmit
   infirmaryVisit?: Prisma.InfirmaryVisitOmit

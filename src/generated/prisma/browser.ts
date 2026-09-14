@@ -33,15 +33,30 @@ export type AcademicYear = Prisma.AcademicYearModel
  */
 export type Period = Prisma.PeriodModel
 /**
+ * Model Sequence
+ * 
+ */
+export type Sequence = Prisma.SequenceModel
+/**
  * Model SchoolLevel
  * 
  */
 export type SchoolLevel = Prisma.SchoolLevelModel
 /**
+ * Model Section
+ * 
+ */
+export type Section = Prisma.SectionModel
+/**
  * Model Cycle
  * 
  */
 export type Cycle = Prisma.CycleModel
+/**
+ * Model GradeLevel
+ * 
+ */
+export type GradeLevel = Prisma.GradeLevelModel
 /**
  * Model Class
  * 
@@ -148,6 +163,16 @@ export type ReportCard = Prisma.ReportCardModel
  */
 export type ReportCardLine = Prisma.ReportCardLineModel
 /**
+ * Model EvaluationReview
+ * 
+ */
+export type EvaluationReview = Prisma.EvaluationReviewModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel
+/**
  * Model Attendance
  * 
  */
@@ -182,6 +207,16 @@ export type InvoiceLine = Prisma.InvoiceLineModel
  * 
  */
 export type Payment = Prisma.PaymentModel
+/**
+ * Model TransportRoute
+ * 
+ */
+export type TransportRoute = Prisma.TransportRouteModel
+/**
+ * Model TransportSubscription
+ * 
+ */
+export type TransportSubscription = Prisma.TransportSubscriptionModel
 /**
  * Model MedicalRecord
  * 

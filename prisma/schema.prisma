@@ -49,6 +49,7 @@ model Establishment {
   guardians     Guardian[]
   feeTypes      FeeType[]
   books         Book[]
+  transportRoutes TransportRoute[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -70,6 +71,7 @@ model AcademicYear {
   feeStructures      FeeStructure[]
   invoices           Invoice[]
   orientationRecords OrientationRecord[]
+  transportSubscriptions TransportSubscription[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -89,6 +91,7 @@ model Period {
 
   academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
 
+  sequences   Sequence[]
   evaluations Evaluation[]
   reportCards ReportCard[]
 
@@ -97,6 +100,27 @@ model Period {
 
   @@unique([academicYearId, order])
   @@index([academicYearId])
+}
+
+// Séquence d'évaluation : le découpage camerounais d'un trimestre, classiquement
+// deux séquences par trimestre, chacune close par une évaluation séquentielle.
+model Sequence {
+  id        Int      @id @default(autoincrement())
+  periodId  Int
+  name      String
+  order     Int
+  startDate DateTime
+  endDate   DateTime
+
+  period Period @relation(fields: [periodId], references: [id], onDelete: Cascade)
+
+  evaluations Evaluation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([periodId, order])
+  @@index([periodId])
 }
 
 enum SchoolLevelType {
@@ -114,7 +138,7 @@ model SchoolLevel {
 
   establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
 
-  cycles Cycle[]
+  sections Section[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -123,30 +147,81 @@ model SchoolLevel {
   @@index([establishmentId])
 }
 
-model Cycle {
-  id            Int    @id @default(autoincrement())
+enum SectionLanguage {
+  FRANCOPHONE
+  ANGLOPHONE
+}
+
+// Le sous-système linguistique camerounais (francophone / anglophone) au sein d'un niveau scolaire.
+model Section {
+  id            Int             @id @default(autoincrement())
   schoolLevelId Int
   name          String
-  code          String
+  language      SectionLanguage
 
   schoolLevel SchoolLevel @relation(fields: [schoolLevelId], references: [id], onDelete: Cascade)
 
-  classes Class[]
+  cycles Cycle[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([schoolLevelId, code])
+  @@unique([schoolLevelId, language])
   @@index([schoolLevelId])
 }
 
-model Class {
+// Le regroupement pédagogique officiel (ex. Cycle 1 = SIL+CP, Cycle 2 = CE1+CE2, Cycle 3 = CM1+CM2).
+model Cycle {
+  id        Int    @id @default(autoincrement())
+  sectionId Int
+  name      String
+  code      String
+
+  section Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  gradeLevels GradeLevel[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([sectionId, code])
+  @@index([sectionId])
+}
+
+// Le niveau/année (ex. CP, CE1) — regroupe les classes (flux) de cette année.
+// Nommé GradeLevel (et non "Grade") pour ne pas entrer en collision avec le
+// modèle Grade existant plus bas, qui représente une note d'évaluation.
+model GradeLevel {
   id      Int    @id @default(autoincrement())
   cycleId Int
   name    String
   code    String
 
   cycle Cycle @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+
+  classes Class[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cycleId, code])
+  @@index([cycleId])
+}
+
+// La classe réelle (flux) — ex. CP1, CP2 — avec ses élèves et sa salle.
+model Class {
+  id           Int    @id @default(autoincrement())
+  gradeLevelId Int
+  classroomId  Int?   @unique
+  name         String
+  code         String
+  // Professeur principal : seul habilité à consulter et à viser les notes de
+  // toutes les matières de la classe, sans pouvoir les saisir à la place d'autrui.
+  mainTeacherId Int?
+
+  gradeLevel  GradeLevel @relation(fields: [gradeLevelId], references: [id], onDelete: Cascade)
+  classroom   Classroom? @relation(fields: [classroomId], references: [id], onDelete: SetNull)
+  mainTeacher Teacher?   @relation("ClassMainTeacher", fields: [mainTeacherId], references: [id], onDelete: SetNull)
 
   enrollments   Enrollment[]
   classSubjects ClassSubject[]
@@ -157,8 +232,9 @@ model Class {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([cycleId, code])
-  @@index([cycleId])
+  @@unique([gradeLevelId, code])
+  @@index([gradeLevelId])
+  @@index([mainTeacherId])
 }
 
 // =============================================================================
@@ -184,6 +260,9 @@ model User {
   guardian  Guardian?
   student   Student?
 
+  validatedEvaluations    Evaluation[]         @relation("EvaluationValidatedBy")
+  authoredReviews         EvaluationReview[]   @relation("EvaluationReviewAuthor")
+  notifications           Notification[]       @relation("UserNotifications")
   recordedAttendances     Attendance[]        @relation("AttendanceRecordedBy")
   issuedDisciplineRecords DisciplineRecord[]  @relation("DisciplineIssuedBy")
   receivedPayments        Payment[]           @relation("PaymentReceivedBy")
@@ -274,6 +353,7 @@ model Teacher {
   user          User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
 
   classSubjects ClassSubject[]
+  mainTeacherOf Class[]        @relation("ClassMainTeacher")
   loans         Loan[]
 
   createdAt DateTime @default(now())
@@ -310,6 +390,7 @@ model Classroom {
 
   establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
 
+  class      Class?
   timetables Timetable[]
 
   createdAt DateTime @default(now())
@@ -411,6 +492,7 @@ model Student {
   medicalRecord      MedicalRecord?
   infirmaryVisits    InfirmaryVisit[]
   orientationRecords OrientationRecord[]
+  transportSubscriptions TransportSubscription[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -512,6 +594,8 @@ model StudentGuardian {
 }
 
 enum EnrollmentStatus {
+  // Élève rattaché à une classe mais pas encore inscrit par la scolarité ("non inscrit").
+  PENDING
   ACTIVE
   TRANSFERRED
   WITHDRAWN
@@ -554,22 +638,35 @@ model Evaluation {
   id             Int            @id @default(autoincrement())
   classSubjectId Int
   periodId       Int
+  // Séquence du trimestre à laquelle l'évaluation appartient. Nullable pour les
+  // évaluations antérieures à l'introduction des séquences ; requis à la création.
+  sequenceId     Int?
   title          String
   type           EvaluationType
   date           DateTime
   maxScore       Float          @default(20)
   coefficient    Float          @default(1)
 
+  // Validation par l'enseignant : une fois posée, les notes de l'évaluation sont
+  // verrouillées pour tout le monde, l'administration comprise. Seul l'enseignant
+  // propriétaire peut rouvrir sa propre évaluation.
+  validatedAt   DateTime?
+  validatedById Int?
+
   classSubject ClassSubject @relation(fields: [classSubjectId], references: [id], onDelete: Cascade)
   period       Period       @relation(fields: [periodId], references: [id], onDelete: Cascade)
+  sequence     Sequence?    @relation(fields: [sequenceId], references: [id], onDelete: SetNull)
+  validatedBy  User?        @relation("EvaluationValidatedBy", fields: [validatedById], references: [id], onDelete: SetNull)
 
-  grades Grade[]
+  grades  Grade[]
+  reviews EvaluationReview[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([classSubjectId])
   @@index([periodId])
+  @@index([sequenceId])
 }
 
 model Grade {
@@ -630,6 +727,58 @@ model ReportCardLine {
 
   @@unique([reportCardId, subjectId])
   @@index([subjectId])
+}
+
+enum ReviewDecision {
+  APPROVED
+  CHANGES_REQUESTED
+}
+
+// Visa du professeur principal sur les notes d'une évaluation de sa classe.
+// Un avis « changements demandés » reste ouvert jusqu'à ce que l'enseignant
+// de la matière l'ait traité.
+model EvaluationReview {
+  id           Int            @id @default(autoincrement())
+  evaluationId Int
+  authorId     Int
+  decision     ReviewDecision
+  comment      String?        @db.Text
+  resolvedAt   DateTime?
+
+  evaluation Evaluation @relation(fields: [evaluationId], references: [id], onDelete: Cascade)
+  author     User       @relation("EvaluationReviewAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([evaluationId])
+  @@index([authorId])
+}
+
+enum NotificationType {
+  GENERAL
+  EVALUATION_REVIEW
+  DISCIPLINE
+  REPORT_CARD
+  CONVOCATION
+}
+
+// Notification applicative : ce qui réclame l'attention d'un utilisateur.
+model Notification {
+  id      Int              @id @default(autoincrement())
+  userId  Int
+  type    NotificationType @default(GENERAL)
+  title   String
+  message String           @db.Text
+  // Chemin applicatif à ouvrir au clic, ex. /grades?evaluationId=12
+  link    String?
+  readAt  DateTime?
+
+  user User @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([userId, readAt])
 }
 
 // =============================================================================
@@ -706,8 +855,9 @@ model FeeType {
 
   establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
 
-  feeStructures FeeStructure[]
-  invoiceLines  InvoiceLine[]
+  feeStructures   FeeStructure[]
+  invoiceLines    InvoiceLine[]
+  transportRoutes TransportRoute[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -804,6 +954,66 @@ model Payment {
   createdAt DateTime @default(now())
 
   @@index([invoiceId])
+}
+
+// =============================================================================
+// 7 bis. Transport scolaire
+// =============================================================================
+
+enum TransportSubscriptionStatus {
+  // Demande enregistrée, l'élève n'est pas encore transporté.
+  PENDING
+  ACTIVE
+  SUSPENDED
+  CANCELLED
+}
+
+// Circuit de ramassage, avec son tarif annuel.
+model TransportRoute {
+  id              Int     @id @default(autoincrement())
+  establishmentId Int
+  name            String
+  code            String
+  description     String?
+  fee             Decimal @db.Decimal(10, 2)
+  // Rattache le circuit à un type de frais, pour que le transport soit facturé
+  // par la même chaîne Invoice / Payment que la scolarité.
+  feeTypeId       Int?
+
+  establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
+  feeType       FeeType?      @relation(fields: [feeTypeId], references: [id], onDelete: SetNull)
+
+  subscriptions TransportSubscription[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([establishmentId, code])
+  @@index([establishmentId])
+  @@index([feeTypeId])
+}
+
+// Abonnement d'un élève à un circuit pour une année scolaire.
+model TransportSubscription {
+  id             Int                         @id @default(autoincrement())
+  studentId      Int
+  routeId        Int
+  academicYearId Int
+  status         TransportSubscriptionStatus @default(PENDING)
+  startDate      DateTime                    @default(now())
+  endDate        DateTime?
+  pickupPoint    String?
+
+  student      Student        @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  route        TransportRoute @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear   @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([studentId, academicYearId])
+  @@index([routeId])
+  @@index([academicYearId])
 }
 
 // =============================================================================

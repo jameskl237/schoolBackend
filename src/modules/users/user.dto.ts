@@ -6,6 +6,7 @@ export const createUserSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
   phone: z.string().optional(),
+  roleIds: z.array(z.number().int().positive()).optional(),
 });
 
 export const updateUserSchema = createUserSchema.partial();
