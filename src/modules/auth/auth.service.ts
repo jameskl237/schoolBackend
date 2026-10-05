@@ -1,4 +1,5 @@
 import { AppError } from "../../common/errors/app-error.js";
+import { ensureRole, PROFILE_ROLES } from "../../common/utils/account-provisioning.js";
 import { getUserPermissions } from "../../common/utils/get-user-permissions.js";
 import {
   signAccessToken,
@@ -6,6 +7,7 @@ import {
   verifyRefreshToken,
 } from "../../common/utils/jwt.js";
 import { comparePassword, hashPassword } from "../../common/utils/password.js";
+import { prisma } from "../../infrastructure/database/prisma.js";
 import type { User } from "../../generated/prisma/client.js";
 
 import type { LoginInput, RegisterInput } from "./auth.dto.js";
@@ -44,41 +46,31 @@ export class AuthService {
 
     const { establishmentCode: _establishmentCode, password, phone, ...rest } = input;
 
+    // L'inscription libre ne choisit pas son rôle : elle ouvre un compte de
+    // consultation. C'est à l'administration de le requalifier ensuite.
+    const role = await ensureRole(prisma, establishment.id, PROFILE_ROLES.PARENT);
+
     const user = await this.authRepository.createUser({
       ...rest,
       password: await hashPassword(password),
       phone: phone ?? null,
       establishment: { connect: { id: establishment.id } },
+      role: { connect: { id: role.id } },
     });
 
     return this.issueTokens(user);
   }
 
+  /**
+   * L'adresse et le mot de passe suffisent : le code d'établissement n'est
+   * réclamé que si les mêmes identifiants ouvrent un compte dans plusieurs
+   * écoles. Un parent n'a donc rien à retenir de plus que ses identifiants.
+   */
   async login(input: LoginInput) {
-    const establishment = await this.authRepository.findEstablishmentByCode(
-      input.establishmentCode,
-    );
-
-    if (!establishment) {
-      throw new AppError(
-        "This establishment code does not exist",
-        404,
-        "ESTABLISHMENT_NOT_FOUND",
-      );
-    }
-
-    const user = await this.authRepository.findByEmailAndEstablishmentCode(
-      input.email,
-      input.establishmentCode,
-    );
-
-    if (!user) {
-      throw new AppError(
-        "No account with this email in this establishment",
-        404,
-        "USER_NOT_IN_ESTABLISHMENT",
-      );
-    }
+    const user =
+      input.establishmentCode !== undefined
+        ? await this.findInEstablishment(input.email, input.establishmentCode)
+        : await this.findByCredentials(input.email, input.password);
 
     if (!(await comparePassword(input.password, user.password))) {
       throw new AppError("Incorrect password", 401, "INVALID_PASSWORD");
@@ -91,6 +83,78 @@ export class AuthService {
     await this.authRepository.updateLastLogin(user.id);
 
     return this.issueTokens(user);
+  }
+
+  private async findInEstablishment(email: string, establishmentCode: string) {
+    const establishment = await this.authRepository.findEstablishmentByCode(establishmentCode);
+
+    if (!establishment) {
+      throw new AppError(
+        "This establishment code does not exist",
+        404,
+        "ESTABLISHMENT_NOT_FOUND",
+      );
+    }
+
+    const user = await this.authRepository.findByEmailAndEstablishmentCode(
+      email,
+      establishmentCode,
+    );
+
+    if (!user) {
+      throw new AppError(
+        "No account with this email in this establishment",
+        404,
+        "USER_NOT_IN_ESTABLISHMENT",
+      );
+    }
+
+    return user;
+  }
+
+  /**
+   * Sans code fourni, on départage sur le mot de passe : tant qu'un seul compte
+   * répond, l'établissement est déduit. On ne révèle la liste des écoles que si
+   * les identifiants sont valides dans plusieurs d'entre elles.
+   */
+  private async findByCredentials(email: string, password: string) {
+    const candidates = await this.authRepository.findManyByEmail(email);
+
+    if (candidates.length === 0) {
+      throw new AppError("No account with this email", 404, "USER_NOT_FOUND");
+    }
+
+    if (candidates.length === 1) {
+      return candidates[0]!;
+    }
+
+    const matching: typeof candidates = [];
+
+    for (const candidate of candidates) {
+      if (await comparePassword(password, candidate.password)) {
+        matching.push(candidate);
+      }
+    }
+
+    if (matching.length === 0) {
+      throw new AppError("Incorrect password", 401, "INVALID_PASSWORD");
+    }
+
+    if (matching.length === 1) {
+      return matching[0]!;
+    }
+
+    throw new AppError(
+      "This account exists in several establishments: please provide your establishment code",
+      409,
+      "ESTABLISHMENT_REQUIRED",
+      {
+        establishments: matching.map((candidate) => ({
+          code: candidate.establishment.code,
+          name: candidate.establishment.name,
+        })),
+      },
+    );
   }
 
   async refresh(token: string) {

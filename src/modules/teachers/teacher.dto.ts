@@ -11,8 +11,10 @@ export const createTeacherSchema = z.object({
   email: z.email().optional(),
   hireDate: z.coerce.date().optional(),
   specialty: z.string().optional(),
-  /** Compte utilisateur à rattacher, pour que l'enseignant accède à ses classes. */
+  /** Compte existant à rattacher. Sans lui, un compte est ouvert automatiquement. */
   userId: z.coerce.number().int().positive().optional(),
+  /** Mot de passe initial du compte créé ; à défaut, un mot de passe par défaut est posé. */
+  password: z.string().min(8).optional(),
 });
 
 export const updateTeacherSchema = z.object({

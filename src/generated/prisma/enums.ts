@@ -62,6 +62,7 @@ export const ParentRelationType = {
   MOTHER: 'MOTHER',
   STEPFATHER: 'STEPFATHER',
   STEPMOTHER: 'STEPMOTHER',
+  SELF: 'SELF',
   OTHER: 'OTHER'
 } as const
 

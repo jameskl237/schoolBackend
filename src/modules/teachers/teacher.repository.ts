@@ -1,7 +1,7 @@
 import type { Prisma } from "../../generated/prisma/client.js";
 import { prisma } from "../../infrastructure/database/prisma.js";
 
-const teacherInclude = {
+export const teacherInclude = {
   user: { select: { id: true, email: true, isActive: true } },
   classSubjects: {
     select: {

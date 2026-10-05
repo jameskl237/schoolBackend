@@ -2,10 +2,11 @@ import bcrypt from "bcrypt";
 
 import type { Establishment } from "../../src/generated/prisma/client.js";
 import { prisma } from "../../src/infrastructure/database/prisma.js";
+import { DEFAULT_ACCOUNT_PASSWORD } from "../../src/common/utils/account-provisioning.js";
 
 import { getRolesForType } from "./definitions.js";
 
-const DEMO_PASSWORD = "Password123!";
+const DEMO_PASSWORD = DEFAULT_ACCOUNT_PASSWORD;
 
 const slugify = (name: string) => name.toLowerCase().replaceAll("_", "-");
 
@@ -91,7 +92,6 @@ export async function seedUsers(establishments: Establishment[]) {
 
     const existingRoles = await prisma.role.findMany({
       where: { establishmentId: establishment.id },
-      include: { userRoles: true },
     });
 
     for (const role of roles) {
@@ -106,7 +106,8 @@ export async function seedUsers(establishments: Establishment[]) {
         const email = `${slug}.${index}@${establishment.code.toLowerCase()}.demo`;
         const persona = buildPersona(`${establishment.code}-${role.name}-${index}`);
 
-        const seededUser = await prisma.user.upsert({
+        // Le rôle vit sur le compte : un upsert suffit, plus de table de liaison.
+        await prisma.user.upsert({
           where: {
             establishmentId_email: {
               establishmentId: establishment.id,
@@ -117,6 +118,7 @@ export async function seedUsers(establishments: Establishment[]) {
             firstName: persona.firstName,
             lastName: persona.lastName,
             phone: persona.phone,
+            role: { connect: { id: roleRecord.id } },
           },
           create: {
             email,
@@ -127,20 +129,7 @@ export async function seedUsers(establishments: Establishment[]) {
             establishment: {
               connect: { id: establishment.id },
             },
-          },
-        });
-
-        await prisma.userRole.upsert({
-          where: {
-            userId_roleId: {
-              userId: seededUser.id,
-              roleId: roleRecord.id,
-            },
-          },
-          update: {},
-          create: {
-            userId: seededUser.id,
-            roleId: roleRecord.id,
+            role: { connect: { id: roleRecord.id } },
           },
         });
       }

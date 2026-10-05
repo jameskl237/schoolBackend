@@ -27,9 +27,12 @@ import { feeTypeRouter } from "./modules/fee-types/index.js";
 import { gradeLevelRouter } from "./modules/grade-levels/index.js";
 import { gradeRouter } from "./modules/grades/index.js";
 import { guardianRouter } from "./modules/guardians/index.js";
+import { healthRecordRouter } from "./modules/health-records/index.js";
 import { healthRouter } from "./modules/health/index.js";
 import { invoiceRouter } from "./modules/invoices/index.js";
+import { libraryRouter } from "./modules/library/index.js";
 import { notificationRouter } from "./modules/notifications/index.js";
+import { orientationRouter } from "./modules/orientation/index.js";
 import { parentRouter } from "./modules/parents/index.js";
 import { paymentRouter } from "./modules/payments/index.js";
 import { periodRouter } from "./modules/periods/index.js";
@@ -136,6 +139,12 @@ app.use(disciplineRouter);
 app.use(reportCardRouter);
 
 app.use(transportRouter);
+
+app.use(healthRecordRouter);
+
+app.use(libraryRouter);
+
+app.use(orientationRouter);
 
 app.use(establishmentRouter);
 

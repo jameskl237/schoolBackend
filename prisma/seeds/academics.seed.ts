@@ -388,7 +388,7 @@ function teacherComment(average: number): string {
 
 async function findRecorderUser(establishmentId: number) {
   const user = await prisma.user.findFirst({
-    where: { establishmentId, isActive: true, userRoles: { some: { role: { name: "ENSEIGNANT" } } } },
+    where: { establishmentId, isActive: true, role: { name: "ENSEIGNANT" } },
     orderBy: { id: "asc" },
     select: { id: true },
   });

@@ -15,6 +15,14 @@ export class AuthRepository {
     });
   }
 
+  /** Tous les comptes portant cette adresse, quel que soit l'établissement. */
+  findManyByEmail(email: string) {
+    return prisma.user.findMany({
+      where: { email },
+      include: { establishment: { select: { id: true, code: true, name: true } } },
+    });
+  }
+
   findEstablishmentByCode(code: string) {
     return prisma.establishment.findUnique({ where: { code } });
   }

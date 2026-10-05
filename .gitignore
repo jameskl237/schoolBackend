@@ -9,3 +9,5 @@ coverage/
 *.log
 
 /generated/prisma
+# Fichiers importés via l'application (épreuves PDF, images...)
+/uploads

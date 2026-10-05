@@ -108,7 +108,7 @@ export async function seedFinance(establishments: Establishment[]) {
     });
 
     const accountant = await prisma.user.findFirst({
-      where: { establishmentId: establishment.id, isActive: true, userRoles: { some: { role: { name: "COMPTABLE" } } } },
+      where: { establishmentId: establishment.id, isActive: true, role: { name: "COMPTABLE" } },
       orderBy: { id: "asc" },
       select: { id: true },
     });

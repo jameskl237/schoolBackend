@@ -301,7 +301,7 @@ async function findRoleUserIds(establishmentId: number, roleName: string): Promi
     where: {
       establishmentId,
       isActive: true,
-      userRoles: { some: { role: { name: roleName } } },
+      role: { name: roleName },
       teacher: null,
       parent: null,
       student: null,

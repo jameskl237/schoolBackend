@@ -56,6 +56,8 @@ export type EvaluationMinAggregateOutputType = {
   date: Date | null
   maxScore: number | null
   coefficient: number | null
+  examPaperPath: string | null
+  examPaperName: string | null
   validatedAt: Date | null
   validatedById: number | null
   createdAt: Date | null
@@ -72,6 +74,8 @@ export type EvaluationMaxAggregateOutputType = {
   date: Date | null
   maxScore: number | null
   coefficient: number | null
+  examPaperPath: string | null
+  examPaperName: string | null
   validatedAt: Date | null
   validatedById: number | null
   createdAt: Date | null
@@ -88,6 +92,8 @@ export type EvaluationCountAggregateOutputType = {
   date: number
   maxScore: number
   coefficient: number
+  examPaperPath: number
+  examPaperName: number
   validatedAt: number
   validatedById: number
   createdAt: number
@@ -126,6 +132,8 @@ export type EvaluationMinAggregateInputType = {
   date?: true
   maxScore?: true
   coefficient?: true
+  examPaperPath?: true
+  examPaperName?: true
   validatedAt?: true
   validatedById?: true
   createdAt?: true
@@ -142,6 +150,8 @@ export type EvaluationMaxAggregateInputType = {
   date?: true
   maxScore?: true
   coefficient?: true
+  examPaperPath?: true
+  examPaperName?: true
   validatedAt?: true
   validatedById?: true
   createdAt?: true
@@ -158,6 +168,8 @@ export type EvaluationCountAggregateInputType = {
   date?: true
   maxScore?: true
   coefficient?: true
+  examPaperPath?: true
+  examPaperName?: true
   validatedAt?: true
   validatedById?: true
   createdAt?: true
@@ -261,6 +273,8 @@ export type EvaluationGroupByOutputType = {
   date: Date
   maxScore: number
   coefficient: number
+  examPaperPath: string | null
+  examPaperName: string | null
   validatedAt: Date | null
   validatedById: number | null
   createdAt: Date
@@ -300,6 +314,8 @@ export type EvaluationWhereInput = {
   date?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   maxScore?: Prisma.FloatFilter<"Evaluation"> | number
   coefficient?: Prisma.FloatFilter<"Evaluation"> | number
+  examPaperPath?: Prisma.StringNullableFilter<"Evaluation"> | string | null
+  examPaperName?: Prisma.StringNullableFilter<"Evaluation"> | string | null
   validatedAt?: Prisma.DateTimeNullableFilter<"Evaluation"> | Date | string | null
   validatedById?: Prisma.IntNullableFilter<"Evaluation"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
@@ -322,6 +338,8 @@ export type EvaluationOrderByWithRelationInput = {
   date?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  examPaperPath?: Prisma.SortOrderInput | Prisma.SortOrder
+  examPaperName?: Prisma.SortOrderInput | Prisma.SortOrder
   validatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   validatedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -348,6 +366,8 @@ export type EvaluationWhereUniqueInput = Prisma.AtLeast<{
   date?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   maxScore?: Prisma.FloatFilter<"Evaluation"> | number
   coefficient?: Prisma.FloatFilter<"Evaluation"> | number
+  examPaperPath?: Prisma.StringNullableFilter<"Evaluation"> | string | null
+  examPaperName?: Prisma.StringNullableFilter<"Evaluation"> | string | null
   validatedAt?: Prisma.DateTimeNullableFilter<"Evaluation"> | Date | string | null
   validatedById?: Prisma.IntNullableFilter<"Evaluation"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
@@ -370,6 +390,8 @@ export type EvaluationOrderByWithAggregationInput = {
   date?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  examPaperPath?: Prisma.SortOrderInput | Prisma.SortOrder
+  examPaperName?: Prisma.SortOrderInput | Prisma.SortOrder
   validatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   validatedById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -394,6 +416,8 @@ export type EvaluationScalarWhereWithAggregatesInput = {
   date?: Prisma.DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
   maxScore?: Prisma.FloatWithAggregatesFilter<"Evaluation"> | number
   coefficient?: Prisma.FloatWithAggregatesFilter<"Evaluation"> | number
+  examPaperPath?: Prisma.StringNullableWithAggregatesFilter<"Evaluation"> | string | null
+  examPaperName?: Prisma.StringNullableWithAggregatesFilter<"Evaluation"> | string | null
   validatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Evaluation"> | Date | string | null
   validatedById?: Prisma.IntNullableWithAggregatesFilter<"Evaluation"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Evaluation"> | Date | string
@@ -406,6 +430,8 @@ export type EvaluationCreateInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -427,6 +453,8 @@ export type EvaluationUncheckedCreateInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   validatedById?: number | null
   createdAt?: Date | string
@@ -441,6 +469,8 @@ export type EvaluationUpdateInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -462,6 +492,8 @@ export type EvaluationUncheckedUpdateInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -480,6 +512,8 @@ export type EvaluationCreateManyInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   validatedById?: number | null
   createdAt?: Date | string
@@ -492,6 +526,8 @@ export type EvaluationUpdateManyMutationInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -507,6 +543,8 @@ export type EvaluationUncheckedUpdateManyInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -539,6 +577,8 @@ export type EvaluationCountOrderByAggregateInput = {
   date?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  examPaperPath?: Prisma.SortOrder
+  examPaperName?: Prisma.SortOrder
   validatedAt?: Prisma.SortOrder
   validatedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -565,6 +605,8 @@ export type EvaluationMaxOrderByAggregateInput = {
   date?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  examPaperPath?: Prisma.SortOrder
+  examPaperName?: Prisma.SortOrder
   validatedAt?: Prisma.SortOrder
   validatedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -581,6 +623,8 @@ export type EvaluationMinOrderByAggregateInput = {
   date?: Prisma.SortOrder
   maxScore?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
+  examPaperPath?: Prisma.SortOrder
+  examPaperName?: Prisma.SortOrder
   validatedAt?: Prisma.SortOrder
   validatedById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -808,6 +852,8 @@ export type EvaluationCreateWithoutPeriodInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -827,6 +873,8 @@ export type EvaluationUncheckedCreateWithoutPeriodInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   validatedById?: number | null
   createdAt?: Date | string
@@ -874,6 +922,8 @@ export type EvaluationScalarWhereInput = {
   date?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
   maxScore?: Prisma.FloatFilter<"Evaluation"> | number
   coefficient?: Prisma.FloatFilter<"Evaluation"> | number
+  examPaperPath?: Prisma.StringNullableFilter<"Evaluation"> | string | null
+  examPaperName?: Prisma.StringNullableFilter<"Evaluation"> | string | null
   validatedAt?: Prisma.DateTimeNullableFilter<"Evaluation"> | Date | string | null
   validatedById?: Prisma.IntNullableFilter<"Evaluation"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Evaluation"> | Date | string
@@ -886,6 +936,8 @@ export type EvaluationCreateWithoutSequenceInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -905,6 +957,8 @@ export type EvaluationUncheckedCreateWithoutSequenceInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   validatedById?: number | null
   createdAt?: Date | string
@@ -945,6 +999,8 @@ export type EvaluationCreateWithoutValidatedByInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -965,6 +1021,8 @@ export type EvaluationUncheckedCreateWithoutValidatedByInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1004,6 +1062,8 @@ export type EvaluationCreateWithoutClassSubjectInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1023,6 +1083,8 @@ export type EvaluationUncheckedCreateWithoutClassSubjectInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   validatedById?: number | null
   createdAt?: Date | string
@@ -1063,6 +1125,8 @@ export type EvaluationCreateWithoutGradesInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1083,6 +1147,8 @@ export type EvaluationUncheckedCreateWithoutGradesInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   validatedById?: number | null
   createdAt?: Date | string
@@ -1112,6 +1178,8 @@ export type EvaluationUpdateWithoutGradesInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1132,6 +1200,8 @@ export type EvaluationUncheckedUpdateWithoutGradesInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1145,6 +1215,8 @@ export type EvaluationCreateWithoutReviewsInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1165,6 +1237,8 @@ export type EvaluationUncheckedCreateWithoutReviewsInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   validatedById?: number | null
   createdAt?: Date | string
@@ -1194,6 +1268,8 @@ export type EvaluationUpdateWithoutReviewsInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1214,6 +1290,8 @@ export type EvaluationUncheckedUpdateWithoutReviewsInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1230,6 +1308,8 @@ export type EvaluationCreateManyPeriodInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   validatedById?: number | null
   createdAt?: Date | string
@@ -1242,6 +1322,8 @@ export type EvaluationUpdateWithoutPeriodInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1261,6 +1343,8 @@ export type EvaluationUncheckedUpdateWithoutPeriodInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1278,6 +1362,8 @@ export type EvaluationUncheckedUpdateManyWithoutPeriodInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1293,6 +1379,8 @@ export type EvaluationCreateManySequenceInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   validatedById?: number | null
   createdAt?: Date | string
@@ -1305,6 +1393,8 @@ export type EvaluationUpdateWithoutSequenceInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1324,6 +1414,8 @@ export type EvaluationUncheckedUpdateWithoutSequenceInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1341,6 +1433,8 @@ export type EvaluationUncheckedUpdateManyWithoutSequenceInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1357,6 +1451,8 @@ export type EvaluationCreateManyValidatedByInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1368,6 +1464,8 @@ export type EvaluationUpdateWithoutValidatedByInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1388,6 +1486,8 @@ export type EvaluationUncheckedUpdateWithoutValidatedByInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1405,6 +1505,8 @@ export type EvaluationUncheckedUpdateManyWithoutValidatedByInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1419,6 +1521,8 @@ export type EvaluationCreateManyClassSubjectInput = {
   date: Date | string
   maxScore?: number
   coefficient?: number
+  examPaperPath?: string | null
+  examPaperName?: string | null
   validatedAt?: Date | string | null
   validatedById?: number | null
   createdAt?: Date | string
@@ -1431,6 +1535,8 @@ export type EvaluationUpdateWithoutClassSubjectInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1450,6 +1556,8 @@ export type EvaluationUncheckedUpdateWithoutClassSubjectInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1467,6 +1575,8 @@ export type EvaluationUncheckedUpdateManyWithoutClassSubjectInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   maxScore?: Prisma.FloatFieldUpdateOperationsInput | number
   coefficient?: Prisma.FloatFieldUpdateOperationsInput | number
+  examPaperPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  examPaperName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   validatedById?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1523,6 +1633,8 @@ export type EvaluationSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   date?: boolean
   maxScore?: boolean
   coefficient?: boolean
+  examPaperPath?: boolean
+  examPaperName?: boolean
   validatedAt?: boolean
   validatedById?: boolean
   createdAt?: boolean
@@ -1548,13 +1660,15 @@ export type EvaluationSelectScalar = {
   date?: boolean
   maxScore?: boolean
   coefficient?: boolean
+  examPaperPath?: boolean
+  examPaperName?: boolean
   validatedAt?: boolean
   validatedById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type EvaluationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "classSubjectId" | "periodId" | "sequenceId" | "title" | "type" | "date" | "maxScore" | "coefficient" | "validatedAt" | "validatedById" | "createdAt" | "updatedAt", ExtArgs["result"]["evaluation"]>
+export type EvaluationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "classSubjectId" | "periodId" | "sequenceId" | "title" | "type" | "date" | "maxScore" | "coefficient" | "examPaperPath" | "examPaperName" | "validatedAt" | "validatedById" | "createdAt" | "updatedAt", ExtArgs["result"]["evaluation"]>
 export type EvaluationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   classSubject?: boolean | Prisma.ClassSubjectDefaultArgs<ExtArgs>
   period?: boolean | Prisma.PeriodDefaultArgs<ExtArgs>
@@ -1585,6 +1699,8 @@ export type $EvaluationPayload<ExtArgs extends runtime.Types.Extensions.Internal
     date: Date
     maxScore: number
     coefficient: number
+    examPaperPath: string | null
+    examPaperName: string | null
     validatedAt: Date | null
     validatedById: number | null
     createdAt: Date
@@ -1973,6 +2089,8 @@ export interface EvaluationFieldRefs {
   readonly date: Prisma.FieldRef<"Evaluation", 'DateTime'>
   readonly maxScore: Prisma.FieldRef<"Evaluation", 'Float'>
   readonly coefficient: Prisma.FieldRef<"Evaluation", 'Float'>
+  readonly examPaperPath: Prisma.FieldRef<"Evaluation", 'String'>
+  readonly examPaperName: Prisma.FieldRef<"Evaluation", 'String'>
   readonly validatedAt: Prisma.FieldRef<"Evaluation", 'DateTime'>
   readonly validatedById: Prisma.FieldRef<"Evaluation", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Evaluation", 'DateTime'>

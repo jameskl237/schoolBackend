@@ -1,4 +1,9 @@
 import { AppError } from "../../common/errors/app-error.js";
+import {
+  DEFAULT_ACCOUNT_PASSWORD,
+  provisionAccount,
+  PROFILE_ROLES,
+} from "../../common/utils/account-provisioning.js";
 import { studentScopeFilter, type AccessScope } from "../../common/utils/access-scope.js";
 import { hashPassword } from "../../common/utils/password.js";
 import { stripUndefined } from "../../common/utils/strip-undefined.js";
@@ -36,9 +41,6 @@ const PARENT_ROLE_PERMISSIONS = [
   "disciplines.view",
   "transport.view",
 ];
-
-/** Mot de passe initial d'un compte parent créé par la scolarité. */
-const DEFAULT_PARENT_PASSWORD = "Parent@123";
 
 const toStudentView = (student: StudentWithEnrollment) => {
   const { enrollments, studentParents, ...rest } = student;
@@ -104,6 +106,17 @@ export class StudentService {
 
     try {
       const created = await prisma.$transaction(async (tx) => {
+        // Tout élève a son compte : c'est lui qui porte le rôle ELEVE et qui sert
+        // d'ancrage s'il doit être son propre responsable.
+        const account = await provisionAccount(tx, {
+          establishmentId,
+          roleName: PROFILE_ROLES.STUDENT,
+          firstName: required.firstName,
+          lastName: required.lastName,
+          emailDomain: "eleve.local",
+          defaultPassword: DEFAULT_ACCOUNT_PASSWORD,
+        });
+
         const student = await tx.student.create({
           data: {
             ...required,
@@ -111,6 +124,7 @@ export class StudentService {
             ...(nationality !== undefined ? { nationality } : {}),
             ...(address !== undefined ? { address } : {}),
             establishment: { connect: { id: establishmentId } },
+            user: { connect: { id: account.userId } },
             // Créé "non inscrit" : la scolarité confirmera l'inscription.
             enrollments: {
               create: {
@@ -126,12 +140,23 @@ export class StudentService {
         const createdParent =
           parent !== undefined
             ? await this.createRecordedParent(tx, establishmentId, student.id, parent)
-            : await this.createSelfParent(tx, establishmentId, student.id, required.firstName, required.lastName, address);
+            : await this.createSelfParent(tx, establishmentId, student.id, account.userId, {
+                firstName: required.firstName,
+                lastName: required.lastName,
+                ...(address !== undefined ? { address } : {}),
+              });
 
-        return { student, createdParent };
+        return { student, createdParent, account };
       });
 
-      return { ...toStudentView(created.student), createdParent: created.createdParent };
+      return {
+        ...toStudentView(created.student),
+        account: {
+          loginEmail: created.account.loginEmail,
+          password: created.account.password,
+        },
+        createdParent: created.createdParent,
+      };
     } catch (error) {
       throw this.mapKnownErrors(error);
     }
@@ -146,7 +171,7 @@ export class StudentService {
   ) {
     const role = await this.ensureParentRole(tx, establishmentId);
     const loginEmail = input.email ?? this.buildParentEmail(input.lastName, input.firstName, establishmentId);
-    const password = input.password ?? DEFAULT_PARENT_PASSWORD;
+    const password = input.password ?? DEFAULT_ACCOUNT_PASSWORD;
 
     const user = await tx.user.create({
       data: {
@@ -156,7 +181,7 @@ export class StudentService {
         lastName: input.lastName,
         phone: input.phone ?? null,
         establishment: { connect: { id: establishmentId } },
-        ...(role ? { userRoles: { create: [{ roleId: role.id }] } } : {}),
+        role: { connect: { id: role.id } },
       },
     });
 
@@ -192,28 +217,32 @@ export class StudentService {
       email: parent.email,
       loginEmail,
       password,
+      isSelf: false,
     };
   }
 
-  /** Sans parent renseigné, l'élève est son propre parent : lien simple sans compte séparé. */
+  /**
+   * Sans parent renseigné, l'élève est son propre responsable : le profil parent
+   * est adossé à son propre compte, pas à un second compte fantôme.
+   */
   private async createSelfParent(
     tx: Prisma.TransactionClient,
     establishmentId: number,
     studentId: number,
-    firstName: string,
-    lastName: string,
-    address?: string,
+    userId: number,
+    identity: { firstName: string; lastName: string; address?: string },
   ) {
     const parent = await tx.parent.create({
       data: {
         establishmentId,
-        firstName,
-        lastName,
-        address: address ?? null,
+        userId,
+        firstName: identity.firstName,
+        lastName: identity.lastName,
+        address: identity.address ?? null,
         studentParents: {
           create: {
             studentId,
-            relationType: ParentRelationType.OTHER,
+            relationType: ParentRelationType.SELF,
             isPrimaryContact: true,
           },
         },
@@ -227,6 +256,7 @@ export class StudentService {
       email: null,
       loginEmail: null,
       password: null,
+      isSelf: true,
     };
   }
 

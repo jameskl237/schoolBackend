@@ -19,7 +19,18 @@ export const registerSchema = z.object({
 export const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(1),
-  establishmentCode: establishmentCodeSchema,
+  /**
+   * Facultatif : l'adresse suffit à identifier le compte dans la quasi-totalité
+   * des cas. Le code n'est réclamé que si la même adresse existe dans plusieurs
+   * établissements — un parent n'a donc rien à connaître de plus que ses identifiants.
+   *
+   * Un champ laissé vide par le client vaut « non fourni » : sans cela, un
+   * formulaire qui envoie une chaîne vide échouerait sur le format attendu.
+   */
+  establishmentCode: z.preprocess(
+    (value) => (typeof value === "string" && value.trim() === "" ? undefined : value),
+    establishmentCodeSchema.optional(),
+  ),
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;

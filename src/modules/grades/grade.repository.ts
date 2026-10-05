@@ -12,6 +12,8 @@ const gradeInclude = {
       maxScore: true,
       coefficient: true,
       validatedAt: true,
+      examPaperPath: true,
+      examPaperName: true,
       classSubject: {
         select: {
           id: true,

@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import type { Establishment } from "../src/generated/prisma/client.js";
 import { ParentRelationType } from "../src/generated/prisma/enums.js";
 import { prisma } from "../src/infrastructure/database/prisma.js";
+import { DEFAULT_ACCOUNT_PASSWORD } from "../src/common/utils/account-provisioning.js";
 
 /**
  * Garantit qu'un parent avec compte de connexion est rattaché à chaque élève,
@@ -16,7 +17,7 @@ import { prisma } from "../src/infrastructure/database/prisma.js";
  * Lancement : npx tsx prisma/assign-parents.ts
  */
 
-const DEMO_PASSWORD = "Password123!";
+const DEMO_PASSWORD = DEFAULT_ACCOUNT_PASSWORD;
 
 const parentRolePermissions = [
   "dashboard.view",
@@ -108,7 +109,7 @@ async function assignParentPerEstablishment(establishment: Establishment) {
           lastName: student.lastName,
           phone: null,
           establishment: { connect: { id: establishment.id } },
-          userRoles: { create: [{ roleId: role.id }] },
+          role: { connect: { id: role.id } },
         },
       });
 
@@ -152,7 +153,7 @@ async function assignParentPerEstablishment(establishment: Establishment) {
           lastName: parent.lastName,
           phone: parent.phone,
           establishment: { connect: { id: establishment.id } },
-          userRoles: { create: [{ roleId: role.id }] },
+          role: { connect: { id: role.id } },
         },
       });
 

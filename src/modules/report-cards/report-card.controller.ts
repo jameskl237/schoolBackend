@@ -4,10 +4,12 @@ import { AppError } from "../../common/errors/app-error.js";
 import { getScope } from "../../common/utils/access-scope.js";
 import { stripUndefined } from "../../common/utils/strip-undefined.js";
 
+import { BulletinBuilder } from "./report-card.bulletin.js";
 import { createReportCardSchema, updateReportCardSchema } from "./report-card.dto.js";
 import { ReportCardService } from "./report-card.service.js";
 
 const reportCardService = new ReportCardService();
+const bulletinBuilder = new BulletinBuilder();
 
 const parseId = (value: string): number => {
   const id = Number(value);
@@ -34,6 +36,18 @@ const parseOptionalId = (value: unknown, label: string): number | undefined => {
 };
 
 export class ReportCardController {
+  /** Le bulletin mis en forme : en-tête officiel, notes, statistiques de classe. */
+  async bulletin(req: Request, res: Response, next: NextFunction) {
+    try {
+      res.status(200).json({
+        success: true,
+        data: await bulletinBuilder.build(parseId(req.params.id as string), getScope(req)),
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async list(req: Request, res: Response, next: NextFunction) {
     try {
       res.status(200).json({

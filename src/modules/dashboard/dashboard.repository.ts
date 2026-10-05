@@ -24,9 +24,9 @@ export class DashboardRepository {
   async getUserCountByRole(establishmentId: number) {
     const roles = await prisma.role.findMany({
       where: { establishmentId },
-      select: { name: true, _count: { select: { userRoles: true } } },
+      select: { name: true, _count: { select: { users: true } } },
     });
 
-    return roles.map((role) => ({ role: role.name, count: role._count.userRoles }));
+    return roles.map((role) => ({ role: role.name, count: role._count.users }));
   }
 }

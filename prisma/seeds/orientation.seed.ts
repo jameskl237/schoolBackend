@@ -15,7 +15,7 @@ export async function seedOrientation(establishments: Establishment[]) {
       where: {
         establishmentId: establishment.id,
         isActive: true,
-        userRoles: { some: { role: { name: "CONSEILLER_ORIENTATION" } } },
+        role: { name: "CONSEILLER_ORIENTATION" },
       },
       orderBy: { id: "asc" },
       select: { id: true },

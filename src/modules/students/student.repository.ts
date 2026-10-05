@@ -82,6 +82,29 @@ export class StudentRepository {
       .filter((userId): userId is number => userId !== null);
   }
 
+  /** L'élève est-il inscrit dans la classe ? (lecture d'accès, ex. épreuve d'évaluation) */
+  async isEnrolledInClass(studentId: number, classId: number): Promise<boolean> {
+    const enrollment = await prisma.enrollment.findFirst({
+      where: { studentId, classId },
+      select: { id: true },
+    });
+
+    return enrollment !== null;
+  }
+
+  /** Le parent a-t-il un enfant inscrit dans la classe ? (lecture d'accès) */
+  async hasChildInClass(parentId: number, classId: number): Promise<boolean> {
+    const link = await prisma.studentParent.findFirst({
+      where: {
+        parentId,
+        student: { enrollments: { some: { classId } } },
+      },
+      select: { id: true },
+    });
+
+    return link !== null;
+  }
+
   update(id: number, data: Prisma.StudentUpdateInput) {
     return prisma.student.update({ where: { id }, data, include: studentInclude });
   }

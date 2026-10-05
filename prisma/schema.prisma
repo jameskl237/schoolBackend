@@ -36,6 +36,11 @@ model Establishment {
   name String
   code String     @unique
   type SchoolType
+  // Éléments d'en-tête des documents officiels (bulletins, attestations).
+  logoUrl String?
+  city    String?
+  poBox   String?
+  phone   String?
 
   academicYears AcademicYear[]
   schoolLevels  SchoolLevel[]
@@ -254,7 +259,11 @@ model User {
 
   establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
 
-  userRoles UserRole[]
+  // Un compte porte exactement un rôle : c'est lui qui dit ce qu'il est
+  // (enseignant, directeur, secrétaire, élève...) et ce qu'il a le droit de faire.
+  roleId Int
+  role   Role @relation(fields: [roleId], references: [id], onDelete: Restrict)
+
   teacher   Teacher?
   parent    Parent?
   guardian  Guardian?
@@ -274,6 +283,7 @@ model User {
 
   @@unique([establishmentId, email])
   @@index([establishmentId])
+  @@index([roleId])
 }
 
 model Role {
@@ -284,7 +294,7 @@ model Role {
 
   establishment Establishment @relation(fields: [establishmentId], references: [id], onDelete: Cascade)
 
-  userRoles       UserRole[]
+  users           User[]
   rolePermissions RolePermission[]
 
   createdAt DateTime @default(now())
@@ -304,20 +314,6 @@ model Permission {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model UserRole {
-  id     Int @id @default(autoincrement())
-  userId Int
-  roleId Int
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
-
-  assignedAt DateTime @default(now())
-
-  @@unique([userId, roleId])
-  @@index([roleId])
 }
 
 model RolePermission {
@@ -529,6 +525,9 @@ enum ParentRelationType {
   MOTHER
   STEPFATHER
   STEPMOTHER
+  // L'élève sans parents déclarés est son propre responsable : le lien pointe
+  // alors vers un profil parent adossé à son propre compte.
+  SELF
   OTHER
 }
 
@@ -646,6 +645,12 @@ model Evaluation {
   date           DateTime
   maxScore       Float          @default(20)
   coefficient    Float          @default(1)
+
+  // Épreuve PDF mise en ligne par l'enseignant, consultable par ses élèves et
+  // leurs parents. On ne garde que le chemin relatif du fichier et son nom
+  // d'origine (pour l'affichage et le téléchargement).
+  examPaperPath  String?
+  examPaperName  String?
 
   // Validation par l'enseignant : une fois posée, les notes de l'évaluation sont
   // verrouillées pour tout le monde, l'administration comprise. Seul l'enseignant

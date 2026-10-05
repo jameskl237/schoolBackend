@@ -39,6 +39,10 @@ export type EstablishmentMinAggregateOutputType = {
   name: string | null
   code: string | null
   type: $Enums.SchoolType | null
+  logoUrl: string | null
+  city: string | null
+  poBox: string | null
+  phone: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -48,6 +52,10 @@ export type EstablishmentMaxAggregateOutputType = {
   name: string | null
   code: string | null
   type: $Enums.SchoolType | null
+  logoUrl: string | null
+  city: string | null
+  poBox: string | null
+  phone: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -57,6 +65,10 @@ export type EstablishmentCountAggregateOutputType = {
   name: number
   code: number
   type: number
+  logoUrl: number
+  city: number
+  poBox: number
+  phone: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -76,6 +88,10 @@ export type EstablishmentMinAggregateInputType = {
   name?: true
   code?: true
   type?: true
+  logoUrl?: true
+  city?: true
+  poBox?: true
+  phone?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -85,6 +101,10 @@ export type EstablishmentMaxAggregateInputType = {
   name?: true
   code?: true
   type?: true
+  logoUrl?: true
+  city?: true
+  poBox?: true
+  phone?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -94,6 +114,10 @@ export type EstablishmentCountAggregateInputType = {
   name?: true
   code?: true
   type?: true
+  logoUrl?: true
+  city?: true
+  poBox?: true
+  phone?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -190,6 +214,10 @@ export type EstablishmentGroupByOutputType = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl: string | null
+  city: string | null
+  poBox: string | null
+  phone: string | null
   createdAt: Date
   updatedAt: Date
   _count: EstablishmentCountAggregateOutputType | null
@@ -222,6 +250,10 @@ export type EstablishmentWhereInput = {
   name?: Prisma.StringFilter<"Establishment"> | string
   code?: Prisma.StringFilter<"Establishment"> | string
   type?: Prisma.EnumSchoolTypeFilter<"Establishment"> | $Enums.SchoolType
+  logoUrl?: Prisma.StringNullableFilter<"Establishment"> | string | null
+  city?: Prisma.StringNullableFilter<"Establishment"> | string | null
+  poBox?: Prisma.StringNullableFilter<"Establishment"> | string | null
+  phone?: Prisma.StringNullableFilter<"Establishment"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Establishment"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Establishment"> | Date | string
   academicYears?: Prisma.AcademicYearListRelationFilter
@@ -244,6 +276,10 @@ export type EstablishmentOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  poBox?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   academicYears?: Prisma.AcademicYearOrderByRelationAggregateInput
@@ -270,6 +306,10 @@ export type EstablishmentWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.EstablishmentWhereInput | Prisma.EstablishmentWhereInput[]
   name?: Prisma.StringFilter<"Establishment"> | string
   type?: Prisma.EnumSchoolTypeFilter<"Establishment"> | $Enums.SchoolType
+  logoUrl?: Prisma.StringNullableFilter<"Establishment"> | string | null
+  city?: Prisma.StringNullableFilter<"Establishment"> | string | null
+  poBox?: Prisma.StringNullableFilter<"Establishment"> | string | null
+  phone?: Prisma.StringNullableFilter<"Establishment"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Establishment"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Establishment"> | Date | string
   academicYears?: Prisma.AcademicYearListRelationFilter
@@ -292,6 +332,10 @@ export type EstablishmentOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  poBox?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.EstablishmentCountOrderByAggregateInput
@@ -309,6 +353,10 @@ export type EstablishmentScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Establishment"> | string
   code?: Prisma.StringWithAggregatesFilter<"Establishment"> | string
   type?: Prisma.EnumSchoolTypeWithAggregatesFilter<"Establishment"> | $Enums.SchoolType
+  logoUrl?: Prisma.StringNullableWithAggregatesFilter<"Establishment"> | string | null
+  city?: Prisma.StringNullableWithAggregatesFilter<"Establishment"> | string | null
+  poBox?: Prisma.StringNullableWithAggregatesFilter<"Establishment"> | string | null
+  phone?: Prisma.StringNullableWithAggregatesFilter<"Establishment"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Establishment"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Establishment"> | Date | string
 }
@@ -317,6 +365,10 @@ export type EstablishmentCreateInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -339,6 +391,10 @@ export type EstablishmentUncheckedCreateInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -360,6 +416,10 @@ export type EstablishmentUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -382,6 +442,10 @@ export type EstablishmentUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -404,6 +468,10 @@ export type EstablishmentCreateManyInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -412,6 +480,10 @@ export type EstablishmentUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -421,6 +493,10 @@ export type EstablishmentUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -436,6 +512,10 @@ export type EstablishmentCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  poBox?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -449,6 +529,10 @@ export type EstablishmentMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  poBox?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -458,6 +542,10 @@ export type EstablishmentMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  poBox?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -477,6 +565,10 @@ export type StringFieldUpdateOperationsInput = {
 
 export type EnumSchoolTypeFieldUpdateOperationsInput = {
   set?: $Enums.SchoolType
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -677,6 +769,10 @@ export type EstablishmentCreateWithoutAcademicYearsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   schoolLevels?: Prisma.SchoolLevelCreateNestedManyWithoutEstablishmentInput
@@ -698,6 +794,10 @@ export type EstablishmentUncheckedCreateWithoutAcademicYearsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   schoolLevels?: Prisma.SchoolLevelUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -734,6 +834,10 @@ export type EstablishmentUpdateWithoutAcademicYearsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   schoolLevels?: Prisma.SchoolLevelUpdateManyWithoutEstablishmentNestedInput
@@ -755,6 +859,10 @@ export type EstablishmentUncheckedUpdateWithoutAcademicYearsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   schoolLevels?: Prisma.SchoolLevelUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -775,6 +883,10 @@ export type EstablishmentCreateWithoutSchoolLevelsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -796,6 +908,10 @@ export type EstablishmentUncheckedCreateWithoutSchoolLevelsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -832,6 +948,10 @@ export type EstablishmentUpdateWithoutSchoolLevelsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -853,6 +973,10 @@ export type EstablishmentUncheckedUpdateWithoutSchoolLevelsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -873,6 +997,10 @@ export type EstablishmentCreateWithoutUsersInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -894,6 +1022,10 @@ export type EstablishmentUncheckedCreateWithoutUsersInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -930,6 +1062,10 @@ export type EstablishmentUpdateWithoutUsersInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -951,6 +1087,10 @@ export type EstablishmentUncheckedUpdateWithoutUsersInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -971,6 +1111,10 @@ export type EstablishmentCreateWithoutRolesInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -992,6 +1136,10 @@ export type EstablishmentUncheckedCreateWithoutRolesInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -1028,6 +1176,10 @@ export type EstablishmentUpdateWithoutRolesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -1049,6 +1201,10 @@ export type EstablishmentUncheckedUpdateWithoutRolesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -1069,6 +1225,10 @@ export type EstablishmentCreateWithoutTeachersInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -1090,6 +1250,10 @@ export type EstablishmentUncheckedCreateWithoutTeachersInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -1126,6 +1290,10 @@ export type EstablishmentUpdateWithoutTeachersInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -1147,6 +1315,10 @@ export type EstablishmentUncheckedUpdateWithoutTeachersInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -1167,6 +1339,10 @@ export type EstablishmentCreateWithoutSubjectsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -1188,6 +1364,10 @@ export type EstablishmentUncheckedCreateWithoutSubjectsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -1224,6 +1404,10 @@ export type EstablishmentUpdateWithoutSubjectsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -1245,6 +1429,10 @@ export type EstablishmentUncheckedUpdateWithoutSubjectsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -1265,6 +1453,10 @@ export type EstablishmentCreateWithoutClassroomsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -1286,6 +1478,10 @@ export type EstablishmentUncheckedCreateWithoutClassroomsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -1322,6 +1518,10 @@ export type EstablishmentUpdateWithoutClassroomsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -1343,6 +1543,10 @@ export type EstablishmentUncheckedUpdateWithoutClassroomsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -1363,6 +1567,10 @@ export type EstablishmentCreateWithoutStudentsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -1384,6 +1592,10 @@ export type EstablishmentUncheckedCreateWithoutStudentsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -1420,6 +1632,10 @@ export type EstablishmentUpdateWithoutStudentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -1441,6 +1657,10 @@ export type EstablishmentUncheckedUpdateWithoutStudentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -1461,6 +1681,10 @@ export type EstablishmentCreateWithoutParentsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -1482,6 +1706,10 @@ export type EstablishmentUncheckedCreateWithoutParentsInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -1518,6 +1746,10 @@ export type EstablishmentUpdateWithoutParentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -1539,6 +1771,10 @@ export type EstablishmentUncheckedUpdateWithoutParentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -1559,6 +1795,10 @@ export type EstablishmentCreateWithoutGuardiansInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -1580,6 +1820,10 @@ export type EstablishmentUncheckedCreateWithoutGuardiansInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -1616,6 +1860,10 @@ export type EstablishmentUpdateWithoutGuardiansInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -1637,6 +1885,10 @@ export type EstablishmentUncheckedUpdateWithoutGuardiansInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -1657,6 +1909,10 @@ export type EstablishmentCreateWithoutFeeTypesInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -1678,6 +1934,10 @@ export type EstablishmentUncheckedCreateWithoutFeeTypesInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -1714,6 +1974,10 @@ export type EstablishmentUpdateWithoutFeeTypesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -1735,6 +1999,10 @@ export type EstablishmentUncheckedUpdateWithoutFeeTypesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -1755,6 +2023,10 @@ export type EstablishmentCreateWithoutTransportRoutesInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -1776,6 +2048,10 @@ export type EstablishmentUncheckedCreateWithoutTransportRoutesInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -1812,6 +2088,10 @@ export type EstablishmentUpdateWithoutTransportRoutesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -1833,6 +2113,10 @@ export type EstablishmentUncheckedUpdateWithoutTransportRoutesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -1853,6 +2137,10 @@ export type EstablishmentCreateWithoutBooksInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearCreateNestedManyWithoutEstablishmentInput
@@ -1874,6 +2162,10 @@ export type EstablishmentUncheckedCreateWithoutBooksInput = {
   name: string
   code: string
   type: $Enums.SchoolType
+  logoUrl?: string | null
+  city?: string | null
+  poBox?: string | null
+  phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutEstablishmentInput
@@ -1910,6 +2202,10 @@ export type EstablishmentUpdateWithoutBooksInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUpdateManyWithoutEstablishmentNestedInput
@@ -1931,6 +2227,10 @@ export type EstablishmentUncheckedUpdateWithoutBooksInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  poBox?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutEstablishmentNestedInput
@@ -2091,6 +2391,10 @@ export type EstablishmentSelect<ExtArgs extends runtime.Types.Extensions.Interna
   name?: boolean
   code?: boolean
   type?: boolean
+  logoUrl?: boolean
+  city?: boolean
+  poBox?: boolean
+  phone?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   academicYears?: boolean | Prisma.Establishment$academicYearsArgs<ExtArgs>
@@ -2116,11 +2420,15 @@ export type EstablishmentSelectScalar = {
   name?: boolean
   code?: boolean
   type?: boolean
+  logoUrl?: boolean
+  city?: boolean
+  poBox?: boolean
+  phone?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type EstablishmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "type" | "createdAt" | "updatedAt", ExtArgs["result"]["establishment"]>
+export type EstablishmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "type" | "logoUrl" | "city" | "poBox" | "phone" | "createdAt" | "updatedAt", ExtArgs["result"]["establishment"]>
 export type EstablishmentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   academicYears?: boolean | Prisma.Establishment$academicYearsArgs<ExtArgs>
   schoolLevels?: boolean | Prisma.Establishment$schoolLevelsArgs<ExtArgs>
@@ -2160,6 +2468,10 @@ export type $EstablishmentPayload<ExtArgs extends runtime.Types.Extensions.Inter
     name: string
     code: string
     type: $Enums.SchoolType
+    logoUrl: string | null
+    city: string | null
+    poBox: string | null
+    phone: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["establishment"]>
@@ -2548,6 +2860,10 @@ export interface EstablishmentFieldRefs {
   readonly name: Prisma.FieldRef<"Establishment", 'String'>
   readonly code: Prisma.FieldRef<"Establishment", 'String'>
   readonly type: Prisma.FieldRef<"Establishment", 'SchoolType'>
+  readonly logoUrl: Prisma.FieldRef<"Establishment", 'String'>
+  readonly city: Prisma.FieldRef<"Establishment", 'String'>
+  readonly poBox: Prisma.FieldRef<"Establishment", 'String'>
+  readonly phone: Prisma.FieldRef<"Establishment", 'String'>
   readonly createdAt: Prisma.FieldRef<"Establishment", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Establishment", 'DateTime'>
 }

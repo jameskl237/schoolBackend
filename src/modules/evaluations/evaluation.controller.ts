@@ -1,7 +1,10 @@
+import fs from "node:fs";
+
 import type { NextFunction, Request, Response } from "express";
 
 import { AppError } from "../../common/errors/app-error.js";
 import { getScope } from "../../common/utils/access-scope.js";
+import { examPaperAbsolutePath } from "../../common/utils/exam-paper-storage.js";
 import { stripUndefined } from "../../common/utils/strip-undefined.js";
 
 import { createEvaluationSchema, updateEvaluationSchema } from "./evaluation.dto.js";
@@ -126,6 +129,62 @@ export class EvaluationController {
       await evaluationService.remove(parseId(req.params.id as string), getScope(req));
 
       res.status(204).send();
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async uploadExamPaper(req: Request, res: Response, next: NextFunction) {
+    try {
+      if (!req.file) {
+        throw new AppError("Missing exam paper file", 400, "MISSING_FILE");
+      }
+
+      const evaluation = await evaluationService.attachExamPaper(
+        parseId(req.params.id as string),
+        getScope(req),
+        req.file,
+      );
+
+      res.status(200).json({ success: true, data: evaluation });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async downloadExamPaper(req: Request, res: Response, next: NextFunction) {
+    try {
+      const evaluation = await evaluationService.getExamPaper(
+        parseId(req.params.id as string),
+        getScope(req),
+      );
+
+      const examPaperPath = evaluation.examPaperPath;
+
+      if (!examPaperPath) {
+        throw new AppError("No exam paper available for this evaluation", 404, "EXAM_PAPER_NOT_FOUND");
+      }
+
+      const absolutePath = examPaperAbsolutePath(examPaperPath);
+
+      if (!fs.existsSync(absolutePath)) {
+        throw new AppError("The exam paper file is missing on the server", 404, "EXAM_PAPER_FILE_MISSING");
+      }
+
+      res.download(absolutePath, evaluation.examPaperName ?? "exam-paper.pdf");
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async removeExamPaper(req: Request, res: Response, next: NextFunction) {
+    try {
+      const evaluation = await evaluationService.detachExamPaper(
+        parseId(req.params.id as string),
+        getScope(req),
+      );
+
+      res.status(200).json({ success: true, data: evaluation });
     } catch (error) {
       next(error);
     }

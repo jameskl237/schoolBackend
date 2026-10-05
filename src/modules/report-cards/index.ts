@@ -10,3 +10,5 @@ export {
   type ReportCardLineInput,
   type UpdateReportCardInput,
 } from "./report-card.dto.js";
+
+export { BulletinBuilder, type Bulletin } from "./report-card.bulletin.js";

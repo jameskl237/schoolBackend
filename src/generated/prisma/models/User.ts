@@ -29,11 +29,13 @@ export type AggregateUser = {
 export type UserAvgAggregateOutputType = {
   id: number | null
   establishmentId: number | null
+  roleId: number | null
 }
 
 export type UserSumAggregateOutputType = {
   id: number | null
   establishmentId: number | null
+  roleId: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -46,6 +48,7 @@ export type UserMinAggregateOutputType = {
   phone: string | null
   isActive: boolean | null
   lastLoginAt: Date | null
+  roleId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -60,6 +63,7 @@ export type UserMaxAggregateOutputType = {
   phone: string | null
   isActive: boolean | null
   lastLoginAt: Date | null
+  roleId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -74,6 +78,7 @@ export type UserCountAggregateOutputType = {
   phone: number
   isActive: number
   lastLoginAt: number
+  roleId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -83,11 +88,13 @@ export type UserCountAggregateOutputType = {
 export type UserAvgAggregateInputType = {
   id?: true
   establishmentId?: true
+  roleId?: true
 }
 
 export type UserSumAggregateInputType = {
   id?: true
   establishmentId?: true
+  roleId?: true
 }
 
 export type UserMinAggregateInputType = {
@@ -100,6 +107,7 @@ export type UserMinAggregateInputType = {
   phone?: true
   isActive?: true
   lastLoginAt?: true
+  roleId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -114,6 +122,7 @@ export type UserMaxAggregateInputType = {
   phone?: true
   isActive?: true
   lastLoginAt?: true
+  roleId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -128,6 +137,7 @@ export type UserCountAggregateInputType = {
   phone?: true
   isActive?: true
   lastLoginAt?: true
+  roleId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -229,6 +239,7 @@ export type UserGroupByOutputType = {
   phone: string | null
   isActive: boolean
   lastLoginAt: Date | null
+  roleId: number
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -266,10 +277,11 @@ export type UserWhereInput = {
   phone?: Prisma.StringNullableFilter<"User"> | string | null
   isActive?: Prisma.BoolFilter<"User"> | boolean
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  roleId?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   establishment?: Prisma.XOR<Prisma.EstablishmentScalarRelationFilter, Prisma.EstablishmentWhereInput>
-  userRoles?: Prisma.UserRoleListRelationFilter
+  role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
   teacher?: Prisma.XOR<Prisma.TeacherNullableScalarRelationFilter, Prisma.TeacherWhereInput> | null
   parent?: Prisma.XOR<Prisma.ParentNullableScalarRelationFilter, Prisma.ParentWhereInput> | null
   guardian?: Prisma.XOR<Prisma.GuardianNullableScalarRelationFilter, Prisma.GuardianWhereInput> | null
@@ -294,10 +306,11 @@ export type UserOrderByWithRelationInput = {
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  roleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   establishment?: Prisma.EstablishmentOrderByWithRelationInput
-  userRoles?: Prisma.UserRoleOrderByRelationAggregateInput
+  role?: Prisma.RoleOrderByWithRelationInput
   teacher?: Prisma.TeacherOrderByWithRelationInput
   parent?: Prisma.ParentOrderByWithRelationInput
   guardian?: Prisma.GuardianOrderByWithRelationInput
@@ -327,10 +340,11 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   phone?: Prisma.StringNullableFilter<"User"> | string | null
   isActive?: Prisma.BoolFilter<"User"> | boolean
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  roleId?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   establishment?: Prisma.XOR<Prisma.EstablishmentScalarRelationFilter, Prisma.EstablishmentWhereInput>
-  userRoles?: Prisma.UserRoleListRelationFilter
+  role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
   teacher?: Prisma.XOR<Prisma.TeacherNullableScalarRelationFilter, Prisma.TeacherWhereInput> | null
   parent?: Prisma.XOR<Prisma.ParentNullableScalarRelationFilter, Prisma.ParentWhereInput> | null
   guardian?: Prisma.XOR<Prisma.GuardianNullableScalarRelationFilter, Prisma.GuardianWhereInput> | null
@@ -355,6 +369,7 @@ export type UserOrderByWithAggregationInput = {
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  roleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -377,6 +392,7 @@ export type UserScalarWhereWithAggregatesInput = {
   phone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   isActive?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   lastLoginAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  roleId?: Prisma.IntWithAggregatesFilter<"User"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -392,7 +408,7 @@ export type UserCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -417,9 +433,9 @@ export type UserUncheckedCreateInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -445,7 +461,7 @@ export type UserUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -470,9 +486,9 @@ export type UserUncheckedUpdateInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -497,6 +513,7 @@ export type UserCreateManyInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -523,6 +540,7 @@ export type UserUncheckedUpdateManyInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -558,6 +576,7 @@ export type UserCountOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -565,6 +584,7 @@ export type UserCountOrderByAggregateInput = {
 export type UserAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   establishmentId?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -577,6 +597,7 @@ export type UserMaxOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -591,6 +612,7 @@ export type UserMinOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -598,16 +620,17 @@ export type UserMinOrderByAggregateInput = {
 export type UserSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   establishmentId?: Prisma.SortOrder
-}
-
-export type UserScalarRelationFilter = {
-  is?: Prisma.UserWhereInput
-  isNot?: Prisma.UserWhereInput
+  roleId?: Prisma.SortOrder
 }
 
 export type UserNullableScalarRelationFilter = {
   is?: Prisma.UserWhereInput | null
   isNot?: Prisma.UserWhereInput | null
+}
+
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
 }
 
 export type UserCreateNestedManyWithoutEstablishmentInput = {
@@ -652,26 +675,50 @@ export type UserUncheckedUpdateManyWithoutEstablishmentNestedInput = {
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
 
-export type UserCreateNestedOneWithoutUserRolesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutUserRolesInput, Prisma.UserUncheckedCreateWithoutUserRolesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserRolesInput
-  connect?: Prisma.UserWhereUniqueInput
+export type UserCreateNestedManyWithoutRoleInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
+  createMany?: Prisma.UserCreateManyRoleInputEnvelope
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUpdateOneRequiredWithoutUserRolesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutUserRolesInput, Prisma.UserUncheckedCreateWithoutUserRolesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserRolesInput
-  upsert?: Prisma.UserUpsertWithoutUserRolesInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserRolesInput, Prisma.UserUpdateWithoutUserRolesInput>, Prisma.UserUncheckedUpdateWithoutUserRolesInput>
+export type UserUncheckedCreateNestedManyWithoutRoleInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
+  createMany?: Prisma.UserCreateManyRoleInputEnvelope
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUpdateManyWithoutRoleNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutRoleInput | Prisma.UserUpsertWithWhereUniqueWithoutRoleInput[]
+  createMany?: Prisma.UserCreateManyRoleInputEnvelope
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutRoleInput | Prisma.UserUpdateWithWhereUniqueWithoutRoleInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutRoleInput | Prisma.UserUpdateManyWithWhereWithoutRoleInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+}
+
+export type UserUncheckedUpdateManyWithoutRoleNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutRoleInput | Prisma.UserUpsertWithWhereUniqueWithoutRoleInput[]
+  createMany?: Prisma.UserCreateManyRoleInputEnvelope
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutRoleInput | Prisma.UserUpdateWithWhereUniqueWithoutRoleInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutRoleInput | Prisma.UserUpdateManyWithWhereWithoutRoleInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
 export type UserCreateNestedOneWithoutTeacherInput = {
@@ -862,7 +909,7 @@ export type UserCreateWithoutEstablishmentInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -886,9 +933,9 @@ export type UserUncheckedCreateWithoutEstablishmentInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -942,11 +989,12 @@ export type UserScalarWhereInput = {
   phone?: Prisma.StringNullableFilter<"User"> | string | null
   isActive?: Prisma.BoolFilter<"User"> | boolean
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  roleId?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
 }
 
-export type UserCreateWithoutUserRolesInput = {
+export type UserCreateWithoutRoleInput = {
   email: string
   password: string
   firstName: string
@@ -971,7 +1019,7 @@ export type UserCreateWithoutUserRolesInput = {
   counselingSessions?: Prisma.CounselingSessionCreateNestedManyWithoutCounselorInput
 }
 
-export type UserUncheckedCreateWithoutUserRolesInput = {
+export type UserUncheckedCreateWithoutRoleInput = {
   id?: number
   establishmentId: number
   email: string
@@ -997,71 +1045,30 @@ export type UserUncheckedCreateWithoutUserRolesInput = {
   counselingSessions?: Prisma.CounselingSessionUncheckedCreateNestedManyWithoutCounselorInput
 }
 
-export type UserCreateOrConnectWithoutUserRolesInput = {
+export type UserCreateOrConnectWithoutRoleInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutUserRolesInput, Prisma.UserUncheckedCreateWithoutUserRolesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput>
 }
 
-export type UserUpsertWithoutUserRolesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutUserRolesInput, Prisma.UserUncheckedUpdateWithoutUserRolesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutUserRolesInput, Prisma.UserUncheckedCreateWithoutUserRolesInput>
-  where?: Prisma.UserWhereInput
+export type UserCreateManyRoleInputEnvelope = {
+  data: Prisma.UserCreateManyRoleInput | Prisma.UserCreateManyRoleInput[]
+  skipDuplicates?: boolean
 }
 
-export type UserUpdateToOneWithWhereWithoutUserRolesInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutUserRolesInput, Prisma.UserUncheckedUpdateWithoutUserRolesInput>
+export type UserUpsertWithWhereUniqueWithoutRoleInput = {
+  where: Prisma.UserWhereUniqueInput
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRoleInput, Prisma.UserUncheckedUpdateWithoutRoleInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput>
 }
 
-export type UserUpdateWithoutUserRolesInput = {
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
-  parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
-  guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
-  student?: Prisma.StudentUpdateOneWithoutUserNestedInput
-  validatedEvaluations?: Prisma.EvaluationUpdateManyWithoutValidatedByNestedInput
-  authoredReviews?: Prisma.EvaluationReviewUpdateManyWithoutAuthorNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
-  recordedAttendances?: Prisma.AttendanceUpdateManyWithoutRecordedByNestedInput
-  issuedDisciplineRecords?: Prisma.DisciplineRecordUpdateManyWithoutIssuedByNestedInput
-  receivedPayments?: Prisma.PaymentUpdateManyWithoutReceivedByNestedInput
-  handledInfirmaryVisits?: Prisma.InfirmaryVisitUpdateManyWithoutHandledByNestedInput
-  counselingSessions?: Prisma.CounselingSessionUpdateManyWithoutCounselorNestedInput
+export type UserUpdateWithWhereUniqueWithoutRoleInput = {
+  where: Prisma.UserWhereUniqueInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRoleInput, Prisma.UserUncheckedUpdateWithoutRoleInput>
 }
 
-export type UserUncheckedUpdateWithoutUserRolesInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  establishmentId?: Prisma.IntFieldUpdateOperationsInput | number
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
-  parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
-  guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
-  student?: Prisma.StudentUncheckedUpdateOneWithoutUserNestedInput
-  validatedEvaluations?: Prisma.EvaluationUncheckedUpdateManyWithoutValidatedByNestedInput
-  authoredReviews?: Prisma.EvaluationReviewUncheckedUpdateManyWithoutAuthorNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
-  recordedAttendances?: Prisma.AttendanceUncheckedUpdateManyWithoutRecordedByNestedInput
-  issuedDisciplineRecords?: Prisma.DisciplineRecordUncheckedUpdateManyWithoutIssuedByNestedInput
-  receivedPayments?: Prisma.PaymentUncheckedUpdateManyWithoutReceivedByNestedInput
-  handledInfirmaryVisits?: Prisma.InfirmaryVisitUncheckedUpdateManyWithoutHandledByNestedInput
-  counselingSessions?: Prisma.CounselingSessionUncheckedUpdateManyWithoutCounselorNestedInput
+export type UserUpdateManyWithWhereWithoutRoleInput = {
+  where: Prisma.UserScalarWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutRoleInput>
 }
 
 export type UserCreateWithoutTeacherInput = {
@@ -1075,7 +1082,7 @@ export type UserCreateWithoutTeacherInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
   student?: Prisma.StudentCreateNestedOneWithoutUserInput
@@ -1099,9 +1106,9 @@ export type UserUncheckedCreateWithoutTeacherInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
   student?: Prisma.StudentUncheckedCreateNestedOneWithoutUserInput
@@ -1142,7 +1149,7 @@ export type UserUpdateWithoutTeacherInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
   student?: Prisma.StudentUpdateOneWithoutUserNestedInput
@@ -1166,9 +1173,9 @@ export type UserUncheckedUpdateWithoutTeacherInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
   student?: Prisma.StudentUncheckedUpdateOneWithoutUserNestedInput
@@ -1193,7 +1200,7 @@ export type UserCreateWithoutStudentInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -1217,9 +1224,9 @@ export type UserUncheckedCreateWithoutStudentInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -1260,7 +1267,7 @@ export type UserUpdateWithoutStudentInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -1284,9 +1291,9 @@ export type UserUncheckedUpdateWithoutStudentInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -1311,7 +1318,7 @@ export type UserCreateWithoutParentInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
   student?: Prisma.StudentCreateNestedOneWithoutUserInput
@@ -1335,9 +1342,9 @@ export type UserUncheckedCreateWithoutParentInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
   student?: Prisma.StudentUncheckedCreateNestedOneWithoutUserInput
@@ -1378,7 +1385,7 @@ export type UserUpdateWithoutParentInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
   student?: Prisma.StudentUpdateOneWithoutUserNestedInput
@@ -1402,9 +1409,9 @@ export type UserUncheckedUpdateWithoutParentInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
   student?: Prisma.StudentUncheckedUpdateOneWithoutUserNestedInput
@@ -1429,7 +1436,7 @@ export type UserCreateWithoutGuardianInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   student?: Prisma.StudentCreateNestedOneWithoutUserInput
@@ -1453,9 +1460,9 @@ export type UserUncheckedCreateWithoutGuardianInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   student?: Prisma.StudentUncheckedCreateNestedOneWithoutUserInput
@@ -1496,7 +1503,7 @@ export type UserUpdateWithoutGuardianInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   student?: Prisma.StudentUpdateOneWithoutUserNestedInput
@@ -1520,9 +1527,9 @@ export type UserUncheckedUpdateWithoutGuardianInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   student?: Prisma.StudentUncheckedUpdateOneWithoutUserNestedInput
@@ -1547,7 +1554,7 @@ export type UserCreateWithoutValidatedEvaluationsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -1571,9 +1578,9 @@ export type UserUncheckedCreateWithoutValidatedEvaluationsInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -1614,7 +1621,7 @@ export type UserUpdateWithoutValidatedEvaluationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -1638,9 +1645,9 @@ export type UserUncheckedUpdateWithoutValidatedEvaluationsInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -1665,7 +1672,7 @@ export type UserCreateWithoutAuthoredReviewsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -1689,9 +1696,9 @@ export type UserUncheckedCreateWithoutAuthoredReviewsInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -1732,7 +1739,7 @@ export type UserUpdateWithoutAuthoredReviewsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -1756,9 +1763,9 @@ export type UserUncheckedUpdateWithoutAuthoredReviewsInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -1783,7 +1790,7 @@ export type UserCreateWithoutNotificationsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -1807,9 +1814,9 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -1850,7 +1857,7 @@ export type UserUpdateWithoutNotificationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -1874,9 +1881,9 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -1901,7 +1908,7 @@ export type UserCreateWithoutRecordedAttendancesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -1925,9 +1932,9 @@ export type UserUncheckedCreateWithoutRecordedAttendancesInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -1968,7 +1975,7 @@ export type UserUpdateWithoutRecordedAttendancesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -1992,9 +1999,9 @@ export type UserUncheckedUpdateWithoutRecordedAttendancesInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -2019,7 +2026,7 @@ export type UserCreateWithoutIssuedDisciplineRecordsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -2043,9 +2050,9 @@ export type UserUncheckedCreateWithoutIssuedDisciplineRecordsInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -2086,7 +2093,7 @@ export type UserUpdateWithoutIssuedDisciplineRecordsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -2110,9 +2117,9 @@ export type UserUncheckedUpdateWithoutIssuedDisciplineRecordsInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -2137,7 +2144,7 @@ export type UserCreateWithoutReceivedPaymentsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -2161,9 +2168,9 @@ export type UserUncheckedCreateWithoutReceivedPaymentsInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -2204,7 +2211,7 @@ export type UserUpdateWithoutReceivedPaymentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -2228,9 +2235,9 @@ export type UserUncheckedUpdateWithoutReceivedPaymentsInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -2255,7 +2262,7 @@ export type UserCreateWithoutHandledInfirmaryVisitsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -2279,9 +2286,9 @@ export type UserUncheckedCreateWithoutHandledInfirmaryVisitsInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -2322,7 +2329,7 @@ export type UserUpdateWithoutHandledInfirmaryVisitsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -2346,9 +2353,9 @@ export type UserUncheckedUpdateWithoutHandledInfirmaryVisitsInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -2373,7 +2380,7 @@ export type UserCreateWithoutCounselingSessionsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   establishment: Prisma.EstablishmentCreateNestedOneWithoutUsersInput
-  userRoles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
   teacher?: Prisma.TeacherCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianCreateNestedOneWithoutUserInput
@@ -2397,9 +2404,9 @@ export type UserUncheckedCreateWithoutCounselingSessionsInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  userRoles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   teacher?: Prisma.TeacherUncheckedCreateNestedOneWithoutUserInput
   parent?: Prisma.ParentUncheckedCreateNestedOneWithoutUserInput
   guardian?: Prisma.GuardianUncheckedCreateNestedOneWithoutUserInput
@@ -2440,7 +2447,7 @@ export type UserUpdateWithoutCounselingSessionsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -2464,9 +2471,9 @@ export type UserUncheckedUpdateWithoutCounselingSessionsInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -2489,6 +2496,7 @@ export type UserCreateManyEstablishmentInput = {
   phone?: string | null
   isActive?: boolean
   lastLoginAt?: Date | string | null
+  roleId: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -2503,7 +2511,7 @@ export type UserUpdateWithoutEstablishmentInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
@@ -2527,9 +2535,9 @@ export type UserUncheckedUpdateWithoutEstablishmentInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userRoles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
   parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
   guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
@@ -2553,6 +2561,86 @@ export type UserUncheckedUpdateManyWithoutEstablishmentInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type UserCreateManyRoleInput = {
+  id?: number
+  establishmentId: number
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  phone?: string | null
+  isActive?: boolean
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type UserUpdateWithoutRoleInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  establishment?: Prisma.EstablishmentUpdateOneRequiredWithoutUsersNestedInput
+  teacher?: Prisma.TeacherUpdateOneWithoutUserNestedInput
+  parent?: Prisma.ParentUpdateOneWithoutUserNestedInput
+  guardian?: Prisma.GuardianUpdateOneWithoutUserNestedInput
+  student?: Prisma.StudentUpdateOneWithoutUserNestedInput
+  validatedEvaluations?: Prisma.EvaluationUpdateManyWithoutValidatedByNestedInput
+  authoredReviews?: Prisma.EvaluationReviewUpdateManyWithoutAuthorNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  recordedAttendances?: Prisma.AttendanceUpdateManyWithoutRecordedByNestedInput
+  issuedDisciplineRecords?: Prisma.DisciplineRecordUpdateManyWithoutIssuedByNestedInput
+  receivedPayments?: Prisma.PaymentUpdateManyWithoutReceivedByNestedInput
+  handledInfirmaryVisits?: Prisma.InfirmaryVisitUpdateManyWithoutHandledByNestedInput
+  counselingSessions?: Prisma.CounselingSessionUpdateManyWithoutCounselorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRoleInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  establishmentId?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  teacher?: Prisma.TeacherUncheckedUpdateOneWithoutUserNestedInput
+  parent?: Prisma.ParentUncheckedUpdateOneWithoutUserNestedInput
+  guardian?: Prisma.GuardianUncheckedUpdateOneWithoutUserNestedInput
+  student?: Prisma.StudentUncheckedUpdateOneWithoutUserNestedInput
+  validatedEvaluations?: Prisma.EvaluationUncheckedUpdateManyWithoutValidatedByNestedInput
+  authoredReviews?: Prisma.EvaluationReviewUncheckedUpdateManyWithoutAuthorNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  recordedAttendances?: Prisma.AttendanceUncheckedUpdateManyWithoutRecordedByNestedInput
+  issuedDisciplineRecords?: Prisma.DisciplineRecordUncheckedUpdateManyWithoutIssuedByNestedInput
+  receivedPayments?: Prisma.PaymentUncheckedUpdateManyWithoutReceivedByNestedInput
+  handledInfirmaryVisits?: Prisma.InfirmaryVisitUncheckedUpdateManyWithoutHandledByNestedInput
+  counselingSessions?: Prisma.CounselingSessionUncheckedUpdateManyWithoutCounselorNestedInput
+}
+
+export type UserUncheckedUpdateManyWithoutRoleInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  establishmentId?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2563,7 +2651,6 @@ export type UserUncheckedUpdateManyWithoutEstablishmentInput = {
  */
 
 export type UserCountOutputType = {
-  userRoles: number
   validatedEvaluations: number
   authoredReviews: number
   notifications: number
@@ -2575,7 +2662,6 @@ export type UserCountOutputType = {
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  userRoles?: boolean | UserCountOutputTypeCountUserRolesArgs
   validatedEvaluations?: boolean | UserCountOutputTypeCountValidatedEvaluationsArgs
   authoredReviews?: boolean | UserCountOutputTypeCountAuthoredReviewsArgs
   notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
@@ -2594,13 +2680,6 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
    * Select specific fields to fetch from the UserCountOutputType
    */
   select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountUserRolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.UserRoleWhereInput
 }
 
 /**
@@ -2670,10 +2749,11 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   phone?: boolean
   isActive?: boolean
   lastLoginAt?: boolean
+  roleId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   establishment?: boolean | Prisma.EstablishmentDefaultArgs<ExtArgs>
-  userRoles?: boolean | Prisma.User$userRolesArgs<ExtArgs>
+  role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   teacher?: boolean | Prisma.User$teacherArgs<ExtArgs>
   parent?: boolean | Prisma.User$parentArgs<ExtArgs>
   guardian?: boolean | Prisma.User$guardianArgs<ExtArgs>
@@ -2701,14 +2781,15 @@ export type UserSelectScalar = {
   phone?: boolean
   isActive?: boolean
   lastLoginAt?: boolean
+  roleId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "establishmentId" | "email" | "password" | "firstName" | "lastName" | "phone" | "isActive" | "lastLoginAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "establishmentId" | "email" | "password" | "firstName" | "lastName" | "phone" | "isActive" | "lastLoginAt" | "roleId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   establishment?: boolean | Prisma.EstablishmentDefaultArgs<ExtArgs>
-  userRoles?: boolean | Prisma.User$userRolesArgs<ExtArgs>
+  role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   teacher?: boolean | Prisma.User$teacherArgs<ExtArgs>
   parent?: boolean | Prisma.User$parentArgs<ExtArgs>
   guardian?: boolean | Prisma.User$guardianArgs<ExtArgs>
@@ -2728,7 +2809,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     establishment: Prisma.$EstablishmentPayload<ExtArgs>
-    userRoles: Prisma.$UserRolePayload<ExtArgs>[]
+    role: Prisma.$RolePayload<ExtArgs>
     teacher: Prisma.$TeacherPayload<ExtArgs> | null
     parent: Prisma.$ParentPayload<ExtArgs> | null
     guardian: Prisma.$GuardianPayload<ExtArgs> | null
@@ -2752,6 +2833,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     phone: string | null
     isActive: boolean
     lastLoginAt: Date | null
+    roleId: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -3095,7 +3177,7 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   establishment<T extends Prisma.EstablishmentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EstablishmentDefaultArgs<ExtArgs>>): Prisma.Prisma__EstablishmentClient<runtime.Types.Result.GetResult<Prisma.$EstablishmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  userRoles<T extends Prisma.User$userRolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userRolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  role<T extends Prisma.RoleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RoleDefaultArgs<ExtArgs>>): Prisma.Prisma__RoleClient<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   teacher<T extends Prisma.User$teacherArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$teacherArgs<ExtArgs>>): Prisma.Prisma__TeacherClient<runtime.Types.Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   parent<T extends Prisma.User$parentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$parentArgs<ExtArgs>>): Prisma.Prisma__ParentClient<runtime.Types.Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   guardian<T extends Prisma.User$guardianArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$guardianArgs<ExtArgs>>): Prisma.Prisma__GuardianClient<runtime.Types.Result.GetResult<Prisma.$GuardianPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -3146,6 +3228,7 @@ export interface UserFieldRefs {
   readonly phone: Prisma.FieldRef<"User", 'String'>
   readonly isActive: Prisma.FieldRef<"User", 'Boolean'>
   readonly lastLoginAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly roleId: Prisma.FieldRef<"User", 'Int'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
@@ -3493,30 +3576,6 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Users to delete.
    */
   limit?: number
-}
-
-/**
- * User.userRoles
- */
-export type User$userRolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the UserRole
-   */
-  select?: Prisma.UserRoleSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the UserRole
-   */
-  omit?: Prisma.UserRoleOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserRoleInclude<ExtArgs> | null
-  where?: Prisma.UserRoleWhereInput
-  orderBy?: Prisma.UserRoleOrderByWithRelationInput | Prisma.UserRoleOrderByWithRelationInput[]
-  cursor?: Prisma.UserRoleWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.UserRoleScalarFieldEnum | Prisma.UserRoleScalarFieldEnum[]
 }
 
 /**

@@ -11,7 +11,7 @@ export async function seedHealth(establishments: Establishment[]) {
     });
 
     const nurse = await prisma.user.findFirst({
-      where: { establishmentId: establishment.id, isActive: true, userRoles: { some: { role: { name: "INFIRMIER" } } } },
+      where: { establishmentId: establishment.id, isActive: true, role: { name: "INFIRMIER" } },
       orderBy: { id: "asc" },
       select: { id: true },
     });

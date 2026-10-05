@@ -6,35 +6,22 @@ import { RoleRepository } from "../roles/role.repository.js";
 import type { CreateUserInput, UpdateUserInput } from "./user.dto.js";
 import { UserRepository } from "./user.repository.js";
 
-type UserWithRoles = {
-  userRoles: { role: { id: number; name: string } }[];
-} & Record<string, unknown>;
-
-const toResponse = ({ userRoles, ...rest }: UserWithRoles) => ({
-  ...rest,
-  roles: userRoles.map((userRole) => userRole.role),
-});
-
 export class UserService {
   constructor(
     private readonly userRepository = new UserRepository(),
     private readonly roleRepository = new RoleRepository(),
   ) {}
 
-  private async assertRolesBelongToEstablishment(roleIds: number[], establishmentId: number) {
-    if (roleIds.length === 0) return;
+  private async assertRoleBelongsToEstablishment(roleId: number, establishmentId: number) {
+    const found = await this.roleRepository.findManyByIds([roleId], establishmentId);
 
-    const found = await this.roleRepository.findManyByIds(roleIds, establishmentId);
-
-    if (found.length !== roleIds.length) {
-      throw new AppError("One or more roles are invalid", 400, "INVALID_ROLES");
+    if (found.length !== 1) {
+      throw new AppError("This role does not exist in your establishment", 400, "INVALID_ROLE");
     }
   }
 
-  async list(establishmentId: number) {
-    const users = await this.userRepository.findMany(establishmentId);
-
-    return users.map(toResponse);
+  list(establishmentId: number) {
+    return this.userRepository.findMany(establishmentId);
   }
 
   async get(id: number, establishmentId: number) {
@@ -44,38 +31,31 @@ export class UserService {
       throw new AppError("User not found", 404, "USER_NOT_FOUND");
     }
 
-    return toResponse(user);
+    return user;
   }
 
   async create(establishmentId: number, input: CreateUserInput) {
-    const { email, password, phone, roleIds, ...rest } = input;
+    const { email, password, phone, roleId, ...rest } = input;
 
-    await this.assertRolesBelongToEstablishment(roleIds ?? [], establishmentId);
+    await this.assertRoleBelongsToEstablishment(roleId, establishmentId);
 
-    const user = await this.userRepository.create({
+    return this.userRepository.create({
       email,
       password: await hashPassword(password),
       phone: phone ?? null,
       ...rest,
-      establishment: {
-        connect: { id: establishmentId },
-      },
-      ...(roleIds && roleIds.length > 0
-        ? { userRoles: { create: roleIds.map((roleId) => ({ roleId })) } }
-        : {}),
+      establishment: { connect: { id: establishmentId } },
+      role: { connect: { id: roleId } },
     });
-
-    return toResponse(user);
   }
 
   async update(id: number, establishmentId: number, input: UpdateUserInput) {
     await this.get(id, establishmentId);
 
-    const { roleIds, ...fields } = input;
+    const { roleId, ...fields } = input;
 
-    if (roleIds !== undefined) {
-      await this.assertRolesBelongToEstablishment(roleIds, establishmentId);
-      await this.userRepository.setRoles(id, roleIds);
+    if (roleId !== undefined) {
+      await this.assertRoleBelongsToEstablishment(roleId, establishmentId);
     }
 
     const data = stripUndefined(fields);
@@ -84,9 +64,10 @@ export class UserService {
       data.password = await hashPassword(data.password);
     }
 
-    const user = await this.userRepository.update(id, data);
-
-    return toResponse(user);
+    return this.userRepository.update(id, {
+      ...data,
+      ...(roleId !== undefined ? { role: { connect: { id: roleId } } } : {}),
+    });
   }
 
   async remove(id: number, establishmentId: number) {

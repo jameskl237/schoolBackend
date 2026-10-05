@@ -16,6 +16,8 @@ export const createGuardianSchema = z.object({
   email: z.string().email().optional(),
   address: z.string().optional(),
   students: z.array(studentLinkSchema).optional(),
+  /** Mot de passe initial du compte ouvert pour le tuteur. */
+  password: z.string().min(8).optional(),
 });
 
 export const updateGuardianSchema = z.object({

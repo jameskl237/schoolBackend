@@ -409,7 +409,6 @@ export const ModelName = {
   User: 'User',
   Role: 'Role',
   Permission: 'Permission',
-  UserRole: 'UserRole',
   RolePermission: 'RolePermission',
   Teacher: 'Teacher',
   Subject: 'Subject',
@@ -460,7 +459,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "establishment" | "academicYear" | "period" | "sequence" | "schoolLevel" | "section" | "cycle" | "gradeLevel" | "class" | "user" | "role" | "permission" | "userRole" | "rolePermission" | "teacher" | "subject" | "classroom" | "classSubject" | "timetable" | "student" | "parent" | "studentParent" | "guardian" | "studentGuardian" | "enrollment" | "evaluation" | "grade" | "reportCard" | "reportCardLine" | "evaluationReview" | "notification" | "attendance" | "disciplineRecord" | "feeType" | "feeStructure" | "invoice" | "invoiceLine" | "payment" | "transportRoute" | "transportSubscription" | "medicalRecord" | "vaccination" | "infirmaryVisit" | "book" | "bookCopy" | "loan" | "orientationRecord" | "counselingSession"
+    modelProps: "establishment" | "academicYear" | "period" | "sequence" | "schoolLevel" | "section" | "cycle" | "gradeLevel" | "class" | "user" | "role" | "permission" | "rolePermission" | "teacher" | "subject" | "classroom" | "classSubject" | "timetable" | "student" | "parent" | "studentParent" | "guardian" | "studentGuardian" | "enrollment" | "evaluation" | "grade" | "reportCard" | "reportCardLine" | "evaluationReview" | "notification" | "attendance" | "disciplineRecord" | "feeType" | "feeStructure" | "invoice" | "invoiceLine" | "payment" | "transportRoute" | "transportSubscription" | "medicalRecord" | "vaccination" | "infirmaryVisit" | "book" | "bookCopy" | "loan" | "orientationRecord" | "counselingSession"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1253,72 +1252,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.PermissionCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.PermissionCountAggregateOutputType> | number
-        }
-      }
-    }
-    UserRole: {
-      payload: Prisma.$UserRolePayload<ExtArgs>
-      fields: Prisma.UserRoleFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.UserRoleFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserRolePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.UserRoleFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserRolePayload>
-        }
-        findFirst: {
-          args: Prisma.UserRoleFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserRolePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.UserRoleFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserRolePayload>
-        }
-        findMany: {
-          args: Prisma.UserRoleFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserRolePayload>[]
-        }
-        create: {
-          args: Prisma.UserRoleCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserRolePayload>
-        }
-        createMany: {
-          args: Prisma.UserRoleCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        delete: {
-          args: Prisma.UserRoleDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserRolePayload>
-        }
-        update: {
-          args: Prisma.UserRoleUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserRolePayload>
-        }
-        deleteMany: {
-          args: Prisma.UserRoleDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.UserRoleUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        upsert: {
-          args: Prisma.UserRoleUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserRolePayload>
-        }
-        aggregate: {
-          args: Prisma.UserRoleAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateUserRole>
-        }
-        groupBy: {
-          args: Prisma.UserRoleGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.UserRoleGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.UserRoleCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.UserRoleCountAggregateOutputType> | number
         }
       }
     }
@@ -3676,6 +3609,10 @@ export const EstablishmentScalarFieldEnum = {
   name: 'name',
   code: 'code',
   type: 'type',
+  logoUrl: 'logoUrl',
+  city: 'city',
+  poBox: 'poBox',
+  phone: 'phone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -3797,6 +3734,7 @@ export const UserScalarFieldEnum = {
   phone: 'phone',
   isActive: 'isActive',
   lastLoginAt: 'lastLoginAt',
+  roleId: 'roleId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -3826,16 +3764,6 @@ export const PermissionScalarFieldEnum = {
 } as const
 
 export type PermissionScalarFieldEnum = (typeof PermissionScalarFieldEnum)[keyof typeof PermissionScalarFieldEnum]
-
-
-export const UserRoleScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  roleId: 'roleId',
-  assignedAt: 'assignedAt'
-} as const
-
-export type UserRoleScalarFieldEnum = (typeof UserRoleScalarFieldEnum)[keyof typeof UserRoleScalarFieldEnum]
 
 
 export const RolePermissionScalarFieldEnum = {
@@ -4020,6 +3948,8 @@ export const EvaluationScalarFieldEnum = {
   date: 'date',
   maxScore: 'maxScore',
   coefficient: 'coefficient',
+  examPaperPath: 'examPaperPath',
+  examPaperName: 'examPaperName',
   validatedAt: 'validatedAt',
   validatedById: 'validatedById',
   createdAt: 'createdAt',
@@ -4353,9 +4283,21 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
 export const EstablishmentOrderByRelevanceFieldEnum = {
   name: 'name',
-  code: 'code'
+  code: 'code',
+  logoUrl: 'logoUrl',
+  city: 'city',
+  poBox: 'poBox',
+  phone: 'phone'
 } as const
 
 export type EstablishmentOrderByRelevanceFieldEnum = (typeof EstablishmentOrderByRelevanceFieldEnum)[keyof typeof EstablishmentOrderByRelevanceFieldEnum]
@@ -4410,14 +4352,6 @@ export const GradeLevelOrderByRelevanceFieldEnum = {
 } as const
 
 export type GradeLevelOrderByRelevanceFieldEnum = (typeof GradeLevelOrderByRelevanceFieldEnum)[keyof typeof GradeLevelOrderByRelevanceFieldEnum]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 export const ClassOrderByRelevanceFieldEnum = {
@@ -4521,7 +4455,9 @@ export type GuardianOrderByRelevanceFieldEnum = (typeof GuardianOrderByRelevance
 
 
 export const EvaluationOrderByRelevanceFieldEnum = {
-  title: 'title'
+  title: 'title',
+  examPaperPath: 'examPaperPath',
+  examPaperName: 'examPaperName'
 } as const
 
 export type EvaluationOrderByRelevanceFieldEnum = (typeof EvaluationOrderByRelevanceFieldEnum)[keyof typeof EvaluationOrderByRelevanceFieldEnum]
@@ -5023,7 +4959,6 @@ export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   role?: Prisma.RoleOmit
   permission?: Prisma.PermissionOmit
-  userRole?: Prisma.UserRoleOmit
   rolePermission?: Prisma.RolePermissionOmit
   teacher?: Prisma.TeacherOmit
   subject?: Prisma.SubjectOmit

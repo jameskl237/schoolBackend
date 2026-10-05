@@ -1,10 +1,18 @@
+import type { Express } from "express";
+
 import { AppError } from "../../common/errors/app-error.js";
 import { can, type AccessScope } from "../../common/utils/access-scope.js";
+import {
+  examPaperStoredPath,
+  removeExamPaperFile,
+  sanitizeExamPaperName,
+} from "../../common/utils/exam-paper-storage.js";
 import { findMainTeacherClassIds, isMainTeacherOf } from "../../common/utils/main-teacher.js";
 import { stripUndefined } from "../../common/utils/strip-undefined.js";
 import { ClassSubjectRepository } from "../class-subjects/class-subject.repository.js";
 import { PeriodRepository } from "../periods/period.repository.js";
 import { SequenceRepository } from "../sequences/sequence.repository.js";
+import { StudentRepository } from "../students/student.repository.js";
 
 import type { CreateEvaluationInput, UpdateEvaluationInput } from "./evaluation.dto.js";
 import {
@@ -19,6 +27,7 @@ export class EvaluationService {
     private readonly classSubjectRepository = new ClassSubjectRepository(),
     private readonly periodRepository = new PeriodRepository(),
     private readonly sequenceRepository = new SequenceRepository(),
+    private readonly studentRepository = new StudentRepository(),
   ) {}
 
   /**
@@ -132,7 +141,73 @@ export class EvaluationService {
     this.ensureOwner(evaluation, scope);
     this.ensureNotValidated(evaluation);
 
+    if (evaluation.examPaperPath) {
+      removeExamPaperFile(evaluation.examPaperPath);
+    }
+
     return this.evaluationRepository.delete(id);
+  }
+
+  /**
+   * Mise en ligne de l'épreuve PDF (réservée à l'enseignant de la matière).
+   * Le fichier est déjà écrit sur disque par multer : on ne renseigne la base
+   * qu'après la vérification d'appartenance, et on nettoie le disque en erreur.
+   */
+  async attachExamPaper(id: number, scope: AccessScope, file: Express.Multer.File) {
+    try {
+      const evaluation = await this.get(id, scope);
+
+      this.ensureOwner(evaluation, scope);
+
+      if (evaluation.examPaperPath) {
+        removeExamPaperFile(evaluation.examPaperPath);
+      }
+
+      return await this.evaluationRepository.update(id, {
+        examPaperPath: examPaperStoredPath(file.filename),
+        examPaperName: sanitizeExamPaperName(file.originalname),
+      });
+    } catch (error) {
+      removeExamPaperFile(examPaperStoredPath(file.filename));
+      throw error;
+    }
+  }
+
+  /**
+   * Consultation de l'épreuve : administration/professeur principal, enseignant de
+   * la matière, élève de la classe, ou parent d'un élève de la classe.
+   */
+  async getExamPaper(id: number, scope: AccessScope) {
+    const evaluation = await this.evaluationRepository.findById(id, scope.establishmentId);
+
+    if (!evaluation || !evaluation.examPaperPath || !evaluation.examPaperName) {
+      throw new AppError("No exam paper available for this evaluation", 404, "EXAM_PAPER_NOT_FOUND");
+    }
+
+    if (!(await this.canReadExamPaper(evaluation, scope))) {
+      throw new AppError("You are not allowed to consult this exam paper", 403, "EXAM_PAPER_FORBIDDEN");
+    }
+
+    return evaluation;
+  }
+
+  async detachExamPaper(id: number, scope: AccessScope) {
+    const evaluation = await this.get(id, scope);
+
+    this.ensureOwner(evaluation, scope);
+
+    if (!evaluation.examPaperPath) {
+      return evaluation;
+    }
+
+    if (evaluation.examPaperPath) {
+      removeExamPaperFile(evaluation.examPaperPath);
+    }
+
+    return this.evaluationRepository.update(id, {
+      examPaperPath: null,
+      examPaperName: null,
+    });
   }
 
   private hasGlobalView(scope: AccessScope) {
@@ -149,6 +224,32 @@ export class EvaluationService {
     }
 
     return isMainTeacherOf(scope, evaluation.classSubject.class.id);
+  }
+
+  /**
+   * Accès plus large que la vision de l'écran Évaluations : pour télécharger le
+   * PDF, élèves et parents sont autorisés tant qu'ils sont liés à la classe.
+   */
+  private async canReadExamPaper(evaluation: EvaluationWithContext, scope: AccessScope) {
+    if (this.hasGlobalView(scope)) {
+      return true;
+    }
+
+    const classId = evaluation.classSubject.class.id;
+
+    if (scope.teacherId !== undefined && evaluation.classSubject.teacherId === scope.teacherId) {
+      return true;
+    }
+
+    if (scope.studentId !== undefined) {
+      return this.studentRepository.isEnrolledInClass(scope.studentId, classId);
+    }
+
+    if (scope.parentId !== undefined) {
+      return this.studentRepository.hasChildInClass(scope.parentId, classId);
+    }
+
+    return isMainTeacherOf(scope, classId);
   }
 
   /**

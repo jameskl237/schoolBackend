@@ -349,7 +349,7 @@ export async function seedOrganization(
       where: {
         establishmentId: establishment.id,
         isActive: true,
-        userRoles: { some: { role: { name: "ENSEIGNANT" } } },
+        role: { name: "ENSEIGNANT" },
         teacher: null,
       },
       select: { id: true },

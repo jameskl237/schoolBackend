@@ -1,9 +1,9 @@
 import { prisma } from "../../infrastructure/database/prisma.js";
 
-/** Flattens a user's roles -> role permissions into a deduplicated list of permission codes. */
+/** Les codes de permission portés par le rôle unique du compte. */
 export const getUserPermissions = async (userId: number): Promise<string[]> => {
-  const userRoles = await prisma.userRole.findMany({
-    where: { userId },
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
     select: {
       role: {
         select: {
@@ -15,13 +15,7 @@ export const getUserPermissions = async (userId: number): Promise<string[]> => {
     },
   });
 
-  const codes = new Set<string>();
-
-  for (const userRole of userRoles) {
-    for (const rolePermission of userRole.role.rolePermissions) {
-      codes.add(rolePermission.permission.code);
-    }
-  }
-
-  return [...codes];
+  return (user?.role.rolePermissions ?? []).map(
+    (rolePermission) => rolePermission.permission.code,
+  );
 };

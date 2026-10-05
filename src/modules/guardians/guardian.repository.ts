@@ -1,7 +1,7 @@
 import type { Prisma } from "../../generated/prisma/client.js";
 import { prisma } from "../../infrastructure/database/prisma.js";
 
-const guardianInclude = {
+export const guardianInclude = {
   studentGuardians: {
     select: {
       relationType: true,

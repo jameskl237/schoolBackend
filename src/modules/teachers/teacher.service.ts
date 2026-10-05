@@ -1,10 +1,15 @@
 import { AppError } from "../../common/errors/app-error.js";
+import {
+  DEFAULT_ACCOUNT_PASSWORD,
+  provisionAccount,
+  PROFILE_ROLES,
+} from "../../common/utils/account-provisioning.js";
 import { stripUndefined } from "../../common/utils/strip-undefined.js";
 import { Prisma } from "../../generated/prisma/client.js";
 import { prisma } from "../../infrastructure/database/prisma.js";
 
 import type { CreateTeacherInput, UpdateTeacherInput } from "./teacher.dto.js";
-import { TeacherRepository } from "./teacher.repository.js";
+import { TeacherRepository, teacherInclude } from "./teacher.repository.js";
 
 export class TeacherService {
   constructor(private readonly teacherRepository = new TeacherRepository()) {}
@@ -23,22 +28,54 @@ export class TeacherService {
     return teacher;
   }
 
+  /**
+   * Tout enseignant a un compte : sans lui, il ne peut ni saisir ses notes ni
+   * recevoir les demandes du professeur principal. À défaut de compte fourni,
+   * on en ouvre un avec le rôle ENSEIGNANT et on restitue ses identifiants.
+   */
   async create(establishmentId: number, input: CreateTeacherInput) {
-    const { userId, phone, email, hireDate, specialty, ...required } = input;
+    const { userId, phone, email, hireDate, specialty, password, ...required } = input;
 
     if (userId !== undefined) {
       await this.ensureUserExists(userId, establishmentId);
     }
 
     try {
-      return await this.teacherRepository.create({
-        ...required,
-        ...(phone !== undefined ? { phone } : {}),
-        ...(email !== undefined ? { email } : {}),
-        ...(hireDate !== undefined ? { hireDate } : {}),
-        ...(specialty !== undefined ? { specialty } : {}),
-        establishment: { connect: { id: establishmentId } },
-        ...(userId !== undefined ? { user: { connect: { id: userId } } } : {}),
+      return await prisma.$transaction(async (tx) => {
+        const account =
+          userId === undefined
+            ? await provisionAccount(tx, {
+                establishmentId,
+                roleName: PROFILE_ROLES.TEACHER,
+                firstName: required.firstName,
+                lastName: required.lastName,
+                phone: phone ?? null,
+                ...(email !== undefined ? { email } : {}),
+                ...(password !== undefined ? { password } : {}),
+                emailDomain: "enseignant.local",
+                defaultPassword: DEFAULT_ACCOUNT_PASSWORD,
+              })
+            : null;
+
+        const teacher = await tx.teacher.create({
+          data: {
+            ...required,
+            ...(phone !== undefined ? { phone } : {}),
+            ...(email !== undefined ? { email } : {}),
+            ...(hireDate !== undefined ? { hireDate } : {}),
+            ...(specialty !== undefined ? { specialty } : {}),
+            establishment: { connect: { id: establishmentId } },
+            user: { connect: { id: userId ?? (account as { userId: number }).userId } },
+          },
+          include: teacherInclude,
+        });
+
+        return {
+          ...teacher,
+          account: account
+            ? { loginEmail: account.loginEmail, password: account.password }
+            : null,
+        };
       });
     } catch (error) {
       throw this.mapKnownErrors(error);

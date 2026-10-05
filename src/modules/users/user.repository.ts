@@ -11,9 +11,8 @@ const userSelect = {
   establishmentId: true,
   createdAt: true,
   updatedAt: true,
-  userRoles: {
-    select: { role: { select: { id: true, name: true } } },
-  },
+  roleId: true,
+  role: { select: { id: true, name: true, description: true } },
 } satisfies Prisma.UserSelect;
 
 export class UserRepository {
@@ -46,19 +45,5 @@ export class UserRepository {
 
   delete(id: number) {
     return prisma.user.delete({ where: { id } });
-  }
-
-  /** Replaces a user's role assignments with exactly the given set of role ids. */
-  setRoles(userId: number, roleIds: number[]) {
-    return prisma.$transaction([
-      prisma.userRole.deleteMany({ where: { userId } }),
-      ...(roleIds.length > 0
-        ? [
-            prisma.userRole.createMany({
-              data: roleIds.map((roleId) => ({ userId, roleId })),
-            }),
-          ]
-        : []),
-    ]);
   }
 }

@@ -16,6 +16,8 @@ export const createParentSchema = z.object({
   occupation: z.string().optional(),
   address: z.string().optional(),
   students: z.array(studentLinkSchema).optional(),
+  /** Mot de passe initial du compte ouvert pour le parent. */
+  password: z.string().min(8).optional(),
 });
 
 export const updateParentSchema = z.object({

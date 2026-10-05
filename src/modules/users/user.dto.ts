@@ -6,7 +6,8 @@ export const createUserSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
   phone: z.string().optional(),
-  roleIds: z.array(z.number().int().positive()).optional(),
+  // Un compte porte exactement un rôle : il est obligatoire dès la création.
+  roleId: z.coerce.number().int().positive(),
 });
 
 export const updateUserSchema = createUserSchema.partial();
